@@ -1,0 +1,11 @@
+<h1>Welcome</h1>
+<h1>Welcome</h1>
+<md-card>
+<md-input-container flex>
+              <label class="my-label">Name</label>
+              <input required name="name" ng-model="model.hall.displayName"/>
+              <div ng-messages="hallForm.name.$error">
+                <div ng-message="required">Hall name is required.</div>
+              </div>
+            </md-input-container>
+        </md-card>
