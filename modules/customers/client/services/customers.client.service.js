@@ -9,12 +9,25 @@
   CustomersService.$inject = ['$resource'];
 
   function CustomersService($resource) {
-    return $resource('/api/customers/:customerId', {
+    var customerService = $resource('/api/customers/:customerId', {
       customerId: '@_id'
     }, {
       update: {
         method: 'PUT'
+      },      
+      getByid: {
+        method: 'POST',
+        isArray: true,
+        url: '/api/customers/getbyid/'
+      },
+    });
+
+    angular.extend(customerService, {
+      requestCustomer: function (id) {
+        return this.getByid(id).$promise;
       }
     });
+
+    return customerService;
   }
 }());

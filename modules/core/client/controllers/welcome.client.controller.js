@@ -1,18 +1,23 @@
-(function () {
-  'use strict';
+(function() {
+	'use strict';
 
-  angular
-    .module('core')
-    .controller('WelcomeController', WelcomeController);
+	angular
+		.module('core')
+		.controller('WelcomeController', WelcomeController);
 
-	WelcomeController.$inject = ['customerId'];
+	WelcomeController.$inject = ['customerId', 'CustomersService'];
 
-  function WelcomeController(customerId) {
-    var vm = this;
+	function WelcomeController(customerId, CustomersService) {
+		var vm = this;
+
+		CustomersService.requestCustomer({
+			"id": customerId
+		}).then(function(response) {
+			console.log("response " + JSON.stringify(response));
+		});
+
+		console.log("WelcomeController " + customerId);
 
 
-    console.log("WelcomeController "+customerId);
-
-
-  }
+	}
 }());

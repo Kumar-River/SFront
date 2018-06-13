@@ -17,6 +17,9 @@ module.exports = function(app) {
     .put(customers.update)
     .delete(customers.delete);
 
+  app.route('/api/customers/getbyid')
+    .post(customers.getCustomerBasedOnId);
+
   // Finish by binding the Customer middleware
   app.param('customerId', customers.customerByID);
 };

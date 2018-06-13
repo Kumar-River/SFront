@@ -115,3 +115,25 @@ exports.customerByID = function(req, res, next, id) {
     next();
   });
 };
+
+/**
+ * Get Customer based on id
+ */
+exports.getCustomerBasedOnId = function(req, res) {
+  var cusId = parseInt(req.body.id);  
+
+  Customer.find({
+    id: cusId
+  }, function(err, results) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      console.log("results " + results);
+      res.jsonp(results);
+    }
+
+  });
+
+};
