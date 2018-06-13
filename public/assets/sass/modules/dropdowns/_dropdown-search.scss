@@ -1,0 +1,120 @@
+// Site dropdown - content theme hinted search dropdown
+.dropdown-search {
+	@include media(min, map-get($breakpoints, laptop)) {
+
+		a {
+			position: relative;
+			font-size: rem(13px);
+			line-height: 1.7;
+			padding: rem(10px) rem(45px) rem(10px) rem(30px);
+			display: block;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+  			overflow: hidden;
+			color: map-get($colors, gray-dark);
+
+			&:before {
+				font-family: "icons";
+			    display: inline-block;
+			    vertical-align: middle;
+			    line-height: 1;
+			    font-weight: normal;
+			    font-style: normal;
+			    speak: none;
+			    text-decoration: inherit;
+			    text-transform: none;
+			    text-rendering: optimizeLegibility;
+			    -webkit-font-smoothing: antialiased;
+			    -moz-osx-font-smoothing: grayscale;
+				content: $arrow-value;
+				display: block;
+				position: absolute;
+				top: 50%;
+				right: rem(20px);
+				font-size: rem(12px);
+				margin-top: -0.6em;
+				color: map-get($colors, orange);
+				opacity: 0;
+				transition: {
+					property: opacity;
+					duration: map-get($transition, 100ms);
+					};
+				}
+
+			&:hover {
+				color: map-get($colors, gray-dark);
+				&:before { opacity: 1; }
+				}
+
+			}
+
+		h3 {
+			position: relative;
+			font-size: rem(17px);
+			font-weight: 400;
+			padding: 0 0 rem(13px);
+			margin: rem(30px) rem(30px) rem(15px);
+			color: $alt-font-color;
+
+			@include media(min, map-get($breakpoints, laptop)) {
+				padding-bottom: rem(12px);
+
+				&:before {
+					content: "";
+					bottom: 0;
+					left: 0;
+					position: absolute;
+					height: rem(1px);
+					width: rem(60px);
+					background-color: map-get($colors, orange);
+					}
+
+				}
+
+			}
+
+		}
+
+	.close-dialog {
+		font-size: rem(13px);
+		font-weight: 300;
+		display: block;
+		text-align: center;
+		width: 100%;
+		padding: rem(10px);
+		text-transform: uppercase;
+		color: map-get($colors, gray-darkest);
+		background-color: transparent;
+		cursor: pointer;
+		transition: {
+			property: all;
+			duration: map-get($transition, duration);
+			};
+
+		&:hover {
+			background-color: map-get($colors, gray-dropdown);
+			}
+
+		}
+
+	}
+
+.dropdown-search__list {
+	position: relative;
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		padding-bottom: rem(20px);
+
+		&:before {
+			content: "";
+			bottom: -1px;
+			right: rem(30px);
+			left: rem(30px);
+			position: absolute;
+			height: rem(1px);
+			background-color: map-get($colors, gray-dropdown);
+			}
+
+		}
+
+	}

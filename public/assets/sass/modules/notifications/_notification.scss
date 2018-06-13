@@ -1,0 +1,97 @@
+/* Primary module - Drupal Notification / Messages core css overides  */
+
+// Show messages with fade in animation
+@keyframes show-notification-motion {
+    0%   {
+        opacity: 0;
+        }
+    100% {
+        opacity: 1;
+        }
+    }
+
+.messages-container {
+    @include depth(two);
+    border-style: none;
+
+    -webkit-animation: show-notification-motion 1000ms; /* Safari 4+ */
+    -moz-animation:    show-notification-motion 1000ms; /* Fx 5 + */
+    -o-animation:      show-notification-motion 1000ms; /* Opera 12+ */
+    animation:         show-notification-motion 1000ms; /* IE 10+, Fx 29+ */
+
+    div.messages {
+        border-style: none;
+        padding: rem(30px) rem(30px) rem(30px) rem(50px);
+        margin: 0;
+        text-align: center;
+        color: $white;
+        font-size: $secondary-font-size;
+        border-style: none;
+        position: relative;
+
+        &:before {
+
+            }
+
+        }
+
+    div.messages ul {
+        margin: 0 0 0 1em;
+        padding: 0;
+
+        li {
+            list-style-image: none;
+            }
+
+        }
+
+
+    // Status //
+    div.status {
+        // background-image: url("../../misc/message-24-ok.png");
+        background-image: none;
+        }
+
+    .ok, div.status {
+        color: $white;
+        }
+
+    div.status, table tr.ok {
+        background-color: map-get($colors, green-dark);
+        }
+
+
+    // Warning //
+    div.warning {
+        // background-image: url("../../misc/message-24-warning.png");
+        background-image: none;
+        }
+
+    .warning, div.warning {
+        color: $white;
+        }
+
+    div.warning, table tr.warning {
+        background-color: map-get($colors, aqua);
+        }
+
+
+    // Error //
+    div.error {
+        // background-image: url("../../misc/message-24-error.png");
+        background-image: none;
+        }
+
+    .error, div.error {
+        color: $white;
+        }
+
+    div.error, table tr.error {
+        background-color: map-get($colors, red);
+        }
+
+    div.error p.error {
+        color: $white;
+        }
+
+    }

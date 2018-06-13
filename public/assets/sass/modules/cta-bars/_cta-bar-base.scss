@@ -1,0 +1,129 @@
+// Primary Partial - cta bar base //
+
+.cta-bar {
+	text-align: center;
+	border-top: rem(1px) solid map-get($colors, border-grey-2);
+	border-bottom: rem(1px) solid map-get($colors, border-grey-2);
+
+	&.content-section.\--section-padding-3 {
+
+		// tablet-large and up / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			padding: rem(20px) 0;
+			}
+
+		}
+
+	.column-container [class*="item"] {
+		margin-bottom: 0;
+		padding: rem(10px) 0;
+
+		// mobile-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, mobile-large)) {
+			padding: rem(10px) rem(20px);
+			}
+
+		}
+
+	// Icon treatment
+ 	.asset-size { margin-bottom: rem(20px); }
+
+	.cta-bar-header { margin: rem(10px) 0 rem(50px); }
+
+// - - - Display options - - - //
+
+	&.\--flex-layout .cta-wrapper {
+
+		img { display: none; }
+
+		// tablet and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop)) {
+			display: flex;
+
+			.cta-bar-header {
+				flex: 2;
+				display: flex;
+				margin: 0;
+				padding: 0 rem(50px);
+				text-align: right;
+
+				h4 { margin: auto; }
+
+				}
+
+			.cta-container {
+				flex: 2;
+				text-align: left;
+				}
+
+			}
+
+		}
+
+// - - - Color Themes - - - //
+
+	&.\--light-gray-theme {
+		background-color: map-get($colors, bg-grey-1);
+		}
+
+	&.\--gray-theme {
+		color: $white;
+		background-color: map-get($colors, bg-grey-6);
+		border-style: none;
+
+		.secondary-button { @extend %secondary-button--gray; }
+
+		.primary-button { @extend %primary-button--dark; }
+
+		}
+
+	&.\--dark-gray-theme {
+		color: $white;
+		background-color: map-get($colors, bg-grey-8);
+		border-style: none;
+
+		.secondary-button { @extend %secondary-button--white; }
+
+		}
+
+	&.\--blue-theme {
+		color: $white;
+		background-color: map-get($colors, aqua);
+		border-style: none;
+
+		.secondary-button { @extend %secondary-button--blue; }
+
+		.primary-button { @extend %primary-button--dark-orange-theme; }
+
+		}
+
+	&.\--orange-theme {
+		color: $white;
+		background-color: map-get($colors, orange);
+		border-style: none;
+
+		.secondary-button { @extend %secondary-button--orange; }
+
+		.primary-button { @extend %primary-button--dark-orange-theme; }
+
+		}
+
+	.secondary-button {
+		display: block;
+		margin: 0 auto;
+
+		// laptop and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			display: inline-block;
+			min-width: map-get($columns, span-6-columns); // 460px
+			}
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			display: block;
+			min-width: auto;
+			}
+
+		}
+
+	}

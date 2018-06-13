@@ -1,0 +1,21 @@
+/* LPUP application Partial - PRODUCT INFORMATION */
+
+
+.faq-details-container {
+    padding-top: $section-padding-5;
+    margin: $section-padding-5 auto 0;
+    border-top: rem(1px) solid map-get($colors, border-grey-4);
+
+    .faq-information { padding-top: $section-padding-1; }
+
+    .price { margin: 0; }
+
+    .upgrade-faq-item {
+        padding: $section-padding-5 0;
+        border-bottom: rem(1px) solid map-get($colors, border-grey-3);
+
+        &:last-child { border-style: none; }
+
+        }
+
+    }

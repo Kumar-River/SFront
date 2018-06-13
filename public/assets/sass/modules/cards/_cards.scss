@@ -1,0 +1,228 @@
+/* Primary module - Cards UI  */
+
+.card {
+	text-align: center;
+	background-color: $white;
+	border-style: none;
+	position: relative;
+	@include border-radius(3px);
+
+	&.include-shadow {
+		@include depth;
+		border-style: none;
+
+		.cta-container {
+			border-top: solid rem(1px) map-get($colors, border-grey-2);
+			padding-top: rem(20px);
+			}
+
+		}
+
+	.card-image {
+		overflow: hidden;
+		@include border-radius(3px 3px 0 0);
+		}
+
+	.cta-container {
+		padding-top: rem(10px);
+		margin-top: rem(20px);
+		border-top: solid rem(1px) map-get($colors, border-grey-2);
+
+		a {
+			text-transform: none;
+			display: inline-block;
+			padding: rem(10px) rem(10px);
+			color: map-get($colors, base-font-color);
+
+			&:after { color: map-get($colors, orange); }
+
+			&:hover { color: map-get($colors, orange); }
+
+			}
+		}
+
+	h4 {
+		font-size: rem(22px);
+		font-weight: $ultra-light;
+		margin-bottom: rem(10px);
+		}
+
+	img {
+		margin: auto;
+
+		&.asset-size { padding: rem(45px) 0; }
+
+		}
+
+	}
+
+
+// - - - Display of single up cards - - - //
+
+.card.card-full {
+	text-align: left;
+	margin-bottom: rem(80px);
+	min-height: auto !important;
+
+	h4 {
+		// tablet-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet-large)) {
+			font-size: $larger-font-size; // 26px
+			margin-bottom: rem(10px);
+			}
+
+		a {
+			color: $base-font-color;
+			@extend %cta-arrow;
+			text-transform: none;
+
+			&:after {
+				color: map-get($colors, orange);
+				font-size: $small-font-size; // 14px
+				}
+
+			&:hover { color: $base-font-color; }
+
+			}
+
+		}
+
+	.item.card-content {
+		padding: rem(30px) rem(30px) rem(35px);
+
+		// tablet-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet-large)) {
+			padding: rem(45px) rem(40px) rem(45px) rem(70px);
+
+			// If content has no supporting icon
+			&.default-12 {
+				padding: rem(60px) rem(80px);
+				}
+
+			}
+
+		}
+
+	.item.card-media {
+		padding: 0;
+
+		// tablet-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet-large)) {
+			top: 0;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			}
+
+		a { display: block; }
+
+		}
+
+	&:first-child { margin-top: rem(80px); }
+
+	.card-image {
+		// tablet-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet-large)) {
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: rem(50px);
+			position: absolute;
+			@include border-radius(3px 0 0 3px);
+			}
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			max-height: rem(380px);
+			}
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			max-height: rem(300px);
+			}
+
+		}
+
+	.card-menu {
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+		-moz-column-gap: 0;
+		-webkit-column-gap: 0;
+		column-gap: 0;
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			-moz-column-count: 1;
+			-webkit-column-count: 1;
+			column-count: 1;
+			}
+
+		li {
+			padding-top: rem(8px);
+			padding-right: rem(10px);
+
+			// tablet-large and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, tablet-large)) {
+				padding-right: rem(20px);
+				}
+
+			}
+
+		}
+
+	p {
+		max-width: map-get($columns, span-8-columns); // 620px
+		}
+
+	}
+
+// Card components
+.card-link {
+	color: map-get($colors, gray-dark);
+
+	i {
+		color: map-get($colors, orange);
+		padding-left: 5px;
+		}
+
+	}
+
+.card-content {
+	padding: rem(35px) rem(20px) rem(20px);
+	font-size: $small-font-size;
+
+	p:last-of-type { margin-bottom: 0; }
+
+	ul:last-of-type, ol:last-of-type { margin-bottom: 0; }
+
+	}
+
+.card-menu {
+	text-align: left;
+	font-size: $small-font-size;
+	padding-top: rem(20px);
+	margin-top: rem(20px);
+	border-top: solid rem(1px) map-get($colors, border-grey-2);
+	overflow: hidden;
+
+	// tablet-large and up / device breakpoint styling
+	@include media(min, map-get($breakpoints, tablet-large)) {
+		padding-top: rem(25px);
+		margin-top: rem(35px);
+		}
+
+	a {
+		color: $alt-font-color;
+		@extend %cta-arrow;
+		text-transform: none;
+
+		&:after { color: map-get($colors, orange); }
+
+		&:hover { color: map-get($colors, orange); }
+
+		}
+
+	li { padding-top: rem(8px); }
+
+	}

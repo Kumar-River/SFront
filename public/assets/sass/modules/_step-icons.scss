@@ -1,0 +1,84 @@
+
+
+
+// Talking point / step Icons
+.step-icon {
+	text-align: center;
+	display: inline-block;
+	color: $alt-font-color;
+	border: rem(6px) solid map-get($colors, border-grey-3);
+	width: rem(100px);
+	height: rem(100px);
+	line-height: rem(100px);
+	font-size: rem(50px);
+	@include border-radius(100%);
+
+	&.\--center-icon {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		}
+
+	&.\--massive {
+		font-size: rem(260px);
+		border-width: rem(12px);
+		width: rem(380px);
+		height: rem(380px);
+		line-height: rem(380px);
+		}
+
+    &.\--huge {
+		border-width: rem(10px);
+		font-size: rem(180px);
+		width: rem(300px);
+		height: rem(300px);
+		line-height: rem(300px);
+		}
+
+    &.\--xlarge {
+		border-width: rem(8px);
+		font-size: rem(130px);
+		width: rem(200px);
+		height: rem(200px);
+		line-height: rem(200px);
+		}
+
+    &.\--large {
+		font-size: rem(72px);
+		width: rem(140px);
+		height: rem(140px);
+		line-height: rem(132px);
+		}
+
+	&.\--default {
+		font-size: rem(60px);
+		width: rem(120px);
+		height: rem(120px);
+		line-height: rem(120px);
+		}
+
+    &.\--medium {
+		border-width: rem(4px);
+		font-size: rem(40px);
+		width: rem(80px);
+		height: rem(80px);
+		line-height: rem(74px);
+		}
+
+    &.\--small {
+		border-width: rem(3px);
+		font-size: rem(28px);
+		width: rem(50px);
+		height: rem(50px);
+		line-height: rem(44px);
+		}
+
+    &.\--tiny {
+		border-width: rem(2px);
+		font-size: rem(16px);
+		width: rem(35px);
+		height: rem(35px);
+		line-height: rem(32px);
+		}
+
+	}

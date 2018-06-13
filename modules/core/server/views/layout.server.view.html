@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" ng-strict-di>
-<head>
+<head>  
+  
+
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <title page-title></title>
-  <meta name="description" content="{{description}}">
-  <meta name="fragment" content="!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Enphase Energy: Smart Solar & Clean Energy For Everyone" />
+    <meta http-equiv="content-language" content="en-us" />
+    <meta name="fragment" content="!">
 
   <!-- Apple META -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,15 +38,81 @@
 
   <!-- Application CSS Files -->
   {{#each cssFiles}}<link rel="stylesheet" href="/{{this}}">{{/each}}
+  <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300,700,900|Muli:900' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="ng-cloak">
-  <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-  <section class="content">
-    <section class="container">
+<body class="ng-cloak --grey-background-1">
+  <!-- Basic Application Header -->
+  <header class="application-header">
+    <h1>
+      <a href="/">
+        <img src="/assets/images/svgs/dist/enphase-logo.svg" alt="Enphase Energy" />
+      </a>
+    </h1>
+
+    <aside class="application-sub-header column-container collapse">
+        <div class="item">
+            <a class="option-link --back"  href="/">Upgrade Website</a>
+        </div>
+
+        <div class="item anchord-right">
+            <a class="option-link --foward" href="/">Need Help?</a>
+        </div>
+    </aside>
+  </header>
+
+  <!-- program-banner -->
+    <div class="program-banner content-section --section-padding-4 --orange-background-2">
+
+        <img class="asset-size --medium --center-item" src="/assets/lpup-content/early-adopters-upgrade-program-logo-white.svg" alt="Enphase Energy" />
+
+        <div class="col-4 --center-container">
+            <h4>Enphase Upgrade Program for Early Adopters</h4>
+            <h6>Enphase system upgrade payment portal.</h6>
+        </div>
+    </div>
+    <!-- /end program-banner -->
+  <!-- /end Basic Application Header -->
+  <section>
+    <section>
       {{{block "content"}}}
     </section>
   </section>
+
+  <footer class="application-footer container-full">
+      <div class="container-mid-range --no-container-padding --center-container --grey-border-top">
+          <div class="column-container">
+              <div class="item default-6 desktop-16">
+
+                  <div class="address-group column-container fixed-grid">
+                      <div class="item">
+                          <img src="/assets/images/svgs/dist/enphjase-e-icon-logo-orange.svg" alt="Enphase Energy" />
+                      </div>
+                      <div class="item">
+                          <p>Enphase Energy, Inc. &copy; <br />1420 N. McDowell Blvd, Petaluma, CA 94954</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="item desktop-16 anchord-right">
+                  <ul class="footer-nav">
+                      <li>
+                          <a href="/">Upggrade Website<a/></a>
+                      </li>
+                      <li>
+                          <a href="/">Contact Support<a/></a>
+                      </li>
+                      <li>
+                          <a href="/">Program Terms &amp; Conditions<a/></a>
+                      </li>
+                      <li>
+                          <a href="/">enphase.com<a/></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  <footer>
 
   <noscript>
     <style>

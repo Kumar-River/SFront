@@ -1,11 +1,57 @@
-<h1>Welcome</h1>
-<h1>Welcome</h1>
-<md-card>
-<md-input-container flex>
-              <label class="my-label">Name</label>
-              <input required name="name" ng-model="model.hall.displayName"/>
-              <div ng-messages="hallForm.name.$error">
-                <div ng-message="required">Hall name is required.</div>
-              </div>
-            </md-input-container>
-        </md-card>
+<!-- MAIN CONTENT AREA -->
+<div class="primary-content">
+    
+    <!-- content-section -->
+    <div class="content-section --section-padding-4">
+
+
+        <!-- CONTENT block - Validation intro -->
+        <section class="validation-intro upgrade-content-block">
+
+
+            <div class="col-6 --center-container">
+                <h4>Welcome</h4>
+                <p>Please help us to verify your information Enphase install by providing some information.</p>
+            </div>
+
+
+            <!-- Interaction CARD -->
+            <div class="container-medium --center-container">
+                <div class="content-card address-card">
+                    <h5 class="accent-hedding">System verification</h5>
+                    <p>Please enter your postal code that your Enphase system is installed. We use this information verify and lookup your records. </p>
+
+                    <form>
+                        <div class="column-container collapse">
+                            <div class="form-item item default-8 tablet-16">
+                                <label class="sr-only">Email </label>
+                                <input type="text" value="postal code" placeholder="Postal code" />
+                            </div>
+
+                            <div class="form-item item default-8 tablet-16">
+                                <button class="secondary-button --all-orange" name="submit" type="button">
+                                    Look up my system
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /end Interaction CARD -->
+
+
+            <div class="col-6 --center-container">
+                <p>If you have any questions regarding your upgrade status or program details you can find help at our <a href="/">Uppgrade Program Support</a> page.</p>
+            </div>
+
+
+        </section>
+        <!-- /end CONTENT block - Validation intro -->
+
+    </div>
+    <!-- /end content-section -->
+
+</div>
+<!-- /end MAIN CONTENT AREA -->
+
+

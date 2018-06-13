@@ -5,7 +5,14 @@
     .module('core')
     .controller('WelcomeController', WelcomeController);
 
-  function WelcomeController() {
+	WelcomeController.$inject = ['customerId'];
+
+  function WelcomeController(customerId) {
     var vm = this;
+
+
+    console.log("WelcomeController "+customerId);
+
+
   }
 }());

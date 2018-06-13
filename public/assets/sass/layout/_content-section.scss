@@ -1,0 +1,104 @@
+// Content section utilities too control common vertical container padding and other attributes
+
+.content-section {
+	position: relative;
+	-webkit-transform: translateZ(0);
+	padding: rem(80px) 0;
+	@include media(max, map-get($breakpoints, laptop)) {
+		padding: rem(40px) 0;
+		}
+
+	// Remove padding options
+	&.\--no-padding {
+		padding: 0 !important;
+		}
+
+	&.\--no-top-padding {
+		padding-top: 0 !important;
+		}
+
+	&.\--no-bottom-padding {
+		padding-bottom: 0 !important;
+		}
+
+	// Padding theme controls
+	&.\--section-padding-1, %section-padding-1 {
+		padding: $section-padding-1 0; // rem(10px) 0
+		}
+
+	&.\--section-padding-2, %section-padding-2 {
+		padding: $section-padding-2 0; // rem(20px) 0
+		}
+
+	&.\--section-padding-3, %section-padding-3 {
+		padding: $section-padding-3 0; // rem(40px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(60px) 0;
+			}
+
+		}
+
+	&.\--section-padding-4, %section-padding-4 {
+		padding: $section-padding-4 0; // rem(60px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(80px) 0;
+			}
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(40px) 0;
+			}
+
+		}
+
+	&.\--section-padding-5, %section-padding-5 {
+		padding: $section-padding-5 0; // rem(70px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(110px) 0;
+			}
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(60px) 0;
+			}
+
+		}
+
+	&.\--section-padding-6, %section-padding-6 {
+		padding: $section-padding-6 0; // rem(100px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(140px) 0;
+			}
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(80px) 0;
+			}
+		}
+
+	&.\--section-padding-7, %section-padding-7 {
+		padding: $section-padding-7 0; // rem(120px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(180px) 0;
+			}
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(90px) 0;
+			}
+		}
+
+	&.\--section-padding-8, %section-padding-8  {
+		padding: $section-padding-8 0; // rem(160px) 0
+
+		@include media(min, map-get($breakpoints, desktop-huge)) {
+			padding: rem(200px) 0;
+			}
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(100px) 0;
+			}
+		}
+
+	}

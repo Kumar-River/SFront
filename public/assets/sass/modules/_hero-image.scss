@@ -1,0 +1,20 @@
+.hero-image {
+  position: relative;
+  margin-bottom: rem(30px);
+
+  &__image-box {
+    position: relative;
+  }
+
+  &__image {
+    margin: 0;
+  }
+
+  &__mobile-infobox {
+    padding: rem(20px);
+
+    @include media(min, map-get($breakpoints, laptop)) {
+      display: none;
+    }
+  }
+}

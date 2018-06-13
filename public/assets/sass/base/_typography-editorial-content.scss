@@ -1,0 +1,144 @@
+
+///////// Editorial content styling - larger copy /////////
+.editorial-content {
+	font-size: $secondary-font-size;
+	letter-spacing: -.1px;
+
+	// desktop-largest and up / device breakpoint styling
+	@include media(min, map-get($breakpoints, desktop-largest)) {
+		font-size: $large-font-size;
+		}
+
+	a:not([class]) {
+		color: map-get($colors, orange);
+		border-bottom: rem(1px) solid rgba(map-get($colors, orange), .3);
+
+		&:hover {
+			color: map-get($colors, orange-dark);
+			border-color: rgba(map-get($colors, orange), 0);
+			}
+
+		}
+
+	// Increase font size of heeding tags when in the context of .editorial-content
+	%h1, .h1, h1,
+	%h2, .h2, h2,
+	%h3, .h3, h3,
+	%h4, .h4, h4,
+	%h5, .h5, h5,
+	%h6, .h6, h6 {
+		padding-top: rem(20px);
+		margin-bottom: map-get($content-margins, large-heading-typography-margins);
+
+		&:first-child { padding: 0; }
+
+		}
+
+	%h1, .h1, h1 {
+		font-size: rem(54px);
+
+		// desktop-largest and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, desktop-largest)) {
+			font-size: rem(58px);
+			}
+
+		// laptop and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			// font-size: rem(28px);
+			}
+
+		}
+
+		%h2, .h2, h2 {
+			font-size: rem(44px);
+
+			// desktop-largest and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, desktop-largest)) {
+				font-size: rem(48px);
+				}
+
+			// laptop and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, laptop)) {
+				// font-size: rem(28px);
+				}
+
+			}
+
+		%h3, .h3, h3 {
+			font-size: rem(36px);
+
+			// desktop-largest and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, desktop-largest)) {
+				font-size: rem(40px);
+				}
+
+			// laptop and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, laptop)) {
+				// font-size: rem(28px);
+				}
+
+			}
+
+		%h4, .h4, h4 {
+			font-size: rem(34px);
+
+			// desktop-largest and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, desktop-largest)) {
+				font-size: rem(36px);
+				}
+
+			// laptop and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, laptop)) {
+				// font-size: rem(28px);
+				}
+
+			}
+
+		%h5, .h5, h5 {
+			font-size: rem(30px);
+
+			// desktop-largest and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, desktop-largest)) {
+				font-size: rem(32px);
+				}
+
+			// laptop and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, laptop)) {
+				// font-size: rem(28px);
+				}
+
+			}
+
+		%h6, .h6, h6 {
+			font-size: rem(24px);
+
+			// desktop-largest and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, desktop-largest)) {
+				font-size: rem(26px);
+				}
+
+			// laptop and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, laptop)) {
+				// font-size: rem(28px);
+				}
+
+			}
+
+	p {
+		margin-bottom: map-get($content-margins, large-typography-margins);
+
+		&:last-child { margin-bottom: 0; }
+
+		}
+
+	ol:not([class]), ul:not([class]) {
+		padding-left: map-get($content-margins, large-typography-margins);
+		margin-bottom: map-get($content-margins, large-typography-margins);
+
+		&:last-child { margin-bottom: 0; }
+
+		li { margin-bottom: map-get($content-margins, medium-typography-margins); }
+
+		}
+
+	}

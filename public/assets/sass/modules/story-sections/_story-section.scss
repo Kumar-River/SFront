@@ -1,0 +1,42 @@
+// Global story type SCSS
+
+.story-section {
+  font-size: rem(map-get($typography, secondary-font-size));
+  margin: 0 !important;
+
+  @include media(max, map-get($breakpoints, mobile-large)) {
+    text-align: left;
+    font-size: rem(map-get($typography, base-font-size));
+  }
+
+
+  .content-block__content {
+    @include media(max, map-get($breakpoints, tablet)) {
+      text-align: left;
+    }
+  }
+
+  h3 {
+    margin-bottom: rem(20px);
+  }
+
+  h4 {
+    margin-bottom: rem(15px);
+  }
+
+  h5 {
+    margin-bottom: rem(15px);
+  }
+
+  p {
+    margin-bottom: map-get($typography, base-margins-type);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul, ol {
+    margin: 0 auto map-get($typography, base-margins-type);
+  }
+}

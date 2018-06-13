@@ -1,0 +1,37 @@
+.group {
+  @extend %group;
+}
+
+.sr-only {
+  @extend %sr-only;
+}
+
+.orange-text {
+  color: map-get($colors, orange);
+}
+
+.center-text {
+  text-align: center;
+}
+
+.extra-space {
+  &:after {
+    content: " ";
+  }
+}
+
+.content-seperator {
+  margin: rem(10px) 0;
+  min-height: rem(1px);
+
+  @include media(min, map-get($breakpoints, tablet)) {
+    margin: rem(20px) 0;
+  }
+}
+
+.background-cover {
+  background: {
+    size: cover;
+    position: center center;
+  };
+}

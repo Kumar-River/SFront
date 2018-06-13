@@ -1,0 +1,29 @@
+/* Primary module - Section Headers - Footers  */
+
+// Basic Section footer
+.content-section-footer {
+	text-align: center;
+	padding: rem(40px) 0 rem(60px);
+	}
+
+// Basic Section header
+.content-section-header {
+	text-align: center;
+	padding: rem(60px) 0 rem(40px);
+
+	&.\--no-padding-bottom { padding-bottom: 0; }
+
+	&.\--no-padding-top { padding-top: 0; }
+
+	@include media(max, map-get($breakpoints, laptop)) {
+		padding: rem(40px) 0 rem(20px);
+		}
+
+	h2, h3, h4, h5 { margin-bottom: rem(10px); }
+
+	img {
+		margin: 0 auto rem(20px);
+		display: block;
+		}
+
+	}

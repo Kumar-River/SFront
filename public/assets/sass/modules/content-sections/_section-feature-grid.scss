@@ -1,0 +1,167 @@
+/* Primary module - Section Feature Grid  */
+
+.feature-grid-container {
+	position: relative;
+
+	&.\--border-bottom {
+		border-bottom: rem(1px) solid map-get($colors, border-grey-2);
+		}
+
+	&.\--border-top {
+		border-top: rem(1px) solid map-get($colors, border-grey-2);
+		}
+
+	.feature {
+		padding: rem(50px) rem(60px) rem(20px);
+
+		// laptop and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: rem(40px) rem(80px) rem(30px);
+			}
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			padding: rem(20px);
+			}
+
+		// mobile-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, mobile-large)) {
+			padding: rem(20px) 0;
+			}
+
+		}
+
+	.feature-content {
+		font-size: $base-font-size;
+		padding: 0 rem(40px) rem(40px);
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			padding-bottom: rem(30px);
+			}
+
+		}
+
+	.feature-image img {
+		margin: 0 auto rem(40px);
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			margin-bottom: rem(25px);
+			}
+
+		}
+
+	h2 {
+		@extend %h4;
+		margin-bottom: rem(15px);
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			margin-bottom: rem(5px);
+			}
+
+		}
+
+	.item {
+		position: relative;
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			padding-top: rem(25px);
+			border-top: rem(2px) solid map-get($colors, bg-grey-3);
+
+			&:nth-child(1) {
+				padding-top: 0;
+				border-style: none;
+				}
+
+			}
+
+		&:nth-child(1n) {
+			clear: both;
+			}
+
+		&:nth-child(2n):before {
+			content: "";
+			display: none;
+			width: rem(2px);
+			top: rem(50px);
+			bottom: rem(20px);
+			left: 0;
+			position: absolute;
+			margin-left: rem(-11px);
+			background-color: map-get($colors, bg-grey-3);
+			@include border-radius(1px);
+
+			// laptop and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, laptop)) {
+				display: block;
+				}
+
+			}
+
+		}
+
+	p { margin: 0; }
+
+// - - - Color Themes - - - //
+
+	&.\--light-gray-theme {
+		background-color: map-get($colors, bg-grey-1);
+		border-color: map-get($colors, border-grey-3);
+
+		.item {
+			border-color: map-get($colors, bg-grey-3);
+
+			&:nth-child(2n):before { background-color: map-get($colors, bg-grey-3); }
+
+			}
+
+		}
+
+
+	&.\--dark-gray-theme {
+		color: $white;
+		background-color: map-get($colors, bg-grey-8);
+		border-color: map-get($colors, border-grey-9);
+
+		.primary-button {
+			@extend %primary-button--inverse;
+			color: $white;
+			border-color: map-get($colors, border-grey-7);
+
+			&.\--arrow-link:hover:after {
+				color: $white;
+				}
+
+			}
+
+		.item {
+			border-color: map-get($colors, bg-grey-7);
+
+			&:nth-child(2n):before { background-color: map-get($colors, bg-grey-7); }
+
+			}
+
+		}
+
+
+	&.\--orange-theme {
+		color: $white;
+		background-color: map-get($colors, orange);
+		border-style: none;
+
+		.primary-button { @extend %primary-button--dark-orange-theme; }
+
+		.item {
+			border-color: map-get($colors, orange-dark);
+
+			&:nth-child(2n):before { background-color: map-get($colors, orange-dark); }
+
+			}
+
+		}
+
+
+	}

@@ -1,0 +1,119 @@
+// Maps to > content type > Story Section Alternating Content (Machine name: story_section_alternating)
+
+.\--story-alternating {
+	overflow: hidden;
+  padding: rem(80px) rem(20px) rem(60px);
+
+  @include media(max, map-get($breakpoints, tablet)) {
+    padding: rem(50px) rem(20px) rem(10px);
+  }
+
+
+  .container-alternating-content {
+    overflow: hidden;
+    margin-bottom: rem(20px);
+    font-size: rem(map-get($typography, base-font-size));
+  }
+
+  .container-intro-content {
+    margin-bottom: rem(65px);
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      margin-bottom: 0;
+    }
+  }
+
+  .container-key-points {
+    padding: rem(80px) 0 0;
+    border-top: 1px solid map-get($colors, border-grey-3);
+    font-size: rem(map-get($typography, base-font-size));
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      padding: 0;
+      border-style: none;
+    }
+  }
+
+  .has-supporting-media {
+    div {
+      float: left;
+      width: calc-percent(400px, 560px);
+
+      @include media(max, map-get($breakpoints, desktop-small)) {
+        float: none;
+        width: auto;
+      }
+    }
+
+    figure {
+      float: left;
+      width: calc-percent(120px, 560px);
+      margin-right: calc-percent(40px, 560px);
+
+      @include media(max, map-get($breakpoints, desktop-small)) {
+        float: none;
+        width: auto;
+        margin: 0 0 rem(30px);
+      }
+    }
+
+    img {
+      margin: rem(5px) 0 0;
+
+      @include media(max, map-get($breakpoints, desktop-small)) {
+        margin: 0 auto;
+        max-width: 220px;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-large)) {
+        max-width: 140px;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-small)) {
+        max-width: 80%;
+      }
+    }
+  }
+
+  li.item {
+    width: calc-percent(560px, 1260px);
+    margin: 0 0 rem(40px) calc-percent(140px, 1260px);
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      margin: 0;
+      width: 100%;
+      padding: rem(40px) 0;
+      border-top: 1px solid map-get($colors, gray-lighter);
+    }
+  }
+
+  .item {
+    float: left;
+    margin: 0 0 rem(40px) calc-percent(140px, 960px);
+    width: calc-percent(410px, 960px);
+    overflow: hidden;
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      float: none;
+      margin: 0;
+      padding: rem(10px) 0;
+      width: 100%;
+    }
+
+
+    &:nth-child(2n+1) {
+      clear: both;
+      margin-left: 0;
+    }
+
+    p {
+      margin-bottom: rem(15px);
+    }
+
+    ul, ol {
+      margin-bottom: rem(15px);
+    }
+  }
+}

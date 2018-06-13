@@ -1,0 +1,59 @@
+.pagination-button {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: map-get($colors, gray-light);
+  min-height: rem(30px);
+  transition: {
+    property: color;
+    duration: map-get($transition, duration);
+  };
+
+  &:before {
+    display: block;
+    content: $circle-arrow-value;
+
+    @extend %icon;
+
+    position: absolute;
+    top: 50%;
+    font-size: rem(30px);
+    margin-top: -0.5em;
+  }
+
+  .\--prev & {
+    padding-left: rem(45px);
+
+    &:before {
+      transform: scaleX(-1);
+      left: 0;
+    }
+  }
+
+  .\--next & {
+    padding-right: rem(45px);
+
+    &:before {
+      right: 0;
+    }
+  }
+
+  &:hover,
+  &.ng-click-active {
+    color: map-get($colors, orange);
+  }
+
+  &.ng-click-active {
+    transition-duration: 0s;
+  }
+
+  &__text {
+    display: none;
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      display: inline-block;
+      line-height: rem(30px);
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,0 +1,140 @@
+.modal-pagination {
+  position: relative;
+  margin-top: rem(20px);
+  padding-top: rem(20px);
+  min-height: rem(80px);
+  border-top: rem(1px) solid #e4e5e6;
+  text-align: center;
+
+  @extend %group;
+
+  &__close {
+    @extend %button-reset;
+
+    position: absolute;
+    top: rem(20px);
+    left: column-width(1, 3);
+    padding: rem(20px) 0;
+
+    @include grid(1, 3, 0);
+
+    color: map-get($colors, gray-light);
+    text: {
+      transform: uppercase;
+      align: center;
+    };
+    border: {
+      width: 0 rem(1px);
+      style: solid;
+      color: #e4e5e6;
+    };
+    outline: none;
+    transition: {
+      property: color;
+      duration: map-get($transition, duration);
+    };
+
+    &.ng-click-active,
+    &:focus,
+    &:hover {
+      color: map-get($colors, orange);
+    }
+
+    &.ng-click-active {
+      transition-duration: 0s;
+    }
+  }
+
+  &__button {
+    @extend %button-reset;
+
+    display: none;
+    position: relative;
+
+    @include grid(1, 3, 0);
+
+    float: left;
+    padding: rem(20px) 0;
+    color: map-get($colors, gray-light);
+    outline: none;
+    transition: {
+      property: color;
+      duration: map-get($transition, duration);
+    };
+
+    &:after {
+      content: $circle-arrow-value;
+
+      @extend %icon;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: rem(30px);
+      margin: {
+        top: -0.5em;
+        left: -0.5em;
+      };
+    }
+
+    &.\--visible {
+      display: block;
+    }
+
+    &.\--prev {
+      float: left;
+
+      &:after {
+        transform: scaleX(-1);
+      }
+    }
+
+    &.\--next {
+      float: right;
+    }
+
+    &.ng-click-active,
+    &:focus,
+    &:hover {
+      color: map-get($colors, orange);
+    }
+
+    &.ng-click-active {
+      transition-duration: 0s;
+    }
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      &.\--prev {
+        padding-left: rem(45px);
+
+        &:after {
+          left: 0;
+          margin-left: 0;
+        }
+      }
+
+      &.\--next {
+        padding-right: rem(45px);
+        text-align: right;
+
+        &:after {
+          left: auto;
+          right: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: block;
+    text: {
+      indent: -9999em;
+      transform: uppercase;
+    };
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      text-indent: 0;
+    }
+  }
+}

@@ -1,0 +1,234 @@
+/* Primary module - Section Navigation - with options */
+
+// Component vars
+$content-menu-height: rem(80px);
+$content-menu-height-fixed: rem(56px);
+
+.section-navigation-w-options {
+	position: relative;
+	border-style: none;
+
+	&:before { display: none; }
+
+	// laptop-large and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop-large)) {
+		overflow: visible;
+		white-space: nowrap;
+		}
+
+	a.navigation__link {
+		padding: 0 rem(20px);
+		line-height: $content-menu-height;
+
+		&:before {
+			top: auto;
+			height: rem(3px);
+			border-style: none;
+			@include border-radius(2px);
+			}
+
+		&:hover {
+
+			&:before { background-color: map-get($colors, gray-lighter); }
+
+			}
+
+		&.active, &.active:hover {
+
+			&:before { background-color: map-get($colors, orange); }
+
+			}
+
+		}
+
+	.content-section-navigation-list {
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			float: left;
+			}
+
+		// laptop-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop-large)) {
+			overflow-x: scroll;
+			-webkit-overflow-scrolling: touch; // smooth ios scrolling
+			}
+
+		}
+
+	.edit-link { bottom: -40px; }
+
+	// Adjustment of external linking icon
+	.\--external-icon .arrow-link__last-word::after {
+		top: 41%;
+
+		// laptop-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop-large)) {
+			display: none;
+			}
+
+		}
+
+	h5 {
+
+		// tablet and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet)) {
+			float: left;
+			margin: 0 0 rem(2px) rem(15px);
+			line-height: $content-menu-height;
+			}
+
+		}
+
+	.headline-container {
+		display: none;
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			float: left;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			}
+
+		}
+
+	img {
+		margin: 0 0 rem(4px) rem(15px);
+		max-width: rem(40px);
+		transition: {
+			property: all;
+			duration: 200ms;
+			};
+		}
+
+	.menu-accent {
+		top: rem(-15px);
+		margin-left: rem(-15px);
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			display: none;
+			}
+
+		}
+
+	.menu-bar-icon { float: left; }
+
+	.navigation-container {
+		text-align: center;
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			text-align: left;
+			}
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			float: right;
+			padding: 0 rem(20px);
+			text-align: left;
+			}
+
+		}
+
+	.navigation-placeholder {
+		display: none;
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			min-height: $content-menu-height;
+			display: block;
+			}
+
+		}
+
+	.primary-cta-container {
+		text-align: center;
+		padding: rem(30px) rem(20px);
+		background-color: map-get($colors, bg-grey-2);
+		border-top: rem(1px) solid map-get($colors, border-grey-2);
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			float: left;
+			padding: rem(24px) 0 0 rem(20px);
+			background-color: transparent;
+			border-style: none;
+			transition: {
+				property: all;
+				duration: 200ms;
+				};
+			}
+
+		}
+
+	.primary-button {
+
+		// laptop-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop-large)) {
+			font-size: $small-font-size;
+			padding: rem(8px) rem(30px) rem(6px);
+			}
+
+		}
+
+	.section-navigation-wrapper {
+		background-color: rgba(#fff, .95);
+		border-bottom: rem(1px) solid map-get($colors, border-grey-2);
+		transition: {
+			property: all;
+			duration: 200ms;
+			};
+
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+			}
+
+		// laptop-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, laptop-large)) {
+			position: absolute;
+			right: 0;
+			left: 0;
+			top: 0;
+			z-index: 100;
+
+			// sticky navigation behavior
+			&.enable-persistent {
+				position: fixed;
+				@include depth(two);
+				@include border-radius(0px);
+				border-width: 0 0 rem(1px);
+				border-bottom: rem(1px) solid map-get($colors, border-grey-3);
+
+				a.navigation__link { line-height: ($content-menu-height-fixed + rem(5px)); }
+
+				[class*="container-"] { border-style: none; }
+
+				h5 {
+					font-size: $secondary-font-size;
+					line-height: $content-menu-height-fixed;
+					}
+
+				img {
+					max-width: none;
+					width: auto;
+					max-height: $content-menu-height-fixed;
+					}
+
+				.primary-cta-container { padding-top: rem(14px); }
+
+				}
+
+			}
+
+		// laptop-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop-large)) {
+			border-top: rem(1px) solid map-get($colors, border-grey-2);
+			}
+
+		}
+
+	}

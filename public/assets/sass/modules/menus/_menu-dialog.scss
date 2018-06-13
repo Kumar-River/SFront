@@ -1,0 +1,124 @@
+
+// menu dialog handler on menus
+
+.active-menu {
+
+	// Active dropdown on Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet-large)) {
+		border-bottom: rem(1px) solid map-get($colors, border-grey-3);
+
+		.menu-dialog {
+			height: auto;
+			width: auto;
+			padding: rem(40px) 0 0 rem(10px);
+			position: static;
+			@include translateX-Y(0, 0);
+			}
+
+		}
+
+	.menu-toggle {
+		top: rem(-3px);
+		@include translateX-Y(0, 0);
+
+		&:after {
+			transform: rotate(90deg) scaleX(-1);
+			}
+
+		}
+
+	}
+
+// dropdown dialog box
+.menu-dialog {
+	clear: both;
+	@extend %accordion-animation;
+
+	// tablet-large / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet-large)) {
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+		@include translateX-Y(rem(-100px), rem(-1px));
+		}
+
+	}
+
+
+// Toggle menus on mobile devices
+.menu-toggle {
+	@extend %button-reset;
+	display: block;
+	right: 0;
+	top: 50%;
+	position: absolute;
+	@include translateX-Y(0, -50%);
+	font-weight: inherit;
+	color: map-get($colors, gray-dark);
+	min-height: rem(60px);
+	width: rem(60px);
+	text-align: center;
+	outline-style: none;
+
+	&:after {
+		content: $arrow-value;
+		@extend %icon;
+		font-size: $small-font-size;
+		transform: rotate(90deg);
+		@include transitions-all;
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		display: none;
+		}
+
+	}
+
+.menu-wrapper {
+
+	@include media(max, map-get($breakpoints, tablet-large)) {
+		overflow: hidden;
+		padding: 0 rem(25px);
+		margin: 0 rem(-25px);
+		background-color: map-get($colors, bg-grey-1);
+		}
+
+	h6 {
+		color: map-get($colors, alt-font-color);
+		font-size: $small-font-size;
+		font-weight: $normal;
+		position: relative;
+		margin: rem(1px) 0 rem(30px) 0;
+		display: none;
+		position: relative;
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			display: block;
+			cursor: default;
+			background-color: map-get($colors, bg-grey-1);
+			border-bottom: rem(1px) solid map-get($colors, border-grey-3);
+			border-top: rem(1px) solid map-get($colors, border-grey-3);
+			padding: rem(15px) rem(20px) rem(15px) rem(20px);
+			margin: 0 rem(-20px);
+			}
+
+		.icon-filter {
+			font-size: rem(20px);
+			margin: rem(-2px) rem(3px) 0 0;
+
+			// tablet-large and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, tablet-large)) {
+				display: none;
+				}
+
+			}
+
+		}
+
+	}

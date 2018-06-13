@@ -1,0 +1,108 @@
+// Removes any unit(px, em, rem) from a number. Sometimes useful when trying to use a variable inside another mixin.
+//
+// $number - The number with unit you would like striped.
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+// Converts a px based unit to em value.
+//
+// $target  - The value in px you would like converted
+// $context - The font size of the current context. This is required due to em cascading effect.
+// Usage - font-size: em(68px);
+// @function em($target, $context: $base-font-size) {
+//   @if $target == 0 {
+//     @return 0;
+//   }
+//
+//   @return $target / $context + 0em;
+// }
+
+
+// Converts a em based unit to px value.
+//
+// $target  - The value in ems you would like converted
+// $context - The font size of the current context. This is required due to em cascading effect.
+// Usage - font-size: px(68em);
+@function px($target, $context: $base-font-size) {
+  @if $target == 0 {
+    @return 0;
+  }
+
+  @return strip-units($target) * $context;
+}
+
+
+// Converts a px based unit to rem value.
+//
+// $target  - The value in px you would like converted
+@function rem($target) {
+  @if $target == 0 {
+    @return 0;
+  }
+
+  @return $target / 16px + 0rem;
+}
+
+// Converts a px based unit to em value.
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+
+// Converts a px based unit to em value.
+// Usage - apply pixel value 20px = font-size: em(20);
+// $base-target: 16; // Default
+//
+// @function em($pixels, $context: $base-target) {
+//   @return #{$pixels/$context}em;
+// }
+
+
+// Get the % width for grid columns.
+//
+// $column-count - Number of columns you would like the width for.
+// $context      - The current total number of columns the grid contains. Defaults to $grid-column-count found in helpers/_vars.sass
+@function column-width($column-count, $context: map-get($grid, columns)) {
+  @return $column-count / $context * 100%;
+}
+
+
+@function opposite-direction($direction) {
+  $opposite-direction: center;
+
+  @if $direction == top {
+    $opposite-direction: bottom;
+  }
+
+  @if $direction == bottom {
+    $opposite-direction: top;
+  }
+
+  @if $direction == left {
+    $opposite-direction: right;
+  }
+
+  @if $direction == right {
+    $opposite-direction: left;
+  }
+
+  @return $opposite-direction;
+}
+
+
+// Calculate percentage based on two values // Usage: width: calc-percent(220px, 1380px);
+@function calc-percent($target, $container) {
+  @return $target / $container * 100%;
+}

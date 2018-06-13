@@ -1,0 +1,271 @@
+
+// Variables > Typography
+$ultra-light: 	100;
+$light: 		300;
+$normal: 		400;
+$semi-bold: 	600;
+$bold: 			700;
+$ultra-bold:	900;
+
+// Common font sizing
+$tiny-font-size: 		0.875rem; 	// =   14px
+$small-font-size: 		0.9375rem; 	// =   15px
+$base-font-size: 		1.063rem; 	// =   17px
+$secondary-font-size: 	1.25rem; 	// =   20px
+$large-font-size: 		1.375rem; 	// =   22px
+$larger-font-size: 		1.625rem; 	// =   26px
+
+
+$typography: (
+	base-font-size: 		17px,
+	secondary-font-size: 	20px,
+	base-line-height: 		1.8,
+	secondary-line-height: 	2,
+	condensed-line-height: 	1.5,
+	base-margins-type: 		2rem,
+	roboto: 				('Roboto', sans-serif),
+	muli: 					('Muli', sans-serif)
+);
+
+$content-margins: (
+	heading-typography-margins: 		.5em,
+	large-heading-typography-margins: 	.4em,
+	small-typography-margins: 			.8em,
+	medium-typography-margins: 			1.1em,
+	base-typography-margins: 			1.8em,
+	large-typography-margins:			2em
+);
+
+// Common colors
+$base-font-color: 			#5f6062;
+$alt-font-color:  			#7f7e7e;	// lighter then base font color
+$light-font-color:			#eee;
+$admin-tools-color:			#f37321;
+
+// Common colors
+$brand-orange:				#f37321;
+$gray-dark:					#3a3a3a;
+$brand-gray:				#5f6062;
+$white:						#ffffff;
+
+$colors: (
+	black:		   				#000,
+	white:		   				#fff,
+
+	// Content colors
+	base-font-color: 		#5f6062,
+	alt-font-color:  		#7f7e7e, 		// lighter then base font color
+
+	// Brand colors
+	aqua:         			#00b6de,
+	aqua-dark:    			#1487af,
+	aqua-darker:    		#11637c,
+	blue:         			#003974,
+	yellow:       			#f4c900,
+	green:        			#9db93b,
+	green-dark:   			#7e952b,
+	green-darker:			#697215,
+	off-white:    			#feffff,
+	red:          			#af0e12,
+	magenta:          		#d916c3,
+
+	// Shades of orange
+	orange-lightest:		#efccbb,
+	orange:       			#f37321,
+	orange-dark:  			#ce5d14,
+	orange-darker:			#b75312, 		// Non brand color NEW $brand-orange-darker was #b74f2a
+
+	// Shades of grey
+	gray-dropdown: 			#e8e8e8,
+	gray-input:				#f9f9f9, 		// enphase.com form input background color
+	gray-darkest: 			#3a3a3a, 		// Non brand color
+	gray-darker:  			#575655, 		// Non brand color
+	gray-dark:    			#5f6062, 		// Primary font color $base-font-color
+	grey:         			#9b9b9b,
+	gray-medium:			#afafaf, 		// Tag items - borders - boxes
+	gray-light:   			#bbbcbc,
+	gray-lighter: 			#d1d1d1,
+	gray-lightest:			#f1f2f2, 		// Non brand color
+	gray-active:			#ededed,
+
+	// Grey border shades
+	border-grey-1:			#eff0f0,
+	border-grey-2:			#e5e5e5,
+	border-grey-3:			#dddedf,
+	border-grey-4:			#d1d1d1,		// Default site borders
+	border-grey-5:			#bbbcbc,
+	border-grey-6:			#7f7e7e,
+	border-grey-7:			#5f6062,
+	border-grey-8:			#3f3f3f,
+	border-grey-9:			#3a3a3a,
+
+	// Grey background shades
+	bg-grey-1:				#f6f7f7,
+	bg-grey-2:				#f1f2f2,
+	bg-grey-3:				#eaeaea,
+	bg-grey-4:				#bbbcbc,
+	bg-grey-5:				#7f7e7e,
+	bg-grey-6:				#5f6062,
+	bg-grey-7:				#575655,
+	bg-grey-8:				#3f3f3f,
+	bg-grey-9:				#3a3a3a,
+
+	// Orange background shades
+	bg-orange-1:			#efccbb,
+	bg-orange-2:			#f37321, 		// Primary brand color
+	bg-orange-3:			#ce5d14,
+	bg-orange-4:			#b75312,
+
+	// Blue background shades
+	bg-blue-1:			#00b6de,			// Primary brand color
+	bg-blue-2:			#1487af,
+	bg-blue-3:			#11637c,
+	bg-blue-4:			#003974,			// Primary brand color
+
+	// Green background shades
+	bg-green-1:			#c5d783,
+	bg-green-2:			#9db93b,			// Primary brand color
+	bg-green-3:			#7e952b,
+	bg-green-4:			#697215,
+);
+
+$category-colors: (
+	company: 		map-get($colors, aqua),
+	technology: 	map-get($colors, green),
+	projects: 		map-get($colors, yellow)
+);
+
+$filter-category-colors: (
+	all: 			map-get($colors, gray-dark),
+	company: 		map-get($colors, yellow),
+	support: 		map-get($colors, aqua)
+);
+
+$event-colors: (
+	live-training: 	map-get($colors, yellow),
+	tradeshow: 		map-get($colors, aqua),
+	webinar: 		map-get($colors, green)
+);
+
+// Noble grid // partially deprecated
+$grid: (
+	max-width: 				60rem,		// =    960px
+	columns: 				12,
+	gutter: 				0.625rem 	// =    10px
+);
+
+$narrow-width: 				60rem;		// =   960px
+
+// Site gutters
+$site-gutter-xlarge:		11.25rem;	// =   180px
+$site-gutter-large:			7.5rem;		// =   120px
+$site-gutter-medium:		5rem;		// =   80px
+$site-gutter-small:			2.5rem;		// =   40px
+$site-gutter-xsmall:		0.625rem;	// =   10px
+
+$site-gutter:				1.875rem;	// =   30px
+$site-gutter-tablet:		1.25rem;	// =   20px
+$site-gutter-device:		0.9375rem;	// =   15px
+
+
+// off-stage-navigation-panel widths
+$nav-panel-width: 			84%;
+$nav-panel-offset: 			16%;
+
+// Section padding
+$section-padding:			5rem; 		// =   80px
+$section-padding-device:	2.5rem; 	// =   40px
+
+$section-padding-10:		17.5rem;	// =   280px
+$section-padding-9:			13.75rem;	// =   220px
+$section-padding-8:			10rem;		// =   160px
+$section-padding-7:			10rem;		// =   120px
+$section-padding-6:			6.25rem;	// =   100px
+$section-padding-5:			4.375rem;	// =   70px
+$section-padding-4:			3.75rem;	// =   60px
+$section-padding-3: 		2.5rem;		// =   40px
+$section-padding-2: 		1.25rem;	// =   20px
+$section-padding-1:			0.625rem;	// =   10px
+
+$containers: (
+	content-width-massive:	162.5rem,	// =   2600px
+	content-width-huge: 	137.5rem,	// =   2200px
+	content-width-large: 	112.5rem,	// =   1800px
+);
+
+$columns: (
+	span-16-columns: 		98.75rem,	// =   1580px
+	span-15-columns: 		92.5rem,	// =   1480px
+	span-14-columns: 		86.25rem,	// =   1380px
+	span-13-columns: 		80rem,		// =   1280px
+	span-12-columns: 		73.75rem,	// =   1180px
+	span-11-columns: 		67.5rem,	// =   1080px
+	span-10-columns: 		61.25rem,	// =   980px
+	span-9-columns: 		55rem,		// =   880px
+	span-8-columns: 		48.75rem,	// =   780px
+	span-7-columns: 		42.5rem,	// =   680px
+	span-6-columns: 		36.25rem,	// =   580px
+	span-5-columns: 		30rem,		// =   480px
+	span-4-columns: 		23.75rem,	// =   380px
+	span-3-columns: 		17.5rem,	// =   280px
+	span-2-columns: 		11.25rem,	// =   180px
+	span-1-columns: 		5rem		// =   80px
+);
+
+$breakpoints: (
+	mobile-small: 			20rem, 		// =   320px
+	mobile-large: 			30rem, 		// =   480px
+	tablet: 				40rem, 		// =   640px
+	tablet-large: 			50rem, 		// =   800px
+	laptop: 				60rem,		// =   960px
+	laptop-large: 			65rem,		// =   1040px
+	desktop-small: 			70rem,		// =   1120px
+	desktop: 				75rem,		// =   1200px
+	desktop-large: 			80rem,		// =   1280px
+	desktop-larger: 		86.25rem,	// =   1380px
+	desktop-largest: 		100rem,		// =   1600px
+	desktop-hugeish: 		112.5rem,	// =   1800px
+	desktop-huge: 			137.5rem	// =   2200px
+);
+
+$transition: (
+	duration: 			0.3s,
+	easeInCubic: 		cubic-bezier(0.550, 0.055, 0.675, 0.190),
+	easeOutCubic: 		cubic-bezier(0.215, 0.610, 0.355, 1.000),
+	easeInOutCubic: 	cubic-bezier(0.645, 0.045, 0.355, 1.000),
+	easeInCirc: 		cubic-bezier(0.600, 0.040, 0.980, 0.335),
+	easeOutCirc: 		cubic-bezier(0.075, 0.820, 0.165, 1.000),
+	easeInOutCirc: 		cubic-bezier(0.785, 0.135, 0.150, 0.860),
+	easeInExpo: 		cubic-bezier(0.950, 0.050, 0.795, 0.035),
+	easeOutExpo: 		cubic-bezier(0.190, 1.000, 0.220, 1.000),
+	easeInOutExpo: 		cubic-bezier(1.000, 0.000, 0.000, 1.000),
+	easeInQuad: 		cubic-bezier(0.550, 0.085, 0.680, 0.530),
+	easeOutQuad: 		cubic-bezier(0.250, 0.460, 0.450, 0.940),
+	easeInOutQuad: 		cubic-bezier(0.455, 0.030, 0.515, 0.955),
+	easeInQuart: 		cubic-bezier(0.895, 0.030, 0.685, 0.220),
+	easeOutQuart: 		cubic-bezier(0.165, 0.840, 0.440, 1.000),
+	easeInOutQuart: 	cubic-bezier(0.770, 0.000, 0.175, 1.000),
+	easeInQuint: 		cubic-bezier(0.755, 0.050, 0.855, 0.060),
+	easeOutQuint: 		cubic-bezier(0.230, 1.000, 0.320, 1.000),
+	easeInOutQuint: 	cubic-bezier(0.860, 0.000, 0.070, 1.000),
+	easeInSine: 		cubic-bezier(0.470, 0.000, 0.745, 0.715),
+	easeOutSine: 		cubic-bezier(0.390, 0.575, 0.565, 1.000),
+	easeInOutSine: 		cubic-bezier(0.445, 0.050, 0.550, 0.950),
+	easeInBack: 		cubic-bezier(0.600, -0.280, 0.735, 0.045),
+	easeOutBack: 		cubic-bezier(0.175, 0.885, 0.320, 1.275),
+	easeInOutBack: 		cubic-bezier(0.680, -0.550, 0.265, 1.550)
+);
+
+// z-index stacking
+$z-index-1:			100;
+$z-index-2:			200;
+$z-index-3:			300;
+$z-index-4:			400;
+$z-index-5:			500;
+$z-index-under:		-1;
+$z-index-bottom:	1;
+$z-index-top:		1000;
+
+
+// Variables > Effects
+$global-transition-speed: 300ms;

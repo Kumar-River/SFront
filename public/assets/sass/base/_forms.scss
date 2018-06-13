@@ -1,0 +1,203 @@
+// Basic form items
+
+.form-item {
+	margin-bottom: rem(30px);
+
+	// When form item is a grid framework item
+	&.item {
+		padding-bottom: rem(10px); 
+		}
+
+	}
+
+input[type="email"], input[type="password"], input[type="text"], input[type="search"], input[type="number"], input[type="date"], textarea, select {
+	-webkit-appearance: none;
+	display: block;
+	width: 100%;
+	background-color: map-get($colors, bg-grey-1);
+	margin: 0;
+	padding: rem(14px) rem(12px);
+	border: rem(1px) solid map-get($colors, border-grey-3);
+	@include border-radius(3px);
+	font-size: $base-font-size; // 16px
+	color: map-get($colors, alt-font-color);
+	max-width: 100%;
+	font-family: map-get($typography, roboto);
+	@include transitions-all;
+
+	&::-webkit-input-placeholder 	{ color: map-get($colors, alt-font-color); opacity: .9; }
+	&:-moz-placeholder 				{ color: map-get($colors, alt-font-color); opacity: .9; }
+	&::-moz-placeholder 			{ color: map-get($colors, alt-font-color); opacity: .9; }
+	// &:-ms-input-placeholder 		{ color: map-get($colors, alt-font-color); opacity: .9; }
+
+	&:disabled {
+		color: lighten(map-get($colors, gray-dark), 42%);
+		background-color: lighten(map-get($colors, gray-lighter), 15%);
+		border-color: lighten(map-get($colors, gray-lighter), 10%) !important;
+
+			&::-webkit-input-placeholder 	{ color: map-get($colors, alt-font-color); opacity: .3; }
+			&:-moz-placeholder 				{ color: map-get($colors, alt-font-color); opacity: .3; }
+			&::-moz-placeholder 			{ color: map-get($colors, alt-font-color); opacity: .3; }
+			// &:-ms-input-placeholder 		{ color: map-get($colors, alt-font-color); opacity: .3; }
+
+		}
+
+	&:hover {
+		border-color: map-get($colors, border-grey-4);
+		}
+
+	&:focus {
+		outline: none;
+		border-color: darken(map-get($colors, bg-green-1), 5%);
+
+		&::-webkit-input-placeholder 	{ color: map-get($colors, alt-font-color); opacity: .3; }
+		&:-moz-placeholder 				{ color: map-get($colors, alt-font-color); opacity: .3; }
+		&::-moz-placeholder 			{ color: map-get($colors, alt-font-color); opacity: .3; }
+		// &:-ms-input-placeholder 		{ color: map-get($colors, alt-font-color); opacity: .3; }
+
+		}
+
+	&.error {
+		border-color: map-get($colors, red);
+		}
+
+	// Sizing themes
+	&.\--small {
+		font-size: rem(12px);
+		padding: rem(10px);
+		}
+
+	&.\--large {
+		font-weight: $light;
+		font-size: rem(22px);
+		padding: rem(12px) rem(20px);
+		border-width: rem(2px);
+		@include border-radius(6px);
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			font-size: rem(19px);
+			padding: rem(10px);
+			}
+
+		}
+
+	&.\--huge {
+		font-weight: $light;
+		font-size: rem(34px);
+		padding: rem(20px);
+		border-width: rem(4px);
+		border-radius: rem(8px);
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			font-size: rem(22px);
+			padding: rem(12px) rem(20px);
+			}
+
+		}
+
+	// Color Themes
+	&.\--white-theme, &%input--white-theme {
+		background-color: $white;
+		border-color: map-get($colors, border-grey-3);
+
+		&:focus { border-color: darken(map-get($colors, bg-green-1), 2%); }
+
+		}
+
+	&.\--light-gray-theme, &%input--light-gray-theme {
+		background-color: $white;
+		border-color: map-get($colors, 	border-grey-5);
+
+		&:focus { border-color: darken(map-get($colors, bg-green-1), 2%); }
+
+		&.\--large { border-width: rem(7px); }
+
+		}
+
+	&.\--dark-gray-theme, &%input--dark-gray-theme {
+		background-color: $white;
+		border-color: map-get($colors, border-grey-8);
+
+		&:focus { border-color: darken(map-get($colors, border-grey-8), 5%); }
+
+		&.\--large { border-width: rem(7px); }
+
+		}
+
+	&.\--blue-theme, &%input--blue-theme {
+		background-color: $white;
+		border-color: map-get($colors, bg-blue-3);
+
+		&:focus { border-color: darken(map-get($colors, bg-blue-3), 5%); }
+
+		&.\--large { border-width: rem(7px); }
+
+		}
+
+	&.\--green-theme, &%input--green-theme {
+		background-color: $white;
+		border-color: map-get($colors, green-darker);
+
+		&:focus { border-color: darken(map-get($colors, green-darker), 5%); }
+
+		&.\--large { border-width: rem(7px); }
+
+		}
+
+	&.\--orange-theme, &%input--orange-theme {
+		background-color: $white;
+		border-color: map-get($colors, orange-darker);
+
+		&:focus { border-color: darken(map-get($colors, orange-darker), 5%); }
+
+		&.\--large { border-width: rem(7px); }
+
+		}
+
+	}
+
+// Submit
+input[type="submit"] {
+	-webkit-appearance: button;
+	@extend .primary-button;
+	}
+
+label {
+	font-size: $secondary-font-size;
+	font-weight: $light;
+	margin-bottom: rem(10px);
+    line-height: 1.6;
+    width: 100%;
+	display: block;
+	}
+
+label.error {
+	color: map-get($colors, red);
+	margin-top: rem(5px);
+	}
+
+select {
+	background-image: url(../images/svgs/dist/down-triangle.svg);
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 35px 15px;
+	padding-right: rem(50px) !important;
+
+	&:hover {
+		border-color: map-get($colors, border-grey-4);
+		}
+
+	&:focus {
+		outline: none;
+		border-color: darken(map-get($colors, bg-green-1), 5%);
+
+		&::-webkit-input-placeholder 	{ color: map-get($colors, alt-font-color); opacity: .3; }
+		&:-moz-placeholder 				{ color: map-get($colors, alt-font-color); opacity: .3; }
+		&::-moz-placeholder 			{ color: map-get($colors, alt-font-color); opacity: .3; }
+		// &:-ms-input-placeholder 		{ color: map-get($colors, alt-font-color); opacity: .3; }
+
+		}
+
+	}

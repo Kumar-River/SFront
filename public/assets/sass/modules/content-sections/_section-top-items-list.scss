@@ -1,0 +1,168 @@
+/* Primary module - Top Items List  */
+
+// Declare number possible items in lists
+$item-count: 20;
+
+// Builds iterations for number list vanity display numbers
+@mixin vanity-numbers {
+
+	// Iteration loop 1 for each $instance
+	@for $instance from 1 through $item-count {
+
+		&:nth-child(#{$instance}) a:before {
+	      	content: "#{$instance}";
+	    	}
+
+		}
+
+	}
+
+
+.top-topics-container {
+	font-size: $secondary-font-size;
+
+	a {
+		color: $base-font-color;
+		display: inline-block;
+		position: relative;
+		padding-left: rem(50px);
+		min-height: rem(50px);
+
+		&:hover {
+			color: $base-font-color;
+			}
+
+
+		&:before {
+			content: "#";
+			font-size: $small-font-size;
+			display: block;
+			width: rem(34px);
+			height: rem(34px);
+			line-height: 32px;
+			border: rem(2px) solid map-get($colors, border-grey-3);
+			margin-right: rem(18px);
+			text-align: center;
+			top: 0;
+			left: rem(3px);
+			position: absolute;
+			transform: scale(1);
+			@include border-radius(50%);
+			@include transitions-all;
+			-webkit-transform: translateZ(0);
+			-webkit-backface-visibility: hidden;
+			}
+
+		// tablet-large and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, tablet-large)) {
+
+			&:hover {
+				color: map-get($colors, orange);
+
+
+				&:before {
+					color: map-get($colors, orange);
+					border-color: map-get($colors, orange);
+					transform: scale(1.08);
+					}
+
+				}
+
+			}
+
+		}
+
+	li {
+		margin-bottom: rem(20px);
+
+		// call vanity-number display
+		@include vanity-numbers;
+
+		}
+
+	.topics-list {
+		padding: rem(80px) 0 rem(20px);
+		overflow: hidden;
+		position: relative;
+
+		// tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+			padding: rem(40px) rem(10px) 0;
+			}
+
+		&:before {
+			content: "";
+			display: block;
+			height: rem(2px);
+			background-color: map-get($colors, border-grey-3);
+			@extend %col-8;
+			@include centered-positioning;
+			width: 100%;
+			top: 0;
+			}
+
+		}
+
+	}
+
+
+// tablet-large and up / device breakpoint styling
+@include media(min, map-get($breakpoints, tablet-large)) {
+
+	// Feature query - fAll-back for non-css columns
+	@supports (not (columns: 2)) or (not (-webkit-columns: 2)) or (not (-moz-columns: 2)) {
+
+	.top-topics-container {
+
+			.topics-list {
+
+				li {
+					float: right;
+					width: calc(50% - 90px);
+
+					&:nth-child(odd) {
+						float: left;
+						margin-right: rem(90px);
+						clear: both;
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	// Feature query - Browser supports css columns
+	@supports (columns: 2) or (-webkit-columns: 2) or (-moz-columns: 2) {
+
+	.top-topics-container {
+
+		.topics-list {
+			columns: 2;
+			-webkit-columns: 2;
+			-moz-columns: 2;
+
+			column-gap: 90px;
+			-webkit-column-gap: 90px;
+			-moz-column-gap: 90px;
+
+			li {
+				float: none;
+				width: auto;
+
+				&:nth-child(odd) {
+					float: none;
+					margin-right: 0;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}

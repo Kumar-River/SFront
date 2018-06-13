@@ -1,0 +1,247 @@
+/* Primary module - Section Banners  */
+
+.section-banner {
+	overflow: hidden;
+	background-color: map-get($colors, bg-grey-3);
+
+	// tablet and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet)) {
+		.search-input-wrapper:before { left: rem(18px); }
+		}
+
+	// mobile-large and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, mobile-large)) {
+		.column-container .image-container[class*="12"] { display: none; }
+
+		&.content-section.\--section-padding-4 {
+			padding: rem(30px) 0 rem(45px);
+			}
+
+		}
+
+// Center banner content option
+	&.\--center-content {
+		text-align: center;
+
+		// mobile-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, mobile-large)) {
+			text-align: left;
+			}
+
+		.header-container[class*="item"], .image-container[class*="item"] {
+			float: none;
+			width: auto;
+			max-width: none;
+			padding: rem(10px) 0 0 0;
+			}
+
+		img {
+			margin: 0 auto rem(15px);
+
+			// tablet and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, tablet)) {
+				width: auto;
+				}
+
+			}
+
+		p {
+			margin-left: rem(20px);
+			margin-right: rem(20px);
+
+			// tablet and down / device breakpoint styling
+			@include media(max, map-get($breakpoints, tablet)) {
+				margin: 0;
+				}
+
+			}
+
+		}
+// end - Center banner content option
+
+
+	.column-container .item[class*="item"] { margin-bottom: 0; }
+
+	h1 {
+		font-size: rem(36px);
+		margin-bottom: rem(15px);
+
+		// Laptop and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			font-size: rem(32px);
+			margin-bottom: rem(10px);
+			}
+
+		}
+
+	.header-container { padding: rem(10px) 0 0 rem(10px); }
+
+	.image-container {
+		padding-left: rem(20px);
+
+		// Tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			padding-left: 0;
+			}
+
+		}
+
+
+	img {
+		margin: 0 0 rem(10px);
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			width: rem(50px);
+			margin: 0 rem(10px) rem(5px);
+			}
+
+		}
+
+	input[type="text"], input[type="search"] {
+		margin-top: rem(40px);
+		border-width: rem(8px);
+		background-color: $white;
+		border-color: map-get($colors, border-grey-4);
+
+		&:focus { border-color: map-get($colors, border-grey-5); }
+		}
+
+	p {
+		font-size: $large-font-size;
+		font-weight: $light;
+		line-height: map-get($typography, condensed-line-height);
+		margin: 0;
+
+		// Laptop and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			font-size: $base-font-size;
+			margin: 0;
+			}
+
+		}
+
+
+// Content theming options for buttons
+	.primary-button {
+		margin-top: rem(40px);
+		}
+
+
+// Content theming options //
+
+	// Blue banner theme
+	&.\--blue-theme {
+		color: $white;
+		background-color: map-get($colors, bg-blue-1);
+
+		input[type="text"], input[type="search"] {
+			@extend %depth-2;
+			border-width: rem(8px);
+			background-color: $white;
+			border-color: map-get($colors, bg-blue-3);
+
+			&:focus { border-color: darken(map-get($colors, bg-blue-3), 5%); }
+			}
+
+		.primary-button {
+			@extend %primary-button--light;
+			@extend %depth-2;
+			border-style: none;
+			}
+
+		}
+
+	// Dark gray banner theme
+	&.\--gray-dark-theme {
+		color: $white;
+		background-color: map-get($colors, bg-grey-8);
+
+		input[type="text"], input[type="search"] {
+			@extend %depth-2;
+			border-width: rem(8px);
+			background-color: $white;
+			border-color: map-get($colors, border-grey-8);
+
+			&:focus { border-color: darken(map-get($colors, border-grey-8), 5%); }
+			}
+
+		.primary-button {
+			@extend %depth-2;
+			border-style: none;
+
+			&:hover, &:focus, &.ng-click-active {
+				color:  $white;
+				background-color: map-get($colors, orange);
+				@extend %depth-3;
+				border-style: none;
+				}
+
+			}
+
+		}
+
+	// Green banner theme
+	&.\--green-theme {
+		color: $white;
+		background-color: map-get($colors, bg-green-2);
+
+		input[type="text"], input[type="search"] {
+			@extend %depth-2;
+			border-width: rem(8px);
+			background-color: $white;
+			border-color: map-get($colors, green-darker);
+
+			&:focus { border-color: darken(map-get($colors, green-darker), 5%); }
+			}
+
+		.primary-button {
+			@extend %primary-button--light;
+			@extend %depth-2;
+			border-style: none;
+			}
+
+		}
+
+	// Orange banner theme
+	&.\--orange-theme {
+		color: $white;
+		background-color: map-get($colors, bg-orange-2);
+
+		input[type="text"], input[type="search"] {
+			@extend %depth-2;
+			border-width: rem(8px);
+			background-color: $white;
+			border-color: map-get($colors, orange-darker);
+
+			&:focus { border-color: darken(map-get($colors, orange-darker), 5%); }
+			}
+
+		.primary-button {
+			@extend %primary-button--dark-orange-theme;
+			}
+
+		}
+
+	// Blue banner theme
+	&.\--white-theme {
+		color: $base-font-color;
+		background-color: $white;
+
+		input[type="text"], input[type="search"] {
+			@extend %depth-2;
+			border-width: rem(8px);
+			background-color: $white;
+			border-color: map-get($colors, border-grey-4);
+
+			&:focus { border-color: darken(map-get($colors, border-grey-4), 5%); }
+			}
+
+		.primary-button {
+			@extend %primary-button;
+			border-style: none;
+			}
+
+		}
+
+	}

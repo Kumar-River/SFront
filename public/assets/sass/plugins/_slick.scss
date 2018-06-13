@@ -1,0 +1,189 @@
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  .slick-track,
+  .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
+
+  img {
+    margin: 0;
+  }
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+.slick-track {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  @extend %group;
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+}
+
+.slick-slide {
+  display: block;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+
+  [dir='rtl'] & {
+    float: right;
+  }
+
+  img {
+    display: block;
+  }
+
+  &.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+
+  .slick-vertical & {
+    height: auto;
+    border: 1px solid transparent;
+  }
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+
+  @extend %button-reset;
+
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: rem(54px);
+  height: rem(54px);
+  z-index: 10;
+  cursor: pointer;
+  background-color: rgba(#fff, 0.3);
+  border-radius: 100%;
+  outline: 0;
+  transform: translateY(-50%);
+  transition: {
+    property: opacity, background-color, box-shadow;
+    duration: map-get($transition, duration);
+  };
+
+  &:before {
+    content: $thin-arrow-value;
+
+    @extend %icon;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: (-0.5em) 0 0 -0.5em;
+    font-size: rem(30px);
+    color: #fff;
+  }
+
+  @include media(min, map-get($breakpoints, desktop)) {
+    display: block !important;
+
+    &:hover {
+      background-color: rgba(#fff, 0.4);
+      box-shadow: 0 0 rem(15px) 0 rgba(#000, 0.1);
+    }
+
+    &.slick-disabled {
+      opacity: 0;
+      cursor: default;
+    }
+  }
+}
+
+.slick-prev {
+  left: rem(75px);
+
+  &:before {
+    transform: scaleX(-1);
+  }
+}
+
+.slick-next {
+  right: rem(75px);
+}
+
+.slick-dots {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+
+  li {
+    display: inline-block;
+    position: relative;
+    width: rem(12px);
+    height: rem(12px);
+    border-radius: 100%;
+    border: rem(1px) solid #fff;
+    margin: 0 rem(5px);
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: rem(-1px);
+      left: rem(-1px);
+      right: rem(-1px);
+      bottom: rem(-1px);
+      background-color: #fff;
+      border-radius: 100%;
+      transform: scale(0);
+      transition: {
+        property: transform;
+        duration: map-get($transition, duration);
+      };
+    }
+
+    &.slick-active:after {
+      transform: scale(1);
+    }
+  }
+
+  button {
+    @extend %button-reset;
+
+    text-indent: -9999em;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+}

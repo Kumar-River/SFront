@@ -1,0 +1,149 @@
+.content-block {
+	position: relative;
+	padding: rem(35px) rem(20px);
+	-webkit-transform: 	translateZ(0);
+    -moz-transform: 	translateZ(0);
+    -ms-transform: 		translateZ(0);
+    -o-transform: 		translateZ(0);
+    transform: 			translateZ(0);
+
+	&.\--reset-transform {
+		-webkit-transform: 	none;
+	    -moz-transform: 	none;
+	    -ms-transform: 		none;
+	    -o-transform: 		none;
+	    transform: 			none;
+		}
+
+	&.\--higher-z-index {
+		z-index: 10;
+		}
+
+	&.\--has-background {
+		.content-block.\--has-background + & {
+			margin-top: rem(45px);
+			@include media(min, map-get($breakpoints, tablet)) {
+				margin-top: rem(100px);
+			}
+		}
+	}
+
+	&.\--no-padding {
+		padding: 0;
+		}
+
+	&.\--no-top-padding {
+		padding-top: 0;
+		}
+
+	&.\--no-bottom-padding {
+		padding-bottom: 0;
+		}
+
+	&.\--half-padding {
+		padding: rem(20px);
+		}
+
+	@include media(min, map-get($breakpoints, tablet)) {
+		padding: rem(50px) rem(10px);
+
+		&.\--half-padding {
+			padding: rem(25px) rem(10px);
+			}
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		padding: rem(80px) 0;
+
+		&.\--half-padding {
+			padding: rem(45px) 0;
+			}
+		}
+
+	/* fix */
+
+	&.\--light-grey-background {
+		background-color: map-get($colors, bg-grey-1);
+		}
+
+	&.\--grey-background {
+		background-color: map-get($colors, bg-grey-3);
+		}
+
+	&.\--dark-grey-background {
+		background-color: map-get($colors, bg-grey-6);
+		color: #fff;
+		}
+
+	/* fix */
+
+	&.\--orange-background {
+		background-color: map-get($colors, orange);
+		color: #fff;
+		}
+
+	&.\--divider-line {
+		border-bottom: rem(1px) solid map-get($colors, border-grey-4);
+		}
+
+	&.\--divider-line-top {
+		border-top: rem(1px) solid map-get($colors, border-grey-4);
+		}
+
+	&__header {
+		margin-bottom: rem(15px);
+		text-align: center;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+		@include media(min, map-get($breakpoints, tablet)) {
+			margin-bottom: rem(35px);
+			@include grid(1, 1);
+		}
+		@include media(min, map-get($breakpoints, laptop)) {
+			 @include grid(10);
+			@include grid-push(1);
+		}
+	}
+
+	&__content {
+		margin-bottom: rem(20px);
+
+		&.\--center-text {
+			text-align: center;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+		@include media(min, map-get($breakpoints, tablet)) {
+			margin-bottom: rem(35px);
+			@include grid(1, 1);
+		}
+	}
+
+	&__image {
+		display: inline-block;
+	}
+
+	&__back {
+		display: block;
+		height: rem(15px);
+		transform: translateY(rem(-35px));
+		@include media(min, map-get($breakpoints, tablet)) {
+			position: absolute;
+			bottom: 100%;
+			left: 0;
+			height: rem(50px);
+			width: 100%;
+			@include grid(1, 1);
+			transform: none;
+		}
+		@include media(min, map-get($breakpoints, laptop)) {
+			height: rem(80px);
+			display: flex;
+			align-items: center;
+		}
+	}
+}

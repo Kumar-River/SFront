@@ -1,0 +1,107 @@
+.region-select {
+  position: relative;
+  margin-bottom: rem(18px);
+
+  @extend %group;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__flag {
+    position: absolute;
+    width: rem(40px);
+    margin: 0;
+    top: 0;
+    left: 0;
+    border-radius: rem(3px);
+    overflow: hidden;
+  }
+
+  &__title {
+    display: block;
+    padding-left: rem(60px) !important;
+    line-height: rem(24px);
+    margin-bottom: rem(5px);
+
+    @include media(min, map-get($breakpoints, mobile-large)) {
+      @include grid(1, 2, 0);
+
+      margin-bottom: 0;
+      float: left;
+    }
+
+
+    @include media(min, map-get($breakpoints, tablet-large)) {
+      @include grid(3, 10, 0);
+    }
+  }
+
+  &__items {
+    @extend %group;
+
+    @include media(min, map-get($breakpoints, mobile-large)) {
+      @include grid(1, 2, 0);
+
+      float: left;
+    }
+
+
+    @include media(min, map-get($breakpoints, tablet-large)) {
+      @include grid(7, 10, 0);
+    }
+  }
+
+  &__item {
+    display: block;
+    position: relative;
+    float: left;
+    margin-right: rem(20px);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: rem(-10px);
+      height: rem(16px);
+      width: rem(1px);
+      margin-top: rem(-8px);
+      background-color: #8f8f8f;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      &:before {
+        content: none;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: #8f8f8f;
+    padding: rem(5px) 0;
+    line-height: rem(24px);
+    border-bottom: 1px solid lighten(#8f8f8f, 30%);
+    transition: {
+      property: color;
+      duration: map-get($transition, duration);
+    };
+
+    &:hover,
+    &.ng-click-active {
+      color: map-get($colors, orange);
+      border-color: lighten(#f37321, 30%);
+    }
+
+    &.ng-click-active {
+      transition-duration: 0s;
+    }
+
+    @include media(min, map-get($breakpoints, mobile-large)) {
+      padding: 0;
+    }
+  }
+}

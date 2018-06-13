@@ -1,0 +1,240 @@
+// Primary Partial - Primary Buttons //
+
+.primary-button, .button-one, input[type="button"], %primary-button {
+	color: $white;
+	background-color: map-get($colors, orange);
+	font-size: $small-font-size;
+	padding: rem(11px) rem(30px) rem(10px);
+	border-radius: rem(60px/2);
+
+	&.\--large {
+	   border-radius: rem(70px/2);
+	   }
+
+    &:hover, &:focus, &.ng-click-active {
+        color: $white;
+        background-color: map-get($colors, orange-dark);
+        }
+
+    &:focus, &.ng-click-active { @include transitions-none; }
+
+
+// - - - Arrow link button theme base - - - //
+
+	&.\--arrow-link, &%primary-button--arrow-link {
+
+		&:after {
+			content: $arrow-value;
+			@extend %icon;
+			display: inline-block;
+			position: relative;
+			padding-left: rem(4px);
+			margin-right: rem(-4px);
+			font-size: 12px;
+			transform: translate(0, -6%);
+			color: map-get($colors, white);
+			@include transitions-all;
+			}
+
+		&:hover, &:focus, &.ng-click-active {
+
+			&:after {
+				transform: translate(2px, -6%);
+				color: $white;
+				}
+
+			}
+
+		}
+
+
+// - - - Has icon added to right or left - - - //
+
+	&.\--has-icon {
+		// mobile-small and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, mobile-small)) {
+			padding-left: rem(50px);
+			padding-right: rem(40px);
+			}
+
+		&:after { display: none; }
+
+		// Treatment for icons with buttons
+		[class*="icon"] {
+			display: none;
+			top: 0;
+			bottom: 0;
+			left: rem(30px);
+			position: absolute;
+			@include transitions-all($global-transition-speed, border-color, ease);
+
+
+			// mobile-small and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, mobile-small)) {
+				display: block;
+				}
+
+			&:before {
+				font-size: rem(18px);
+				top: 50%;
+				position: absolute;
+				@include translateX-Y;
+				}
+
+			}
+
+		}
+
+// - - - Sizing themes - - - //
+
+	&.\--tiny {
+
+		&.\--has-icon {
+			padding-left: rem(40px);
+			padding-right: rem(20px);
+
+			[class*="icon"] {
+				width: rem(40px);
+				&:before {  font-size: rem(22px); }
+
+				}
+
+			}
+
+		}
+
+	&.\--small {
+
+		&.\--has-icon {
+			padding-left: rem(40px);
+
+			[class*="icon"] {
+				width: rem(48px);
+
+				&:before { font-size: rem(22px); }
+
+				}
+
+			}
+
+		}
+
+	 &.\--large {
+
+		&.\--has-icon {
+			padding-left: rem(65px);
+			padding-right: rem(40px);
+
+			[class*="icon"]:before { font-size: rem(30px); }
+
+			}
+
+	 	}
+
+
+// - - - Inverse button theme base - - - //
+
+	&.\--inverse, &%primary-button--inverse {
+		color: map-get($colors, orange);
+		background-color: transparent;
+		border: rem(2px) solid map-get($colors, orange);
+
+		&:hover, &:focus, &.ng-click-active {
+			color:  $white;
+			border-color: map-get($colors, orange);
+			background-color: map-get($colors, orange);
+
+			&.\--arrow-link:after { color: map-get($colors, orange); }
+
+			}
+
+		&.\--arrow-link:after { color: map-get($colors, orange); }
+
+		}
+
+
+// - - - Color button themes - - - //
+
+	// Light White Theme
+	&.\--light, &%primary-button--light {
+		color:  map-get($colors, orange);
+		background-color: $white;
+		&:hover, &:focus, &.ng-click-active { background-color: darken($white, 5%); }
+
+	&.\--inverse {
+		color: $white;
+		border-color: $white;
+		background-color: transparent;
+
+		&:hover, &:focus, &.ng-click-active {
+			color:  map-get($colors, gray-darkest);
+			border-color: $white;
+	        background-color: $white;
+	        }
+
+		}
+
+	}
+
+// - - - Light Gray Theme - - - //
+	&.\--light-gray,  &%primary-button--light-gray {
+		color: $white;
+        background-color: map-get($colors, grey);
+		&:hover, &:focus, &.ng-click-active { background-color: map-get($colors, gray-darker); }
+
+	&.\--inverse {
+		color: map-get($colors, grey);
+	    border-color: map-get($colors, gray-light);
+		background-color: transparent;
+
+		&:hover, &:focus, &.ng-click-active {
+			color: $white;
+	        background-color: map-get($colors, grey);
+	        border-color: map-get($colors, grey);
+	        }
+
+		}
+
+	}
+
+// - - - Dark Gray Theme - - - //
+    &.\--dark, &.\--dark-theme, &%primary-button--dark {
+		color: $white;
+        background-color: map-get($colors, gray-darkest);
+        &:hover, &:focus, &.ng-click-active { background-color: darken(map-get($colors, gray-darkest), 5%); }
+
+		&.\--inverse {
+			color: map-get($colors, gray-darker);
+			border-color: map-get($colors, gray-darker);
+			background-color: transparent;
+
+			&:hover, &:focus, &.ng-click-active {
+				color: map-get($colors, orange);
+				border-color: map-get($colors, orange);
+	            background-color: transparent;
+	            }
+
+			}
+
+        }
+
+// - - - Dark Orange Theme - - - //
+     &.\--dark-orange, &.\--dark-orange-theme, &%primary-button--dark-orange-theme {
+        color: $white;
+        background-color: map-get($colors, orange-dark);
+
+        &:hover, &:focus, &.ng-click-active {
+            color: $white;
+            background-color: map-get($colors, orange-darker);
+            }
+
+        }
+
+	&.\--disabled {
+        color: map-get($colors, grey) !important;
+		cursor: not-allowed !important;
+        background-color: map-get($colors, gray-lighter)  !important;
+        border-style: none !important;
+        }
+
+    }

@@ -1,0 +1,36 @@
+/* Primary module - Landing Page Block  */
+
+
+.landing-page-block-container {
+
+	.content-block__content { padding: 0; }
+
+	.content-section-header {
+
+		h3 { @extend h4; }
+
+		}
+
+	&.\--grey-background-6, &.\--grey-background-8 {
+
+		.content-section-header {
+
+			.cta-arrow {
+				color: $white;
+				&:hover { color: map-get($colors, orange); }
+				}
+
+			}
+
+		.secondary-button { @extend %secondary-button--gray; }
+
+		}
+
+	}
+
+.landing-page-block-devider {
+	margin-top: rem(-1px);
+	background-color: map-get($colors, border-grey-4);
+	position: relative;
+	z-index: $z-index-1;
+	}

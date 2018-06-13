@@ -1,0 +1,58 @@
+// Primary Enphase primary footer navigation
+
+.footer-navigation-container {
+	background-color: $white;
+	border-top: rem(1px) solid map-get($colors, border-grey-3);
+
+	// Laptop and up breakpoint styling
+	@include media(min, map-get($breakpoints, laptop)) {
+		padding: rem(60px) 0;
+
+		a, .active {
+			font-size: $tiny-font-size;
+			color: map-get($colors, alt-font-color);
+			border-bottom: rem(1px) solid rgba(255,255, 255, 0);
+
+			&:hover {
+				color: map-get($colors, base-font-color);
+				}
+
+			}
+
+		.column-container {
+			margin: 0;
+			}
+
+		h4 {
+			font-weight: 600;
+			font-size: $small-font-size;
+			margin: 0;
+			}
+
+		.accordion-navigation__item {
+			color: map-get($colors, alt-font-color);
+			}
+
+		// five column grid on desktop with accommodations for margins around grid items
+		.column-container .item {
+			width: 20%;
+			margin: 0;
+			}
+
+		}
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		.column-container {
+
+			.item {
+				margin: 0;
+				width: 100% !important;
+				}
+
+			}
+
+		}
+
+	}

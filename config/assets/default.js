@@ -7,10 +7,12 @@ module.exports = {
     lib: {
       css: [
         // bower:css
-        'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-        'public/lib/angular-material/angular-material.css'
+        // 'public/lib/bootstrap/dist/css/bootstrap.css',
+        // 'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        // 'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        // 'public/lib/angular-material/angular-material.css',
+        'public/assets/styles/application.css',
+        'public/assets/styles-custom/custom.css'
         // endbower
       ],
       js: [

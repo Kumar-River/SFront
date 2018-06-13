@@ -1,0 +1,206 @@
+// Maps to > content type > Story Section Anchored Content (Machine name: story_section_anchored)
+
+.\--story-anchored {
+  padding-bottom: rem(20px);
+
+  @include media(max, map-get($breakpoints, tablet)) {
+    padding-bottom: 0;
+  }
+
+
+  .container-anchored-content {
+    p {
+      margin-bottom: rem(15px);
+    }
+
+    ul, ol {
+      margin-bottom: rem(15px);
+    }
+  }
+
+  .has-supporting-media {
+
+      .content-container {
+          padding-top: $section-padding-2;
+          }
+
+    }
+
+  // Alternate anchoring of content first item starts right
+  &.\--anchor-right {
+    .has-supporting-media {
+      &:nth-child(2n+1) {
+        div, figure {
+          float: right;
+
+          @include media(max, map-get($breakpoints, tablet)) {
+            float: left;
+          }
+        }
+
+        figure {
+          margin: 0 0 0 calc-percent(80px, 960px);
+
+          @include media(max, map-get($breakpoints, tablet)) {
+            margin: 0 calc-percent(80px, 960px) 0 0;
+          }
+        }
+      }
+
+      div, figure {
+        float: left;
+      }
+
+      figure {
+        margin: 0 calc-percent(80px, 960px) 0 0;
+      }
+    }
+  }
+
+  // All content anchors left
+  &.\--all-anchor-left {
+    .has-supporting-media, .has-supporting-media:nth-child(2n+1) {
+      div, figure {
+        float: left;
+      }
+
+      figure {
+        margin: 0 calc-percent(80px, 960px) 0 0;
+      }
+    }
+  }
+
+  // All content anchors right
+  &.\--all-anchor-right {
+    .has-supporting-media, .has-supporting-media:nth-child(2n+1) {
+      div, figure {
+        float: right;
+
+        @include media(max, map-get($breakpoints, tablet)) {
+          float: left;
+        }
+      }
+
+      figure {
+        margin: 0 0 0 calc-percent(80px, 960px);
+
+        @include media(max, map-get($breakpoints, tablet)) {
+          margin: 0 calc-percent(80px, 960px) 0 0;
+        }
+      }
+    }
+  }
+
+  .content-block__content {
+    margin: 0;
+    padding: 0;
+  }
+
+  .has-supporting-media {
+    &:nth-child(2n+1) {
+      div, figure {
+        float: left;
+      }
+
+      figure {
+        margin: 0 calc-percent(80px, 960px) 0 0;
+
+        @include media(max, map-get($breakpoints, tablet)) {
+          float: left;
+          margin: 0 calc-percent(80px, 960px) 0 0;
+        }
+      }
+    }
+
+    div {
+      float: right;
+      width: calc-percent(660px, 960px);
+
+      @include media(max, map-get($breakpoints, tablet)) {
+        float: left;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-large)) {
+        float: none;
+        width: 100%;
+      }
+    }
+
+    figure {
+      float: right;
+      width: calc-percent(220px, 960px);
+      margin-left: calc-percent(80px, 960px);
+
+      @include media(max, map-get($breakpoints, tablet)) {
+        float: left;
+        margin: 0 calc-percent(80px, 960px) 0 0;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-large)) {
+        float: none;
+        width: 100%;
+        margin: 0 0 rem(30px) !important;
+      }
+    }
+
+    img {
+      margin: rem(5px) auto rem(15px);
+
+      @include media(max, map-get($breakpoints, mobile-large)) {
+        margin: 0 auto;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-large)) {
+        max-width: 65%;
+      }
+
+
+      @include media(max, map-get($breakpoints, mobile-small)) {
+        max-width: 80%;
+      }
+    }
+  }
+
+  .item {
+    overflow: hidden;
+    padding: rem(90px) 0 rem(80px);
+    border-top: 1px solid map-get($colors, gray-lighter);
+
+    @include media(max, map-get($breakpoints, desktop-small)) {
+      padding: rem(60px) rem(20px);
+    }
+
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      font-size: rem(map-get($typography, base-font-size));
+      padding: rem(50px) rem(20px) rem(40px);
+    }
+
+
+    @include media(max, map-get($breakpoints, mobile-small)) {
+      padding: rem(40px) 0 rem(30px);
+    }
+
+
+    &:first-child {
+      border-style: none;
+    }
+  }
+
+  .section-content {
+    padding: rem(15px) 0 rem(60px);
+    border-bottom: 1px solid map-get($colors, gray-lighter);
+
+    @include media(max, map-get($breakpoints, desktop-small)) {
+      padding-bottom: 30px;
+    }
+
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      padding-bottom: 20px;
+    }
+  }
+}

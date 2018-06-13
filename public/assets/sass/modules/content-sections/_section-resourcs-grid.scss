@@ -1,0 +1,85 @@
+/* Primary module - Section Resource Grid  */
+
+.resource-grid {
+	font-size: $small-font-size;
+	text-align: center;
+
+	&.\--border-top {
+		border-top: solid rem(1px) map-get($colors, border-grey-2);
+		}
+
+	&.\--border-bottom {
+		border-bottom: solid rem(1px) map-get($colors, border-grey-2);
+		}
+
+	.cta-arrow {
+		color: $base-font-color;
+		text-transform: none;
+
+		&:after { color: map-get($colors, orange); }
+
+		&:hover { color: map-get($colors, orange); }
+
+		}
+
+	h2 {
+		@extend %h4;
+		margin-bottom: 0;
+		}
+
+	img { margin: 0 auto rem(25px);  }
+
+	p { margin-bottom: rem(15px); }
+
+	.resource {
+		padding: rem(50px) rem(20px) 0;
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			padding: rem(50px) rem(30px);
+			margin-top: rem(30px);
+			border-top: solid rem(1px) map-get($colors, border-grey-2);
+
+			&:last-child { padding-bottom: 0; }
+
+			&:first-child { border-style: none; }
+
+			}
+
+		}
+
+
+// - - - Color Themes - - - //
+
+	&.\--light-gray-theme {
+		background-color: map-get($colors, bg-grey-1);
+
+		&.\--border-top {
+			border-top: solid rem(1px) map-get($colors, border-grey-4);
+			}
+
+		&.\--border-bottom {
+			border-bottom: solid rem(1px) map-get($colors, border-grey-4);
+			}
+
+		}
+
+
+	&.\--dark-gray-theme {
+		color: $white;
+		background-color: map-get($colors, bg-grey-8);
+
+		&.\--border-top {
+			border-top: solid rem(1px) map-get($colors, border-grey-8);
+			}
+
+		&.\--border-bottom {
+			border-bottom: solid rem(1px) map-get($colors, border-grey-8);
+			}
+
+		.cta-arrow { color: $white; }
+
+		}
+
+
+	}

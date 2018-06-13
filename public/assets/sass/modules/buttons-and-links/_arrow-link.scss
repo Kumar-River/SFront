@@ -1,0 +1,97 @@
+.arrow-link {
+	display: inline-block;
+	outline-style: none;
+	@extend %button-reset;
+	position: relative;
+	color: map-get($colors, orange);
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: {
+		property: color;
+		duration: map-get($transition, duration);
+	};
+
+	&.\--large {
+		text-transform: none;
+		font-weight: 100;
+		color: map-get($colors, gray-dark);
+		@include media(min, map-get($breakpoints, tablet)) {
+			font-size: rem(24px);
+		}
+
+		&:hover {
+			color: #3a3a3a;
+		}
+	}
+
+	&.\--medium {
+		text-transform: none;
+		font-weight: 100;
+		color: map-get($colors, gray-dark);
+		@include media(min, map-get($breakpoints, tablet)) {
+			font-size: rem(18px);
+		}
+
+		&:hover {
+			color: #3a3a3a;
+		}
+	}
+
+	&.\--normal-text {
+		text-transform: none;
+		letter-spacing: inherit;
+		color: inherit;
+	}
+
+	&__last-word {
+		position: relative;
+		display: inline-block;
+		padding-right: 1.5em;
+		transform: translate3d(0, 0, 0);
+
+		.\--large & {
+			padding-right: 1.2em;
+		}
+
+		&:after {
+			content: $arrow-value;
+			@extend %icon;
+			display: block;
+			position: absolute;
+			top: 49%;
+			right: 0;
+			font-size: 0.8em;
+			transform: translate(-6px, -50%);
+			transition: {
+				property: transform;
+				duration: map-get($transition, duration);
+			};
+
+			.\--download-icon & {
+				content: $download-value;
+			}
+
+			.\--external-icon & {
+				top: 0.9em;
+				content: $external-link-value;
+			}
+
+			.\--orange-arrow & {
+				color: map-get($colors, orange);
+			}
+
+			.\--large & {
+				font-size: 0.75em;
+			}
+		}
+	}
+
+	&:hover {
+		color: map-get($colors, orange-dark);
+
+		.arrow-link__last-word:after {
+			transform: translate(-3px, -50%);
+			}
+		}
+	}

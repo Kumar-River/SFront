@@ -1,0 +1,41 @@
+/* Primary module - Modal Support Region Selector  */
+
+.support-region-selctor {
+
+    .resource {
+
+        a {
+            display: block;
+            color: $alt-font-color;
+            padding: $section-padding-3 $section-padding-2;
+            border: rem(1px) solid map-get($colors, border-grey-2);
+            @include border-radius;
+
+            // tablet and up / device breakpoint styling
+            @include media(min, map-get($breakpoints, tablet)) {
+
+                img {
+                    -webkit-filter: saturate(0);
+                    filter: saturate(0);
+                    @include transitions-all;
+                    }
+
+                &:hover {
+                    color: map-get($colors, gray-darker);
+                    @include translateX-Y(0, -3px);
+                    @include depth(three);
+
+                    img {
+                        -webkit-filter: saturate(100%);
+                        filter: saturate(100%);
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }

@@ -1,0 +1,136 @@
+.has-accent {
+  position: relative;
+
+  .menu-accent, .link-accent {
+    top: -16px;
+    position: relative;
+    line-height: 0;
+    padding: 4px 6px 4px;
+    color: #fff !important;
+    background-color: map-get($colors, orange);
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-clip: padding-box;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    font: {
+      weight: 400;
+      size: rem(9px);
+    };
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      font-size: rem(10px);
+    }
+
+
+    &::before {
+      content: "";
+      display: block;
+      bottom: 0;
+      left: -5px;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: map-get($colors, orange) transparent transparent;
+      border-style: solid;
+      border-width: 10px 9px 0 2px;
+      -webkit-transform: rotate(-180deg);
+      -moz-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+      -o-transform: rotate(-180deg);
+
+      @include media(max, map-get($breakpoints, tablet)) {
+        left: -4px;
+        bottom: 50%;
+        border-width: 8px 8px 0 0;
+        margin-bottom: -4px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+      }
+    }
+
+    &.\--size-medium {
+      padding: 6px 7px 6px;
+      font: {
+        size: rem(10px);
+      };
+    }
+
+    &.\--size-large {
+      padding: 7px 10px 7px;
+      font: {
+        size: rem(13px);
+      };
+    }
+
+    &.\--theme-gray {
+      background-color: map-get($colors, gray-dark);
+
+      &::before {
+        border-color: map-get($colors, gray-dark) transparent transparent;
+      }
+    }
+
+    &.\--theme-dark-gray {
+      background-color: map-get($colors, gray-darkest);
+
+      &::before {
+        border-color: map-get($colors, gray-darkest) transparent transparent;
+      }
+    }
+
+    &.\--theme-orange-dark {
+      background-color: map-get($colors, orange-dark);
+
+      &::before {
+        border-color: map-get($colors, orange-dark) transparent transparent;
+      }
+    }
+
+    &.\--theme-green {
+      background-color: map-get($colors, green);
+
+      &::before {
+        border-color: map-get($colors, green) transparent transparent;
+      }
+    }
+
+    &.\--theme-blue {
+      background-color: map-get($colors, aqua);
+
+      &::before {
+        border-color: map-get($colors, aqua) transparent transparent;
+      }
+    }
+
+    &.\--theme-white {
+      color: map-get($colors, gray-dark) !important;
+      background-color: #fff;
+
+      &::before {
+        border-color: #fff transparent transparent;
+      }
+    }
+
+    &.\--theme-white-orange-text {
+      color: map-get($colors, orange) !important;
+      background-color: #fff;
+
+      &::before {
+        border-color: #fff transparent transparent;
+      }
+    }
+  }
+
+  .link-accent {
+    top: -14px;
+    margin-left: 7px;
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      top: -3%;
+    }
+  }
+}

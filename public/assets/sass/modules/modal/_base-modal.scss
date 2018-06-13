@@ -1,0 +1,57 @@
+.base-modal {
+  position: relative;
+  padding: rem(20px);
+
+  @include media(min, map-get($breakpoints, tablet)) {
+    padding: rem(30px) rem(40px);
+  }
+
+
+  @include media(min, map-get($breakpoints, laptop)) {
+    padding: rem(65px) rem(80px) rem(35px);
+  }
+
+
+  &__header {
+    position: relative;
+    padding-top: rem(10px);
+    margin-bottom: rem(15px);
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      padding: 0;
+    }
+  }
+
+  &__close {
+    @extend %button-reset;
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: rem(50px);
+    height: rem(50px);
+    color: map-get($colors, orange);
+
+    &:before {
+      content: $close-value;
+
+      @extend %icon;
+
+      @extend %center-icon;
+
+      font-size: rem(20px);
+    }
+
+    &:focus {
+      outline: none;
+      background-color: darken(#fff, 8%);
+      color: map-get($colors, orange-dark);
+    }
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      width: rem(80px);
+      height: rem(80px);
+    }
+  }
+}

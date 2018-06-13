@@ -1,0 +1,102 @@
+// Primary Partial - Status & Error Messages //
+
+.message-container {
+	position: relative;
+    font-style: italic;
+    font-size: rem(14px);
+    text-align: center;
+    padding: rem(12px) $site-gutter;
+    color: map-get($colors, gray-lighter);
+    background-color: map-get($colors, gray-darker);
+	overflow: hidden;
+	@include transitions-all;
+
+    &.\--orange {
+        color: #f4edea;
+        background-color: map-get($colors, orange-dark);
+        }
+
+	&.call-out {
+		padding: rem(60px) 0 rem(70px);
+		}
+
+	&.\--error-message, &.\--success-message, &.\--status-message {
+		color: $white;
+		font-style: normal;
+		// top: 0;
+		// left: 0;
+		// right: 0;
+		// position: fixed;
+		// z-index: 500;
+		// @include translateX-Y(0, -110%);
+		font-size: $tiny-font-size;
+		padding: rem(11px) rem(40px) rem(12px);
+		@include border-radius(0);
+
+		&.active {
+			display: block;
+			@include translateX-Y(0, 0);
+			}
+
+		i {
+			top: -2px;
+			left: 2px;
+			position: absolute;
+			}
+
+		p {
+			position: relative;
+			display: inline-block;
+			padding: 0 rem-(25px);
+			}
+
+		}
+
+	&.\--status-message  {
+		background-color: map-get($colors, aqua);
+		.dismiss-message:hover { color: darken(map-get($colors, aqua), 30%); }
+		}
+
+	&.\--error-message  {
+		background-color: map-get($colors, red);
+		.dismiss-message:hover { color: darken(map-get($colors, red), 30%); }
+		}
+
+	&.\--success-message {
+		background-color: map-get($colors, green);
+		.dismiss-message:hover { color: darken(map-get($colors, green), 30%); }
+		}
+
+	.dismiss-message {
+		color: $white;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		width: rem(60px);
+		cursor: pointer;
+		opacity: .8;
+		font-size: rem(15px);
+		text-align: center;
+		@include transitions-all;
+
+		i {
+			margin: -2px 0 0 0;
+			@include centered-positioning;
+			}
+
+		}
+
+	h4 {
+		margin: rem(5px);
+		}
+
+	p {
+		margin: 0;
+		}
+
+	small {
+		font-size: rem(12px);
+		}
+
+    }

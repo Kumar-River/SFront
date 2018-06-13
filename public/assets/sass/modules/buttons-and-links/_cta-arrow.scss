@@ -1,0 +1,44 @@
+// Primary Partial - Call to Action arrow link //
+
+.cta-arrow, %cta-arrow {
+	outline-style: none;
+	position: relative;
+	color: map-get($colors, orange);
+	cursor: pointer;
+	text-transform: uppercase;
+
+	&:after {
+		@extend %icon;
+		content: $arrow-value;
+		display: inline-block;
+		position: relative;
+		padding-left: rem(3px);
+		font-size: 0.8em;
+		transform: translate(0, -1px);
+		transition: {
+			property: transform;
+			duration: map-get($transition, duration);
+			};
+		}
+
+	&:hover {
+		color: map-get($colors, orange-dark);
+
+		&:after { transform: translate(2px, -1px); }
+
+		}
+
+	&.\--more {
+		font-size: rem(13px);
+		color: map-get($colors, alt-font-color);
+
+		&:hover:after { transform: translate(2px, -1px); }
+
+		&:after {
+			color: map-get($colors, orange);
+			transform: translate(0, -1px);
+			}
+
+		}
+
+	}

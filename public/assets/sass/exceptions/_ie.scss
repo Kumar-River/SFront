@@ -1,0 +1,104 @@
+// Conditional IE styles to deal with browsers that are not standards compliant
+
+
+/* - - - - IE9 specific styles here - - - - */
+.ie9 {
+
+    // Menu links on card menus - issue where CSS columns are not fully supported
+    .card.card-full .card-menu {
+
+        // tablet-large and up / device breakpoint styling
+        @include media(min, map-get($breakpoints, tablet-large)) {
+
+    		li {
+                float: left;
+                width: calc(100% / 2);
+
+                &:nth-child(2n+1) { clear: both; }
+
+    			}
+
+    		}
+
+    	}
+
+
+    // Form conditional styles
+    input[type="email"], input[type="password"], input[type="text"], input[type="search"], textarea {
+
+        &::-ms-clear { display: none !important; }
+
+        &.\--large { min-height: 76px; }
+
+        }
+
+
+    // Feature grid image width issue ie not respecting max-width: 100% on svg images
+    .feature-grid-container .feature-image img {
+        max-width: none;
+        width: 100%;
+        }
+
+
+    // Top topics listings in the support center - poor support for CSS columns
+    .top-topics-container .topics-list li {
+        width: 50%;
+        padding-right: 20px;
+        float: left;
+
+        // tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+            float: none;
+            width: auto;
+			}
+
+        &:nth-child(odd) { clear: both; }
+
+        }
+
+
+
+} // end - .ie9
+
+
+
+
+/* - - - - IE10+ specific styles here - - - - */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+
+
+    // Form conditional styles
+    input[type="email"], input[type="password"], input[type="text"], input[type="search"], textarea {
+
+        &::-ms-clear { display: none !important; }
+
+        &.\--large { min-height: 76px; }
+
+        }
+
+
+    // Feature grid image width issue ie not respecting max-width: 100% on svg images
+    .feature-grid-container .feature-image img {
+        max-width: none;
+        width: 100%;
+        }
+
+
+    // Top topics listings in the support center - poor support for CSS columns
+    .top-topics-container .topics-list li {
+        width: 50%;
+        padding-right: 20px;
+        float: left;
+
+        // tablet-large and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet-large)) {
+            float: none;
+            width: auto;
+			}
+
+        &:nth-child(odd) { clear: both; }
+
+        }
+
+
+} // end - IE10+

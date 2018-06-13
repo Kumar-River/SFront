@@ -1,0 +1,46 @@
+.back-button {
+	display: block;
+	position: relative;
+	color: map-get($colors, grey);
+	font: {
+		size: rem(16px);
+		weight: 100;
+	};
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	padding: rem(12px) rem(20px);
+	display: inline-block;
+	transition: {
+		property: color;
+		duration: map-get($transition, duration);
+	};
+
+	&:before {
+		content: $arrow-value;
+		@extend %icon;
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		margin-top: -0.5em;
+		font-size: 0.8em;
+		color: map-get($colors, orange);
+		transform: scaleX(-1);
+		transition: {
+			property: transform;
+			duration: map-get($transition, duration);
+		};
+	}
+
+	&.ng-click-active, &:hover {
+		color: map-get($colors, orange);
+
+		&:before {
+			transform: scaleX(-1) translateX(rem(3px));
+		}
+	}
+
+	&.ng-click-active {
+		transition-duration: 0s;
+	}
+}

@@ -1,0 +1,108 @@
+.masthead {
+	position: relative;
+	margin-bottom: rem(40px);
+	margin-top: rem(40px);
+
+	@include media(max, map-get($breakpoints, desktop-larger)) {
+		margin-top: 0;
+		}
+
+	&.\--no-bottom-spacing { margin-bottom: 0; }
+
+	&.\--no-top-spacing { margin-top: 0; }
+
+	h1 { @extend %feature-header; }
+
+	h6 { margin-bottom: map-get($content-margins, large-typography-margins); }
+
+	[class*="container-"] { width: 100%; }
+
+	.slick-slider & { margin-bottom: 0; }
+
+	&.short-hero {
+
+		h1 {
+			margin: 0;
+
+			small {
+				padding-top: rem(15px);
+				display: block;
+				@extend %header-element;
+				font: {
+					size: rem(18px);
+					weight: 400;
+				};
+				line-height: 1.35294;
+				@include media(min, map-get($breakpoints, laptop)) {
+					font-size: rem(20px);
+					line-height: 1.33333;
+				}
+			}
+		}
+	}
+
+	&__image-box {
+		position: relative;
+		overflow: hidden;
+		@include border-radius(1px);
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		margin: 0;
+	}
+
+	&__image-overlay {
+		padding: rem(35px) rem(10px);
+		@include media(min, map-get($breakpoints, tablet)) {
+			display: flex;
+			align-items: center;
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			.no-flexbox & {
+				display: block;
+			}
+		}
+		// This it to stop the animations from
+		// jogging or firing when the page is loading.
+		.site.\--animations-ok .slick-slide & {
+			transform: translateX(-200px);
+			transition: {
+				property: transform;
+				duration: map-get($transition, duration) * 2;
+			};
+		}
+
+		.site.\--animations-ok .slick-active ~ .slick-slide & {
+			transform: translateX(200px);
+		}
+
+		.site.\--animations-ok .slick-active & {
+			transform: translateX(0);
+		}
+	}
+
+	&__content {
+		@include grid(1, 1);
+		color: map-get($colors, gray-dark);
+		@include media(min, map-get($breakpoints, tablet)) {
+			color: #fff;
+			max-width: map-get($columns, span-9-columns);
+
+			.\--with-video-trigger & {
+				@include grid(7);
+			}
+		}
+		@include media(min, map-get($breakpoints, laptop)) {
+			.\--with-video-trigger & {
+				@include grid(5);
+			}
+		}
+	}
+}

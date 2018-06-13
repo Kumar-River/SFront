@@ -1,0 +1,33 @@
+.title-accent, .accent-hedding {
+  @include accent-headding;
+
+    &.\--with-icon {
+        display: inline-block;
+        padding-left: rem(30px);
+
+    &:after {
+        @extend %icon;
+        position: absolute;
+        top: 0.95em;
+        left: 0;
+        margin-top: -0.70em;
+        font-size: rem(22px);
+        color: map-get($colors, gray-medium);
+        }
+
+    }
+
+&.\--article-icon:after     { content: $news-value; }
+&.\--archive-icon:after     { content: $archive-value; }
+&.\--bar-chart-icon:after   { content: $bar-chart-value; }
+&.\--calendar-icon:after    { content: $calendar-value; }
+&.\--data-chart-icon:after  { content: $data-value; }
+&.\--document-icon:after    { content: $document-value; }
+&.\--download-icon:after    { content: $download-value; }
+&.\--globe-icon:after       { content: $world-value; }
+&.\--house-icon:after       { content: $home-value; }
+&.\--question-circle:after  { content: $support-faq-value; }
+&.\--support-icon:after     { content: $support-wrench-1-value; }
+&.\--tags-icon:after        { content: $tags-value; }
+
+}

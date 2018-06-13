@@ -1,0 +1,133 @@
+/* Primary module - Card grid UI  */
+
+.card-grid {
+	position: relative;
+
+	.item {
+		padding: 0 rem(15px) rem(30px);
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, mobile-large)) {
+			padding: 0 0 rem(20px);
+			}
+
+		}
+
+	.edit-link {
+		bottom: 0;
+		right: rem(20px);
+		}
+
+	}
+
+.card-grid-container {
+	position: relative;
+	}
+
+
+// - - - Timeline display of card grid - - - //
+
+// Timeline diplay height Variables
+$timeline-height-desktop: 			125px;
+$timeline-height-device: 			40px;
+$timeline-container-height: 		170px;
+$timeline-container-height-device: 	60px;
+
+
+.linear-grid {
+	padding: rem(170px) 0 rem(25px);
+	position: relative;
+	background-color: map-get($colors, bg-grey-1);
+
+	&:after {
+		content: "";
+		left: 50%;
+		top: $timeline-container-height - 14px;
+		position: absolute;
+		z-index: $z-index-1;
+		height: 28px;
+		width: 28px;
+		background-color: map-get($colors, border-grey-3);
+		@include translateX-Y(-50%, 0);
+		@include border-radius(100%);
+		}
+
+	&:before {
+		content: "";
+		display: block;
+		left: 50%;
+		top: 0;
+		position: absolute;
+
+		z-index: $z-index-1;
+		height: $timeline-container-height;
+		width: 5px;
+		background-color: map-get($colors, border-grey-3);
+		@include translateX-Y(-50%, 0);
+		}
+
+	& > div {
+		position: relative;
+
+		&:before {
+			content: "";
+			left: 50%;
+			top: -215px;
+			position: absolute;
+			z-index: $z-index-1;
+			margin-left: -15px;
+			@include triangle(right, map-get($colors, border-grey-3), rem(60px), rem(30px));
+			@include transform-rotate;
+			}
+
+		}
+
+	.card-grid > div:last-of-type {
+
+		&:after, &:before {
+			display: none;
+			}
+
+		}
+
+	.card.card-full {
+		position: relative;
+		z-index: $z-index-2;
+		margin-bottom: $timeline-height-desktop;
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			margin-bottom: $timeline-height-device;
+			}
+
+		&:after {
+			content: "";
+			left: 50%;
+			bottom: -$timeline-height-desktop - 16px;
+			position: absolute;
+			z-index: $z-index-1;
+			height: 28px;
+			width: 28px;
+			background-color: map-get($colors, border-grey-3);
+			@include translateX-Y(-50%, 0);
+			@include border-radius(100%);
+			}
+
+		&:before {
+			content: "";
+			display: block;
+			left: 50%;
+			bottom: -$timeline-height-desktop;
+			position: absolute;
+			z-index: $z-index-1;
+			height: $timeline-height-desktop;
+			width: 5px;
+			background-color: map-get($colors, border-grey-3);
+			@include translateX-Y(-50%, 0);
+			}
+
+		&:first-child { margin-top: 0; }
+
+		}
+
+	}

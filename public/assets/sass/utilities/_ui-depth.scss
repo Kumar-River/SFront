@@ -1,0 +1,20 @@
+// Theming utilities for UI depth cards and shadowing
+
+
+// Depths
+.\--base-depth, %base-depth { @include depth(base); }
+
+.\--depth-1, %depth-1 { @include depth(one); }
+
+.\--depth-2, %depth-2 { @include depth(two); }
+
+.\--depth-3, %depth-3 { @include depth(three); }
+
+.\--depth-4, %depth-4 { @include depth(four); }
+
+.\--depth-5, %depth-5 { @include depth(five); }
+
+*[class*="depth-"] {
+	@include border-radius(0);
+	border-style: none;
+	}

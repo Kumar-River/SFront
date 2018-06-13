@@ -1,0 +1,65 @@
+// Primary Enphase primary footer information
+
+.copyright-content {
+	text-align: center;
+	font-size: rem(13px);
+	color: map-get($colors, white);
+
+	img {
+		width: rem(36px);
+		margin: 0 auto rem(5px);
+		}
+
+	p { margin: 0; }
+
+	}
+
+.information-container {
+	padding: rem(25px) 0 rem(15px);
+	background-color: map-get($colors, orange);
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		text-align: center;
+		}
+
+	// Laptop and up breakpoint styling
+	@include media(min, map-get($breakpoints, laptop)) {
+
+		.column-container .item { 	margin-bottom: 0; }
+
+		}
+
+	.primary-button {
+		font-size: $small-font-size;
+		text-transform: none;
+		margin-top: rem(10px);
+		padding: rem(10px) rem(15px) rem(10px);
+
+		&:after, &:before {
+			@extend %icon;
+			padding: 0 rem(8px);
+			margin-top: rem(-2px);
+			}
+
+		// Arrow right icon
+		&:after {
+			font-size: rem(12px);
+			content: map-get($icons, arrow);
+			}
+
+		// Email envelope icon
+		&:before {
+			font-size: $base-font-size; // 16px
+			content: map-get($icons, email);
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			margin: rem(20px) auto;
+			}
+
+
+		}
+
+	}

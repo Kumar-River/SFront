@@ -1,0 +1,10 @@
+// Primary Enphase primary footer
+
+.primary-footer {
+	transition: {
+		property: all;
+		duration: map-get($transition, duration);
+		};
+	@include translateX-Y(0, 0);
+	clear: both;
+	}

@@ -1,0 +1,219 @@
+.pagination[class] {
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  margin-top: $section-padding-5;
+
+  @extend %group;
+
+  @include media(min, map-get($breakpoints, tablet)) {
+    @include grid(1, 1);
+
+    &.\--escape-grid {
+      padding: 0;
+    }
+  }
+
+
+  .pagination__button {
+    &.\--prev {
+      float: left;
+    }
+
+    &.\--next {
+      float: right;
+    }
+  }
+
+  .element-invisible {
+    display: none;
+  }
+
+  .item-list {
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+
+  .pager {
+    position: static;
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+
+    @extend %group;
+  }
+
+  .pager-item {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    a {
+      display: block;
+      position: relative;
+      line-height: rem(30px);
+      text-decoration: none;
+      font-weight: 400;
+      color: map-get($colors, gray-light);
+      border-top: rem(2px) solid map-get($colors, gray-light);
+      padding: rem(2px) rem(8px);
+      margin: 0;
+      transition: {
+        property: color, border-color;
+        duration: map-get($transition, duration);
+      };
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: rem(-2px);
+        left: 0;
+        right: 0;
+        height: rem(2px);
+        background-color: map-get($colors, gray-dark);
+        transform: scaleX(0);
+        transition: {
+          property: transform;
+          duration: map-get($transition, duration);
+        };
+      }
+
+      &:hover {
+        color: map-get($colors, gray-dark);
+
+        &:after {
+          background-color: map-get($colors, gray-dark);
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  .pager-ellipsis,
+  .pager-current {
+    display: block;
+    position: relative;
+    float: left;
+    margin: 0;
+    line-height: rem(30px);
+    font-weight: 400;
+    color: map-get($colors, orange);
+    transition-duration: 0s;
+    padding: rem(2px) rem(5px) 0;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: rem(2px);
+      background-color: map-get($colors, orange);
+      transition: {
+        property: transform;
+        duration: map-get($transition, duration);
+      };
+    }
+  }
+
+  .pager-ellipsis {
+    color: map-get($colors, gray-light);
+
+    &:after {
+      background-color: map-get($colors, gray-light);
+    }
+  }
+
+  .pager-next,
+  .pager-previous {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    transform: translateY(rem(-5px));
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      transform: none;
+    }
+
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: map-get($colors, gray-light);
+      min-height: rem(40px);
+      padding: 0;
+      margin: 0;
+      transition: {
+        property: color;
+        duration: map-get($transition, duration);
+      };
+
+      &:before {
+        display: block;
+        content: $circle-arrow-value;
+        background:none;
+
+        @extend %icon;
+
+        position: absolute;
+        top: 50%;
+        font-size: rem(40px);
+        margin-top: -0.5em;
+      }
+
+      &:hover {
+        color: map-get($colors, orange);
+      }
+
+      @include media(min, map-get($breakpoints, tablet)) {
+        min-height: rem(30px);
+
+        &:before {
+          font-size: rem(30px);
+        }
+      }
+    }
+
+    .pager-text {
+      display: none;
+
+      @include media(min, map-get($breakpoints, tablet)) {
+        display: inline-block;
+        line-height: rem(30px);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .pager-next {
+    right: 0;
+
+    a {
+      padding-right: rem(45px);
+
+      &:before {
+        right: 0;
+      }
+    }
+  }
+
+  .pager-previous {
+    left: 0;
+
+    a {
+      padding-left: rem(45px);
+
+      &:before {
+        transform: scaleX(-1);
+        left: 0;
+      }
+    }
+  }
+
+  .pager-last,
+  .pager-first {
+    display: none;
+  }
+}

@@ -1,0 +1,266 @@
+
+// dropdown dialog handler on hover of parent .dropdown-item
+
+
+.active-dropdown {
+
+	// Active dropdown on Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		.dropdown-dialog {
+			height: auto;
+			width: auto;
+			margin: 0 0 rem(25px);
+			position: static;
+			@include translateX-Y(0, 0);
+			}
+
+		}
+
+	.dropdown-toggle {
+		top: 0;
+		@include translateX-Y(0, 0);
+
+		&:after {
+			transform: rotate(90deg) scaleX(-1);
+			}
+
+		}
+
+	}
+
+
+.dropdown-item {
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		position: relative;
+
+		&:hover {
+
+			.dropdown-dialog {
+				&.\--fade-open {
+					opacity: 1;
+					margin-top: 0;
+					height: auto;
+					overflow: visible;
+					}
+
+				&.\--scale-open {
+					transform: scale(1) translateY(0);
+					}
+
+				&.\--pop-open {
+					display: block;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+// dropdown dialog box
+.dropdown-dialog {
+	clear: both;
+	@extend %accordion-animation;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+		@include translateX-Y(rem(-100px), rem(-1px));
+
+		a {
+			display: block;
+			padding: rem(10px) rem(40px);
+			}
+
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		left: 50%;
+		top: 100%;
+		position: absolute;
+		z-index: 900;
+		transform-origin: top center;
+		width: map-get($columns, span-3-columns); // 280px
+		margin-left: rem(-140px);
+		display: block;
+		transition-duration: map-get($transition, duration);
+
+
+		// Dropdown - theming - transitions
+		&.\--fade-open {
+			opacity: 0;
+		    height: 1px;
+		    margin-top: -1px;
+			overflow: hidden;
+			transition: {
+				property: opacity;
+				duration: map-get($transition, 300ms);
+				transition-timing-function: map-get($transition, easeInOutQuad);
+				};
+			}
+
+		&.\--scale-open {
+			transform: scale(0) translateY(rem(50px));
+			}
+
+		&.\--pop-open {
+			display: none;
+			}
+
+
+		// Dropdown - theming - widths
+		&.\--medium {
+			width: map-get($columns, span-5-columns); // 480px
+			margin-left: rem(-240px);
+			}
+
+		&.\--large {
+			width: map-get($columns, span-6-columns); // 580px
+			margin-left: rem(-290px);
+			}
+
+		&.\--xlarge {
+			width: map-get($columns, span-9-columns); // 880px
+			margin-left: rem(-440px);
+			}
+
+
+		// Dropdown - theming - anchoring
+		&.\--anchor-left {
+			left: 0;
+			margin-left: 0 !important;
+
+			.dropdown-container:before, .dropdown-container:after {
+				left: rem(20px);
+				}
+
+			}
+
+		&.\--anchor-right {
+			left: auto;
+			right: 0;
+			margin-left: 0 !important;
+
+			.dropdown-container:before, .dropdown-container:after {
+				right: rem(15px);
+				left: auto;
+				}
+
+			.dropdown-container:before {
+				margin-right: rem(-3px);
+				}
+
+			}
+
+		}
+
+	// Trigger dropdown reveal effects
+	&.\--active-dailog {
+
+		&.\--fade-open {
+			opacity: 1;
+			margin-top: 0;
+			height: auto;
+			overflow: visible;
+			}
+
+		&.\--scale-open {
+			transform: scale(1) translateY(0);
+			}
+
+		&.\--pop-open {
+			display: block;
+			}
+
+		}
+
+	}
+
+
+// Site dropdowns - card ui
+.dropdown-container {
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		@include depth(two);
+		@include border-radius(3px);
+		background-color: #fff;
+		position: relative;
+		margin-top: rem(15px);
+		z-index: $z-index-3;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			@include triangle(top, #ececec, rem(11px), rem(10px));
+			margin-left: rem(-10px);
+			z-index: $z-index-4;
+			}
+
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			@include triangle(top, #fff, rem(8px), rem(8px));
+			margin-left: rem(-7px);
+			z-index: $z-index-5;
+			}
+
+		}
+
+	}
+
+
+// Toggle dropdowns on mobile devices
+.dropdown-toggle {
+	@extend %button-reset;
+	display: block;
+	right: 0;
+	top: 50%;
+	position: absolute;
+	@include translateX-Y(0, -50%);
+	font-weight: inherit;
+	color: map-get($colors, gray-dark);
+	min-height: rem(60px);
+	width: rem(60px);
+	text-align: center;
+
+	&:after {
+		content: $arrow-value;
+		@extend %icon;
+		font-size: $small-font-size;
+		transform: rotate(90deg);
+		transition: {
+			property: transform;
+			duration: map-get($transition, duration);
+			};
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		display: none;
+		}
+
+	}
+
+.dropdown-wrapper {
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		overflow: hidden;
+		}
+
+	}

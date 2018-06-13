@@ -1,0 +1,141 @@
+// Primary Enphase header > sub navigation
+
+.sub-navigation {
+	display: inline-block;
+
+	@include media(max, map-get($breakpoints, laptop)) {
+		background-color: map-get($colors, orange);
+		}
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		display: block;
+		background-color: transparent;
+		}
+
+	.dropdown-dialog a {
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			color: map-get($colors, alt-font-color);
+			font-weight: 100;
+			font-size: $small-font-size;
+			}
+
+		}
+
+	.navigation__link  {
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			margin-right: -2px;
+			color: map-get($colors, white);
+			display: inline-block;
+			position: relative;
+			overflow: visible;
+			clip: auto;
+			font-weight: inherit;
+			padding: 0 rem(20px);
+			transition: {
+				property: all;
+				duration: map-get($transition, duration);
+				};
+
+			&.active, &.active-trail, &:hover {
+				color: map-get($colors, white);
+				background-color: map-get($colors, orange-dark);
+				}
+
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			color: map-get($colors, base-font-color);
+			font-size: $base-font-size; // 16px
+			letter-spacing: normal;
+			display: block;
+			font-weight: 100;
+			margin: 0 rem(40px) 0 rem(15px);
+			padding: rem(15px) 0 	 rem(15px) rem(5px);
+
+			}
+
+		}
+
+	.navigation__list > li {
+		position: relative;
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			display: inline-block;
+			margin-left: -2px;
+
+			&:last-child { margin-left: 0; }
+
+			&:hover .navigation__link {
+				color: map-get($colors, white);
+				background-color: map-get($colors, orange-dark);
+				}
+
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+
+			&:before {
+				content: "";
+				display: block;
+				height: rem(1px);
+				background-color: map-get($colors, border-grey-4);
+				bottom: 0;
+				left: rem(20px);
+				right: 0;
+				position: absolute;
+				z-index: 100;
+				}
+
+			}
+
+		}
+
+	// Add Icons
+	a.icon-right:after, a.icon-left:before {
+		@extend %icon;
+		margin-top: -3px;
+		padding: 0 rem(8px);
+
+		// Mobile / small device breakpoint styling
+		@include media(max, map-get($breakpoints, mobile-small)) {
+			display: none;
+			}
+
+		}
+
+	// Login link icon
+	a.login-link:after {
+		font-size: $small-font-size;
+		content: map-get($icons, lock);
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			float: left;
+			margin: rem(6px) 0 0 0;
+			}
+
+		}
+
+	// Search link icon + display on mobile
+	a.search-link {
+		display: none;
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			display: block;
+			&:before { content: map-get($icons, search); }
+			}
+
+		}
+
+	}
+
+.sub-navigation-container {
+	@include media(min, map-get($breakpoints, laptop)) { float: right; }
+	}

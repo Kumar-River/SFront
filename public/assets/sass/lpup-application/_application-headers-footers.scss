@@ -1,0 +1,120 @@
+/* LPUP application Partial - HEADER - FOOTERS */
+
+
+// Simple header
+.application-footer {
+	color: $alt-font-color;
+	font-size: $tiny-font-size;
+
+	.address-group {
+		padding: rem(20px) 0;
+		}
+
+	img {
+		width: rem(35px);
+		margin: rem(5px) rem(5px) 0 0;
+		}
+
+	li {
+		display: inline-block;
+		padding: rem(22px) rem(15px);
+		}
+
+	}
+
+
+// Simple header
+.application-header {
+    min-height: rem(48px);
+    background-color: map-get($colors, bg-grey-9);
+    position: relative;
+    text-align: center;
+    @include box-sizing;
+
+    > a {
+        line-height: rem(48px);
+        font-size: rem(12px);
+        padding: 0 $site-gutter;
+        display: inline-block;
+        color: map-get($colors, grey);
+        &:hover { color: $white; }
+        }
+
+    h1 {
+        width: rem(130px);
+        @include centered-positioning;
+
+        @include smaller-device {
+	        position: static;
+	        float: left;
+	        margin: rem(11px) rem(20px) 0;
+	        @include transform-none;
+        	}
+
+        }
+
+    }
+
+
+.application-sub-header	{
+
+	// tablet and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet)) {
+		display: none;
+		}
+
+	.option-link {
+		padding: 0 rem(20px);
+		margin: 0 rem(20px);
+		color: map-get($colors, gray-lightest);
+		font-size: $tiny-font-size;
+		line-height: rem(48px);
+		display: block;
+		position: relative;
+
+		&:hover {
+			color: map-get($colors, white);
+
+			&.\--back:before {
+				transform: translate(-1px, -52%) rotate(180deg);
+				}
+
+			&.\--foward:before {
+				transform: translate(0, -52%);
+				}
+
+			}
+
+		&.\--back:before {
+			content: "";
+			content: $arrow-value;
+			@extend %icon;
+			display: block;
+			position: absolute;
+			top: 49%;
+			left: 0;
+			font-size: 0.8em;
+			transform: translate(2px, -52%) rotate(180deg);
+			transform-origin: 50% 50%;
+			color: map-get($colors, orange);
+			@include transitions-all;
+			}
+
+
+		&.\--foward:before {
+			content: "";
+			content: $arrow-value;
+			@extend %icon;
+			display: block;
+			position: absolute;
+			top: 49%;
+			right: 0;
+			font-size: 0.8em;
+			transform: translate(-2px, -52%);
+			color: map-get($colors, orange);
+			@include transitions-all;
+			}
+
+		}
+
+	}

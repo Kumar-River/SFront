@@ -1,0 +1,213 @@
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #fff;
+	}
+
+a {
+	text-decoration: none;
+	@include transitions-all;
+	}
+
+a:not([class]) {
+	color: map-get($colors, gray-darker);
+
+	&:hover { color: map-get($colors, orange); }
+
+	}
+
+img {
+	max-width: 100%;
+	display: block;
+	margin: rem(25px) 0;
+	height: auto;
+
+	&.image-centered {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.image-left {
+		display: block;
+		margin-left: 0;
+		float: none;
+	}
+
+	&.screenshot-formating {
+		@include depth(two);
+		@include border-radius(3px);
+		padding: rem(8px);
+		margin-top: rem(45px);
+		margin-bottom: rem(45px);
+		float: none;
+		border: rem(1px) solid map-get($colors, border-grey-3);
+
+		@include media(max, map-get($breakpoints, tablet)) {
+			margin-top: rem(20px);
+			margin-bottom: rem(20px);
+			}
+
+		}
+
+	}
+
+// Content alignment
+.align-center { text-align: center; }
+
+.align-left { text-align: left;  }
+
+.align-right { text-align: right;  }
+
+
+// Default base link styling
+.article-content {
+
+	a:not([class]) {
+		color: map-get($colors, orange);
+		border-bottom: rem(1px) solid rgba(map-get($colors, orange), 0);
+
+		&:hover {
+			color: map-get($colors, orange);
+			border-color: rgba(map-get($colors, orange), .4);
+			}
+
+		}
+
+	hr { margin: $section-padding-3 0; }
+
+	}
+
+// Helper to control responsive svg images/icon sizing
+.asset-size {
+	display: block;
+	margin: 0;
+
+	&.\--center-item {
+		margin-left: auto;
+		margin-right: auto;
+		}
+
+	&.\--massive { max-width: rem(380px); }
+
+    &.\--huge { max-width: rem(300px); }
+
+    &.\--xlarge { max-width: rem(200px); }
+
+    &.\--large { max-width: rem(140px); }
+
+	&.\--default { max-width: rem(120px); }
+
+    &.\--medium { max-width: rem(80px); }
+
+    &.\--small { max-width: rem(50px); }
+
+    &.\--tiny { max-width: rem(35px); }
+
+    &.\--really-tiny { max-width: rem(20px); }
+
+    }
+
+// Helper to control responsive icon font sizing
+[class*="icon-"], [data-icon] {
+
+	&.\--center-icon {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		}
+
+	&.\--massive { font-size: rem(200px); }
+
+    &.\--huge { font-size: rem(140px); }
+
+    &.\--xlarge { font-size: rem(80px); }
+
+    &.\--large { font-size: rem(48px); }
+
+    &.\--medium { font-size: rem(36px); }
+
+	&.\--default { font-size: rem(16px); }
+
+    &.\--small { font-size: rem(13px); }
+
+    &.\--tiny { font-size: rem(10px); }
+
+	}
+
+.content-hidden {
+	display: none;
+}
+
+.content-hidden-desktop {
+	display: none;
+}
+
+.content-hidden-tablet {
+	@include media(minmax, map-get($breakpoints, mobile-large), map-get($breakpoints, tablet-large)) {
+		display: none;
+	}
+}
+
+.content-hidden-mobile {
+	@include media(max, map-get($breakpoints, mobile-large)) {
+		display: none;
+	}
+}
+
+// Vertical spacer
+.spacer {
+	display: block;
+
+	&.\--size-1 { margin: rem(10px) 0; }
+
+	&.\--size-2 { margin: rem(20px) 0; }
+
+	&.\--size-3 { margin: rem(30px) 0; }
+
+	&.\--size-4 { margin: rem(40px) 0; }
+
+	&.\--size-5 { margin: rem(50px) 0; }
+
+	&.\--size-6 { margin: rem(60px) 0; }
+
+	&.\--size-7 { margin: rem(70px) 0; }
+
+	&.\--size-8 { margin: rem(80px) 0; }
+
+	&.\--size-9 { margin: rem(90px) 0; }
+
+	&.\--size-10 { margin: rem(100px) 0; }
+
+	}
+
+.visually-hidden {
+	visibility: hidden;
+}
+
+// Overlay for dialog isolation
+.overlay-ui {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	z-index: 200;
+	background-color: #000;
+	text-indent: -9000px;
+	overflow: hidden;
+	opacity: 0;
+	transition: {
+		property: opacity;
+		duration: map-get($transition, duration);
+		};
+
+	&.active {
+		top: 0;
+		right: 0;
+		opacity: .6;
+		}
+
+	}

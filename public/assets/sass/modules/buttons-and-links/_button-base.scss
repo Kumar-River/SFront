@@ -1,0 +1,75 @@
+// Primary Partial - Base Buttons //
+
+[class*="button"] {
+	@extend %button-reset;
+	text-decoration: none;
+	letter-spacing: 0.05em;
+	display: inline-block;
+	position: relative;
+	font-weight: $normal;
+	cursor: pointer;
+	outline: none;
+	line-height: 1.5;
+	text-align: center;
+	@include transitions-all;
+
+// Differing button sizing options
+	&.\--tiny {
+	    font-size: rem(12px);
+	    padding: rem(5px) rem(15px) rem(3px);
+		text-transform: none;
+
+		// Change padding on buttons with icons
+		&.\--icon-after { padding-right: 5px; }
+
+		&.\--icon-before { padding-left: 5px; }
+
+	    }
+
+	&.\--small {
+	    font-size: rem(14px);
+	    padding: rem(7px) rem(20px) rem(6px);
+
+		// Change padding on buttons with icons
+		&.\--icon-after { padding-right: 10px; }
+
+		&.\--icon-before { padding-left: 10px; }
+
+	    }
+
+	 &.\--large {
+	    font-size: rem(17px);
+		text-transform: uppercase;
+	    padding: rem(15px) rem(40px) rem(14px);
+
+		// Change padding on buttons with icons
+		&.\--icon-after { padding-right: 25px; }
+
+		&.\--icon-before { padding-left: 25px; }
+
+	    }
+
+	&.\--full-width {
+		display: block;
+		width: 100%;
+		}
+
+	// Change padding on buttons with icons
+	&.\--icon-after { padding-right: 15px; }
+
+	&.\--icon-before { padding-left: 15px; }
+
+	// Treatment for icons with buttons
+	[class*="icon"]:before {
+		font-size: rem(20px);
+		padding: 0 rem(5px);
+		transform: translate(0, -1px);
+		}
+
+	// Treatment for icons with buttons
+	.icon-arrow:before {
+		font-size: .9em;
+		padding: 0 0 0 rem(5px);
+		}
+
+    }

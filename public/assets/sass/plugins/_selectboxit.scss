@@ -1,0 +1,123 @@
+/* jquery.selectBoxIt.css 3.8.1
+ * Author: @gregfranko
+ */
+
+.selectboxit-container {
+  position: relative;
+  display: block;
+  color: map-get($colors, gray-dark);
+  font-size: $base-font-size; // 16px 
+
+  * {
+    user-select: none;
+    outline: 0;
+  }
+}
+
+.selectboxit-btn {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: rem(1px) solid #dddedf;
+  border-radius: rem(3px);
+  background-color: #f9f9f9;
+  transition: {
+    property: border-color;
+    duration: map-get($transition, duration);
+  };
+
+  &.selectboxit-focus,
+  &:hover {
+    border-color: #c1c1c1;
+  }
+
+  &.selectboxit-open {
+    border-color: map-get($colors, green);
+  }
+}
+
+.selectboxit-text {
+  display: block;
+  position: relative;
+  max-width: none !important;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: rem(14px) rem(50px) rem(13px) rem(12px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:after {
+    position: absolute;
+
+    @extend %icon;
+
+    content: $triangle-value;
+    font-size: $base-font-size; // 16px 
+    top: 50%;
+    right: rem(10px);
+    margin-top: -0.5em;
+    transform: scaleY(1);
+    color: #e4e5e6;
+    transition: {
+      property: transform, color;
+      duration: map-get($transition, duration);
+    };
+  }
+
+  @include media(min, map-get($breakpoints, tablet)) {
+    &:after {
+      right: rem(20px);
+    }
+  }
+
+
+  .selectboxit-open &:after {
+    transform: scaleY(-1);
+    color: map-get($colors, gray-light);
+  }
+}
+
+.selectboxit-option-icon-container {
+  display: none;
+}
+
+.selectboxit-options {
+  display: none;
+  position: absolute;
+  z-index: 999999;
+  width: 100%;
+  min-width: rem(140px);
+  max-height: rem(270px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: #fff;
+  transform: translate3d(0, 0, 0);
+  border: {
+    width: 0 rem(1px) rem(1px);
+    style: solid;
+    color: #c1c1c1;
+  };
+  border-bottom-left-radius: rem(3px);
+  border-bottom-right-radius: rem(3px);
+}
+
+.selectboxit-option {
+  padding: rem(10px) rem(12px);
+  background-color: transparent;
+  border-bottom: rem(1px) solid #c1c1c1;
+  transition: {
+    property: color, background-color;
+    duration: map-get($transition, duration);
+  };
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}

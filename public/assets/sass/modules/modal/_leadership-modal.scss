@@ -1,0 +1,26 @@
+.leadership-modal {
+  &__title {
+    margin-bottom: rem(5px);
+  }
+
+  &__content {
+    @extend %group;
+  }
+
+  &__headshot {
+    margin-bottom: rem(15px);
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      max-width: rem(300px);
+      float: left;
+      margin: {
+        bottom: rem(30px);
+        right: rem(40px);
+      };
+    }
+  }
+
+  &__headshot-image {
+    margin: 0;
+  }
+}

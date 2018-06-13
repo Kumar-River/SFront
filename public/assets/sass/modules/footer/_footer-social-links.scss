@@ -1,0 +1,60 @@
+.social-list {
+
+	// Laptop and up breakpoint styling
+	@include media(min, map-get($breakpoints, laptop)) {
+		float: right;
+		padding-top: rem(10px);
+		}
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		float: none;
+		text-align: center;
+		}
+
+	&__item {
+		display: inline-block;
+		margin: 0 rem(5px);
+		}
+
+	&__link {
+		display: block;
+		text-decoration: none;
+		color: map-get($colors, orange-dark);
+
+		&.ng-click-active {
+			color: map-get($colors, orange-darker);
+			}
+
+		&:after {
+			@extend %icon;
+			font-size: rem(35px);
+			}
+
+		&.\--facebook:after {
+			content: $circle-facebook-value;
+			}
+
+		&.\--twitter:after {
+			content: $circle-twitter-value;
+			}
+
+		&.\--linkedin:after {
+			content: $circle-linkedin-value;
+			}
+
+		&.\--youtube:after {
+			content: $circle-youtube-value;
+			}
+		@include media(min, map-get($breakpoints, laptop)) {
+			transition: {
+				property: color;
+				duration: map-get($transition, duration);
+				};
+
+			&:hover {
+				color: map-get($colors, orange-darker);
+				}
+			}
+		}
+	}

@@ -37,6 +37,17 @@
         url: '/customer/:customerId',
         templateUrl: '/modules/core/client/views/welcome.client.view.html',
         controller: 'WelcomeController',
+        controllerAs: 'vm',
+        resolve: {
+          customerId: function($stateParams) {
+            return $stateParams.customerId;
+          }
+        }
+      })
+      .state('administrator', {
+        url: '/admin',
+        templateUrl: '/modules/core/client/views/admin_login.client.view.html',
+        controller: 'AdminLoginController',
         controllerAs: 'vm'
       })
       .state('not-found', {

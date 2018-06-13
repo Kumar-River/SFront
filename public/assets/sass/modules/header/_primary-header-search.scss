@@ -1,0 +1,161 @@
+// Primary Enphase header > header site search
+
+
+.global-search-container {
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		float: left;
+		position: relative;
+		width: map-get($columns, span-5-columns);
+		overflow: hidden;
+		width: rem(40px);
+		// Var $bar-height inherited from (assets/sass/modules/header/_application-bar.scss)
+		min-height: $bar-height;
+		transition: {
+			property: width;
+			duration: map-get($transition, duration);
+			};
+
+		&:before, &:after {
+			content: "";
+			display: block;
+			width: rem(2px);
+			top: rem(3px);
+			bottom: rem(3px);
+			position: absolute;
+			background-color: map-get($colors, orange-dark);
+			@include border-radius(1px);
+			opacity: 0;
+			transition: {
+				property: opacity;
+				duration: map-get($transition, duration);
+				};
+			}
+
+		&:before { left: 0; }
+
+		&:after	{ right: 0; }
+
+		input[type="text"] {
+			font-size: $small-font-size;
+			padding: 0;
+			border-style: none;
+			color: #fff;
+			background-color: transparent;
+			font-weight: normal;
+			opacity: 0;
+			// Var $bar-height inherited from (assets/sass/modules/header/_application-bar.scss)
+			min-height: $bar-height;
+
+			&::-webkit-input-placeholder 	{ color: map-get($colors, white); opacity: 1; }
+			&:-moz-placeholder 				{ color: map-get($colors, white); opacity: 1; }
+			&::-moz-placeholder 			{ color: map-get($colors, white); opacity: 1; }
+			// &:-ms-input-placeholder 		{ color: map-get($colors, white); opacity: 1; }
+
+
+			&:focus {
+				outline: none;
+
+				&::-webkit-input-placeholder 	{ color: map-get($colors, white); opacity: 1; }
+				&:-moz-placeholder 				{ color: map-get($colors, white); opacity: 1; }
+				&::-moz-placeholder 			{ color: map-get($colors, white); opacity: 1; }
+				// &:-ms-input-placeholder 		{ color: map-get($colors, white); opacity: 1; }
+
+				}
+
+
+			}
+
+		.search-submit {
+			display: none;
+			}
+
+		}
+
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			display: none;
+			}
+
+	}
+
+.global-search-toggle {
+	color: #fff;
+	background-color: transparent;
+	font-size: rem(17px);
+	cursor: pointer;
+	@include transitions-all;
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		position: absolute;
+		width: rem(45px);
+		height: rem(45px);
+
+		&.hide {
+			right: 0;
+			top: -4px;
+			font-size: rem(13px);
+			color: map-get($colors, orange-darker);
+			display: none;
+
+			&:hover { color: #fff; }
+
+			}
+
+		&.show {
+			top: -6px;
+			left: 0;
+
+			&:hover {
+				color: #fff;
+				color: map-get($colors, orange-darker);
+				}
+
+			}
+
+		.toggle-label { display: none; }
+
+		}
+
+	}
+
+// Active class to trigger search behaviors
+.active-search {
+
+	.global-search-container {
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			overflow: visible;
+			padding: 0 rem(40px);
+			width: map-get($columns, span-6-columns);
+
+			&:before, &:after { opacity: 8; }
+
+			input[type="text"] { opacity: 1; }
+
+			.global-search-toggle {
+				display: block !important;
+
+				&.show, &.show:hover  {
+					color: #fff;
+					cursor: default;
+					}
+
+				}
+
+			}
+
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+
+		.overlay-ui {
+			top: 0;
+			right: 0;
+			opacity: .3;
+			}
+
+		}
+
+	}

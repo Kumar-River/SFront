@@ -1,0 +1,99 @@
+.language-navigation {
+  position: relative;
+
+  @extend %group;
+
+  border-bottom: rem(1px) solid #e4e5e6;
+
+  &__button {
+    @extend %button-reset;
+
+    @extend %remove-tap-highlight;
+
+    @include grid(1, 2, 0);
+
+    position: relative;
+    font-size: $small-font-size;
+    text-transform: uppercase;
+    float: left;
+    transform: translate3d(0, 0, 0);
+    cursor: pointer;
+    transition: {
+      property: color;
+      duration: map-get($transition, duration);
+    };
+
+    &:focus {
+      outline: none;
+      color: map-get($colors, orange);
+    }
+
+    &.\--active-region,
+    &.ng-click-active {
+      color: map-get($colors, orange);
+    }
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet)) {
+		float: none;
+		padding: 0 ;
+		}
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      width: auto;
+      padding: 0 rem(25px);
+
+      &:hover {
+        color: map-get($colors, orange);
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__button-text {
+    display: inline-block;
+    position: relative;
+    padding: rem(20px) 0;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, tablet)) {
+		padding: rem(20px) 0 rem(8px);
+		}
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: rem(8px);
+      left: 0;
+      right: 0;
+      height: rem(2px);
+      transform: scaleX(0);
+	  @include border-radius;
+
+	 // Mobile / device breakpoint styling
+  	@include media(max, map-get($breakpoints, tablet)) {
+  	 	top: auto;
+		right: auto;
+		bottom: 0;
+		width: rem(60px);
+  		}
+
+    }
+
+    &:after {
+      background-color: map-get($colors, orange);
+    }
+
+    .\--active-region &:after,
+    .ng-click-active &:after {
+      transform: scaleX(1);
+    }
+  }
+}

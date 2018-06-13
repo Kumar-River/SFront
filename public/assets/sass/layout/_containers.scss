@@ -1,0 +1,191 @@
+/* Primary Partial - Global Containers */
+/* ----- Content Containers // Column Sizing ----- */
+
+// center containers
+.\--center-container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// center containers
+.\--padded-container {
+	padding-left: $site-gutter;
+	padding-right: $site-gutter;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		padding-left: $site-gutter-tablet;
+		padding-right: $site-gutter-tablet;
+	}
+
+}
+
+[class*="col-"],
+.container-default,
+.container-huge,
+.container-site-largest,
+.container-large,
+.container-massive,
+.container-medium,
+.container-medium-ish,
+.container-mid-range,
+.container-small,
+.container-small-ish,
+.container-xlarge,
+.container-xxlarge {
+	padding-left: $site-gutter;
+	padding-right: $site-gutter;
+	width: auto;
+	-webkit-box-sizing: unset;
+	-moz-box-sizing: unset;
+	box-sizing: unset;
+	// Switch box model as site reaches edges of viewport
+	@include media(max, map-get($breakpoints, desktop-large)) {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		padding-left: $site-gutter-tablet;
+		padding-right: $site-gutter-tablet;
+	}
+
+	&.\--no-container-padding {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// Remove padding of containers nested within containers
+	[class*="col-"],
+	.container-default,
+	.container-huge,
+	.container-site-largest,
+	.container-large,
+	.container-massive,
+	.container-medium,
+	.container-medium-ish,
+	.container-mid-range,
+	.container-small,
+	.container-small-ish,
+	.container-xlarge,
+	.container-xxlarge {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+}
+
+.container-full {
+	width: auto;
+	padding-left: $site-gutter;
+	padding-right: $site-gutter;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		padding-left: $site-gutter-tablet;
+		padding-right: $site-gutter-tablet;
+	}
+
+	&.\--xlarge-padding {
+		padding-left: $site-gutter-xlarge;
+		padding-right: $site-gutter-xlarge;
+	}
+
+	&.\--large-padding {
+		padding-left: $site-gutter-large;
+		padding-right: $site-gutter-large;
+	}
+
+	&.\--medium-padding {
+		padding-left: $site-gutter-medium;
+		padding-right: $site-gutter-medium;
+	}
+
+	&.\--small-padding {
+		padding-left: $site-gutter-small;
+		padding-right: $site-gutter-small;
+	}
+
+	&.\--xsmall-padding {
+		padding-left: $site-gutter-xsmall;
+		padding-right: $site-gutter-xsmall;
+	}
+}
+// 2600px
+.container-massive {
+	max-width: map-get($containers, content-width-massive);
+}
+// 2200px
+.container-huge {
+	max-width: map-get($containers, content-width-huge);
+}
+// 1800px
+.container-xxlarge {
+	max-width: map-get($containers, content-width-large);
+}
+// 1580px
+.col-16, %col-16, .container-site-largest {
+	max-width: map-get($columns, span-16-columns);
+}
+// 1480px
+.col-15, %col-15, .container-xlarge {
+	max-width: map-get($columns, span-15-columns);
+}
+// 1380px
+.col-14, %col-14, .container-large  {
+	max-width: map-get($columns, span-14-columns);
+}
+// 1280px
+.col-13, %col-13, .container-mid-range {
+	max-width: map-get($columns, span-13-columns);
+}
+// 1180px
+.col-12, %col-12 {
+	max-width: map-get($columns, span-12-columns);
+}
+// 1080px
+.col-11, %col-11, .container-default {
+	max-width: map-get($columns, span-11-columns);
+}
+// 980px
+.col-10, %col-10, .container-medium-ish {
+	max-width: map-get($columns, span-10-columns);
+}
+// 880px
+.col-9, %col-9 {
+	max-width: map-get($columns, span-9-columns);
+}
+// 780px
+.col-8, %col-8, .container-medium {
+	max-width: map-get($columns, span-8-columns);
+}
+// 680px
+.col-7, %col-7 {
+	max-width: map-get($columns, span-7-columns);
+	}
+// 580px
+.col-6, %col-6 {
+	max-width: map-get($columns, span-6-columns);
+	}
+// 480px
+.col-5, %col-5, .container-small-ish {
+	max-width: map-get($columns, span-5-columns);
+}
+// 380px
+.col-4, %col-4 {
+	max-width: map-get($columns, span-4-columns);
+}
+// 280px
+.col-3, %col-3, .container-small {
+	max-width: map-get($columns, span-3-columns);
+}
+// 180px
+.col-2, %col-2 {
+	max-width: map-get($columns, span-2-columns);
+}
+// 80px
+.col-1, %col-1 {
+	max-width: map-get($columns, span-1-columns);
+}

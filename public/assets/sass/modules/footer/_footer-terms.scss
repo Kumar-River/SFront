@@ -1,0 +1,54 @@
+// Primary Enphase primary footer terms
+
+.terms-container {
+	text-align: center;
+	color: map-get($colors, orange-lightest);
+	font-size: rem(13px);
+	background-color: map-get($colors, orange-dark);
+	border-top: rem(1px) solid map-get($colors, orange-darker);
+	padding: rem(10px);
+
+	a {
+		color: map-get($colors, orange-lightest);
+
+		&:hover { color: map-get($colors, white); }
+
+		}
+
+	.has-accent .link-accent {
+		top: -3px;
+		}
+
+	li {
+		display: inline-block;
+		padding: 0 rem(10px);
+		position: relative;
+
+		&:before {
+			content: "";
+			display: block;
+			width: rem(1px);
+			height: rem(12px);
+			top: 50%;
+			left: 0;
+			position: absolute;
+			margin-top: rem(-6px);
+			background-color: map-get($colors, orange-lightest);
+			}
+
+		&:first-child:before { display: none; }
+
+		&.has-accent:last-child .link-accent {
+			top: -1px;
+			left: 95%;
+			position: absolute;
+			}
+
+		}
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		}
+
+	}

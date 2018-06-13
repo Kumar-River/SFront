@@ -1,0 +1,189 @@
+// Theming utilities for backgrounds and borders
+
+
+// Background theme controls blue
+.\--blue-background-1 {
+	color: #fff;
+	background-color: map-get($colors, bg-blue-1);
+	}
+
+.\--blue-background-2 {
+	color: #fff;
+	background-color: map-get($colors, bg-blue-2);
+	}
+
+.\--blue-background-3 {
+	color: #fff;
+	background-color: map-get($colors, bg-blue-3);
+	}
+
+.\--blue-background-4 {
+	color: #fff;
+	background-color: map-get($colors, bg-blue-4);
+	}
+
+// Background theme controls green
+.\--green-background-1 {
+	color: #fff;
+	background-color: map-get($colors, bg-green-1);
+	}
+
+.\--green-background-2 {
+	color: #fff;
+	background-color: map-get($colors, bg-green-2);
+	}
+
+.\--green-background-3 {
+	color: #fff;
+	background-color: map-get($colors, bg-green-3);
+	}
+
+
+// Background theme controls grey
+.\--grey-background-1 {
+	background-color: map-get($colors, bg-grey-1);
+	}
+
+.\--grey-background-2 {
+	background-color: map-get($colors, bg-grey-2);
+	}
+
+.\--grey-background-3 {
+	background-color: map-get($colors, bg-grey-3);
+	}
+
+.\--grey-background-4 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-4);
+	}
+
+.\--grey-background-5 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-5);
+	}
+
+.\--grey-background-6 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-6);
+	}
+
+.\--grey-background-7 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-7);
+	}
+
+.\--grey-background-8 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-8);
+	}
+
+.\--grey-background-9 {
+	color: #fff;
+	background-color: map-get($colors, bg-grey-9);
+	}
+
+
+// Background theme controls orange
+.\--orange-background-1 {
+	color: #fff;
+	background-color: map-get($colors, bg-orange-1);
+	}
+
+.\--orange-background-2 {
+	color: #fff;
+	background-color: map-get($colors, bg-orange-2);
+	}
+
+.\--orange-background-3 {
+	color: #fff;
+	background-color: map-get($colors, bg-orange-3);
+	}
+
+.\--orange-background-4 {
+	color: #fff;
+	background-color: map-get($colors, bg-orange-4);
+	}
+
+
+// Border top theme controls
+.\--grey-border-top {
+	border-top: solid rem(1px) map-get($colors, border-grey-4); // Default site borders
+	}
+
+.\--grey-border-top-1 {
+	border-top: solid rem(1px) map-get($colors, border-grey-1);
+	}
+
+.\--grey-border-top-2 {
+	border-top: solid rem(1px) map-get($colors, border-grey-2);
+	}
+
+.\--grey-border-top-3 {
+	border-top: solid rem(1px) map-get($colors, border-grey-3);
+	}
+
+.\--grey-border-top-4 {
+	border-top: solid rem(1px) map-get($colors, border-grey-4);
+	}
+
+.\--grey-border-top-5 {
+	border-top: solid rem(1px) map-get($colors, border-grey-5);
+	}
+
+.\--grey-border-top-6 {
+	border-top: solid rem(1px) map-get($colors, border-grey-6);
+	}
+
+.\--grey-border-top-7 {
+	border-top: solid rem(1px) map-get($colors, border-grey-7);
+	}
+
+.\--grey-border-top-8 {
+	border-top: solid rem(1px) map-get($colors, border-grey-8);
+	}
+
+.\--grey-border-top-9 {
+	border-top: solid rem(1px) map-get($colors, border-grey-9);
+	}
+
+
+// Border bottom theme controls
+.\--grey-border-bottom {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-4); // Default site borders
+	}
+
+.\--grey-border-bottom-1 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-1);
+	}
+
+.\--grey-border-bottom-2 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-2);
+	}
+
+.\--grey-border-bottom-3 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-3);
+	}
+
+.\--grey-border-bottom-4 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-4);
+	}
+
+.\--grey-border-bottom-5 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-5);
+	}
+
+.\--grey-border-bottom-6 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-6);
+	}
+
+.\--grey-border-bottom-7 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-7);
+	}
+
+.\--grey-border-bottom-8 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-8);
+	}
+
+.\--grey-border-bottom-9 {
+	border-bottom: solid rem(1px) map-get($colors, border-grey-9);
+	}

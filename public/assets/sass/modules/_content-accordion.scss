@@ -1,0 +1,64 @@
+.content-accordion {
+  position: relative;
+
+  &__toggle-extend {
+    margin: 0 rem(-20px);
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    @extend %button-reset;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    font: {
+      size: rem(17px);
+      weight: 100;
+    };
+    background-color: #f9f9f9;
+    border: {
+      width: rem(1px);
+      style: solid;
+      color: #dddedf;
+    };
+    padding: rem(14px) rem(20px);
+
+    &:after {
+      content: $arrow-value;
+
+      @extend %icon;
+
+      position: absolute;
+      top: 50%;
+      right: rem(20px);
+      margin-top: -0.5em;
+      font-size: $small-font-size;
+      color: #8f8f8f;
+      transform: rotate(90deg);
+
+      .\--active-content-accordion & {
+        transform: rotate(90deg) scaleX(-1);
+        color: map-get($colors, orange);
+      }
+    }
+  }
+
+  &__content {
+    padding-top: rem(20px);
+
+    @extend %accordion-animation;
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      padding-top: rem(0);
+
+      &.ng-hide {
+        display: block !important;
+        transform: translateX(0);
+      }
+    }
+  }
+}

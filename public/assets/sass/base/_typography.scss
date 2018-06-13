@@ -1,0 +1,187 @@
+/* Primary Partial - Global Typography */
+
+body {
+	font-size: rem(map-get($typography, base-font-size));
+	line-height: map-get($typography, base-line-height);
+	color: map-get($colors, gray-dark);
+	font-family: map-get($typography, roboto);
+	font-weight: $normal;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: none;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	}
+
+a:not([class]) {
+	color: #8f8f8f;
+	transition: {
+		property: all;
+		duration: map-get($transition, duration);
+		};
+
+	&:hover { color: map-get($colors, orange); }
+
+	}
+
+em { font-style: italic; }
+
+hr {
+	display: block;
+	width: 100%;
+	height: rem(1px);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: map-get($colors, border-grey-4);
+	}
+
+
+
+//////// Headers ////////
+
+%header-element {
+	font-weight: $light;
+	margin-bottom: map-get($content-margins, heading-typography-margins);
+	}
+
+.feature-header, %feature-header {
+	@extend %header-element;
+	font-size: rem(70px);
+	line-height: 1.14;
+	font-weight: $ultra-light;
+	margin-bottom: rem(15px);
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		font-size: rem(36px);
+		line-height: 1.3;
+		font-weight: $ultra-light;
+		}
+
+	}
+
+%h1, .h1, h1 {
+	@extend %header-element;
+	font-size: rem(58px);
+	line-height: 1.2;
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		// font-size: rem(36px);
+		// line-height: 1.2;
+		}
+
+	}
+
+%h2, .h2, h2 {
+	@extend %header-element;
+	font-size: rem(48px);
+	line-height: 1.24;
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		// font-size: rem(48px);
+		}
+
+	}
+
+%h3, .h3, h3 {
+	@extend %header-element;
+	font-size: rem(38px);
+	line-height: 1.4;
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		// font-size: rem(32px);
+		}
+
+	}
+
+%h4, .h4, h4 {
+	@extend %header-element;
+	font-size: rem(32px);
+	line-height: 1.45;
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		// font-size: rem(28px);
+		}
+
+	}
+
+%h5, .h5, h5 {
+	@extend %header-element;
+	font-size: rem(24px);
+	line-height: 1.5;
+
+	// laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		// font-size: rem(22px);
+		}
+
+	}
+
+%h6, .h6, h6 {
+	@extend %header-element;
+	font-size: rem(20px);
+	line-height: 1.5;
+	font-weight: $normal;
+	}
+
+i:not([class]) { font-style: italic; }
+
+small { font-size: .8em; }
+
+strong { font-weight: $bold; }
+
+p { margin-bottom: map-get($content-margins, base-typography-margins); }
+
+
+
+
+//////// Lists ////////
+
+ol:not([class]), ul:not([class]) {
+	padding-left: map-get($content-margins, base-typography-margins);
+
+	margin-bottom: map-get($content-margins, base-typography-margins);
+	list-style-position: outside;
+
+	&:last-child { margin-bottom: 0; }
+
+	li {
+		margin-bottom: map-get($content-margins, small-typography-margins);
+
+		&:last-child { margin-bottom: 0; }
+
+		}
+
+	}
+
+ol:not([class]) {
+	list-style-type: decimal;
+	}
+
+ul:not([class]) {
+	list-style-type: none;
+
+	li {
+		position: relative;
+		padding-left: rem(5px);
+
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0.7em;
+			left: -0.7em;
+			width: rem(7px);
+			height: rem(7px);
+			@include border-radius(100%);
+			background-color: map-get($colors, gray-dark);
+			}
+
+		}
+
+	}

@@ -1,0 +1,30 @@
+.video-modal {
+  position: relative;
+
+  &__header {
+    position: relative;
+    padding: rem(10px) rem(50px) rem(10px) rem(20px);
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      padding: rem(22px) rem(110px) rem(21px) rem(35px);
+    }
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__wistia {
+    position: relative;
+    width: 100%;
+    padding-top: 56.2%;
+
+    > [id^="wistia_"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

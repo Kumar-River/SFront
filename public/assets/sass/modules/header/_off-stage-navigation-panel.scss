@@ -1,0 +1,95 @@
+// Primary Enphase header > off stage navigation panel
+
+// Temporary javascript driven class applied during transition states - general.js
+.transitioning .navigation-wrapper {
+	@include transitions-all;
+	}
+
+// Trigger all off stage navigation behaviors
+.navigation-active {
+
+	// laptop and up / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		overflow: hidden;
+
+		.navigation-wrapper {
+			@include transitions-all;
+			@include translateX-Y(0, 0);
+			}
+
+		.site__content { @include translateX-Y(-$nav-panel-width, 0); }
+
+		.device-header { @include translateX-Y(-$nav-panel-width, 0); }
+
+		.primary-footer { @include translateX-Y(-$nav-panel-width, 0); }
+
+		}
+
+	.toggle-navigation {
+
+		&:after, &:before  {
+			top: rem(22px);
+			background-color: map-get($colors, grey);
+			}
+
+		&:after { @include transform-rotate(45deg); }
+
+		&:before { @include transform-rotate(-45deg); }
+
+		.meat { opacity: 0; }
+
+		}
+
+	// laptop and up / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		.device-overlay {
+			position: fixed;
+			height: 100vh;
+			top: 0;
+			bottom: 0;
+			display: block;
+			width: $nav-panel-offset;
+			z-index: 300;
+			}
+
+		}
+
+	}
+
+// laptop and up / device breakpoint styling
+@include media(max, map-get($breakpoints, laptop)) {
+	.navigation-wrapper {
+		top: 0;
+		bottom: 0;
+		right: 0;
+		position: fixed;
+		z-index: 300;
+		width: $nav-panel-width;
+		height: 100vh;
+		background-color: map-get($colors, gray-lightest);
+		overflow-x: hidden;
+    	overflow-y: scroll;
+		width: $nav-panel-width;
+		@include translateX-Y(100%, 0);
+		-webkit-overflow-scrolling: touch; // Look into this
+
+		&:before {
+			content: "";
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: rem(6px);
+			min-height: 100vh;
+			background-image: linear-gradient(to right, rgba(#000, 0.1) 0%, rgba(#000, 0) 100%);
+			}
+
+		}
+
+	}
+
+.device-overlay {
+	display: none;
+	}

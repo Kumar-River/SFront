@@ -1,0 +1,17 @@
+.language-select {
+  position: relative;
+
+  &__region {
+    padding: rem(25px) 0;
+    transform: translateY(0);
+    transition: {
+      property: transform;
+      duration: map-get($transition, duration);
+    };
+
+    &.ng-hide {
+      transform: translateY(rem(50px));
+      transition-duration: 0s;
+    }
+  }
+}

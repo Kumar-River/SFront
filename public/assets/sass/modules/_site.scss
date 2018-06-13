@@ -1,0 +1,44 @@
+.site {
+	min-height: calc(100% - 0px);
+	margin: 0 auto;
+	// padding-top: rem(49px); // Same height as .device-header (assets/sass/modules/header-new/_primary-header.scss)
+
+	// Active dropdown on Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		overflow-x: hidden;
+
+		&:before {
+			content: "";
+			display: block;
+			height: rem(49px); // Same height as .device-header (assets/sass/modules/header-new/_primary-header.scss)
+			}
+
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		padding-top: 0;
+
+		&.\--freeze-scrolling {
+			position: static;
+			}
+
+		}
+
+	&.\--freeze-scrolling {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		}
+
+	&__content {
+		position: relative;
+		background-color: #fff;
+		transition: {
+			property: transform;
+			duration: map-get($transition, duration);
+			}
+
+		}
+	}

@@ -1,0 +1,295 @@
+/*
+Project: responsive SCSS grid framework using css-grid
+Author: Mike Rusczyk / mike@ofad.org / http://hideawaylights.com/mike-rusczyk/
+*/
+
+// Grid vars // Settings
+$grid-gap: 					20px; 			// Used to declare grid gap
+$grid-item-count: 			20; 			// Number of grid items horizontal and vertical
+$container-class-token: 	grid; 			// Global grid container class token
+$grid-area-name-token: 		grid-area; 		// Grid area mnaming token
+$grid-span-class-token: 	span; 			// Grid column row span class token
+
+$grid-column-start-token: 	col-start; 		// Grid area COLUMN start class token
+$grid-column-end-token: 	col-end; 		// Grid area COLUMN end class token
+$grid-row-start-token: 		row-start; 		// Grid area ROW start class token
+$grid-row-end-token: 		row-end; 		// Grid area ROW end class token
+
+
+// variables: MediaQueries
+$huge: 						2200px;
+$xxlarge: 					1600px;
+$xlarge: 					1380px;
+$large: 					1280px;
+$base: 						1040px;
+$base-small: 				960px;
+$medium: 					800px;
+$small: 					620px;
+$smaller: 					480px;
+
+
+/* ::::::: Core Grid SCSS ::::::: */
+
+/* ::::::: Establish base grid output ::::::: */
+
+.#{$container-class-token} {
+	display: grid;
+	grid-gap: $grid-gap;
+	grid-template-areas: named-grids(); // Named grad area output
+
+	// Overide with collapsed grid gap
+	&.collapse {
+	  grid-gap: 0;
+	  }
+
+  &.auto-flow-dense {
+		grid-auto-flow: dense;
+		}
+
+	&.auto-flow-column {
+		grid-auto-flow: column;
+		}
+
+	&.auto-flow-row {
+		grid-auto-flow: row;
+		}
+
+ 	}
+
+/* ::::::: Media/Size Grid Iterations ::::::: */
+
+// Span full grid width
+@mixin grid-span-all($token: default) {
+
+	// Span all on grid containers
+	.grid.#{$token}-span-all > * {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		}
+
+	// Span all on grid grid items
+	.grid .#{$token}-span-all {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		}
+
+	}
+
+// Grid iterations and options
+@mixin grid-framework($token: default) {
+
+	@for $instance from 1 through $grid-item-count {
+
+
+		// Horizontal grid globaly set
+		&.col-#{$token}-#{$instance} {
+			grid-template-columns: repeat($instance, 1fr);
+			}
+
+		// Horizontal grid set per item
+		.#{$grid-span-class-token}-cols-#{$token}-#{$instance} {
+			grid-column: span #{$instance};
+			}
+
+		// Vertical grid globaly set
+		&.row-#{$token}-#{$instance} {
+			grid-template-rows: repeat($instance, 1fr);
+			}
+
+		// Vertical grid set per item
+		.#{$grid-span-class-token}-rows-#{$token}-#{$instance} {
+			grid-row: span #{$instance};
+			}
+
+		// Named area grid COLUMN start iterations
+		.#{$token}-#{$grid-column-start-token}-#{$instance} {
+			grid-column-start: #{$instance};
+			}
+
+		// Named area grid COLUMN end iterations
+		.#{$token}-#{$grid-column-end-token}-#{$instance} {
+			grid-column-end: #{$instance};
+			}
+
+		// Named area grid ROW start iterations
+		.#{$token}-#{$grid-row-start-token}-#{$instance} {
+			grid-row-start: #{$instance};
+			}
+
+		// Named area grid ROW end iterations
+		.#{$token}-#{$grid-row-end-token}-#{$instance} {
+			grid-row-end: #{$instance};
+			}
+
+		}
+
+	}
+
+// Establish grid default display
+.#{$container-class-token} {
+	@include grid-framework;
+	}
+
+// Establish grid spann all default display
+@include grid-span-all;
+
+
+/* ::::::: Media Queries output iterations ::::::: */
+
+
+/* - Media Queries - UP - */
+/* ----- huge desktop and up (2200px) ----- */
+@media (min-width: #{$huge + 1}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(huge-up);
+		}
+
+	@include grid-span-all(huge-up);
+
+	}
+
+/* ----- xxlarge desktop and up (1800px) ----- */
+@media (min-width: #{$xxlarge + 1}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(largest-up);
+		}
+
+	@include grid-span-all(largest-up);
+
+	}
+
+/* ----- xlarge desktop and up (1600px) ----- */
+@media (min-width: #{$xlarge + 1}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(larger-up);
+		}
+
+	@include grid-span-all(larger-up);
+
+	}
+
+/* ----- large desktop and up (1380px) ----- */
+@media (min-width: #{$large + 1}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(large-up);
+		}
+
+	@include grid-span-all(large-up);
+
+	}
+
+/* ----- base desktop and up (1200px) ----- */
+@media (min-width: #{$base + 1}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(base-up);
+		}
+
+	@include grid-span-all(base-up);
+
+	}
+
+
+/* - Media Queries - DOWN - */
+/* ----- huge desktop and below (2200px) ----- */
+@media (max-width: #{$huge}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(huge);
+		}
+
+	@include grid-span-all(huge);
+
+	}
+
+/* ----- xxlarge desktop and below (1800px) ----- */
+@media (max-width: #{$xxlarge}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(largest);
+		}
+
+	@include grid-span-all(largest);
+
+	}
+
+/* ----- xlarge desktop and below (1600px) ----- */
+@media (max-width: #{$xlarge}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(larger);
+		}
+
+	@include grid-span-all(larger);
+
+	}
+
+/* ----- large desktop and below (1380px) ----- */
+@media (max-width: #{$large}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(large);
+		}
+
+	@include grid-span-all(large);
+
+	}
+
+/* ----- base desktop and below (1200px) ----- */
+@media (max-width: #{$base}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(base);
+		}
+
+	@include grid-span-all(base);
+
+	}
+
+/* ----- small desktop and below (960px) ----- */
+@media (max-width: #{$base-small}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(base-small);
+		}
+
+	@include grid-span-all(base-small);
+
+	}
+
+/* ----- tablet and below (800px) ----- */
+@media (max-width: #{$medium}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(medium);
+		}
+
+	@include grid-span-all(medium);
+
+	}
+
+/* ----- device small and below (480px) ----- */
+@media (max-width: #{$small}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(small);
+		}
+
+	@include grid-span-all(small);
+
+	}
+
+/* ----- device smaller and below (320px)  ----- */
+@media (max-width: #{$smaller}) {
+
+	.#{$container-class-token} {
+		@include grid-framework(smaller);
+		}
+
+	@include grid-span-all(smaller);
+
+	}

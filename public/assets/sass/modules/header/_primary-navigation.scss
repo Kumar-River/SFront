@@ -1,0 +1,167 @@
+
+.main-navigation {
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		background-color: map-get($colors, orange);
+		}
+
+	.dropdown-dialog a {
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			color: #fff;
+			}
+
+		}
+
+	.navigation__link  {
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			letter-spacing: .03em;
+			color: map-get($colors, base-font-color);
+			display: block;
+	        position: relative;
+	        overflow: visible;
+	        clip: auto;
+	        margin: 0;
+	        padding: rem(48px) rem(15px) rem(35px);
+	        font-size: $small-font-size;
+	        font-weight: 700;
+			transition: {
+				property: all;
+				duration: map-get($transition, duration);
+				};
+
+			&:not(.not-active-upper) {
+				&:before {
+					content: "";
+					right: 0;
+					left: 0;
+					bottom: -1px;
+					position: absolute;
+					height: rem(4px);
+					background-color: map-get($colors, orange);
+					display: none;
+					@include border-radius(4px);
+				}
+			}
+
+			&:hover {
+				color: map-get($colors, base-font-color);
+				}
+
+			&.active:before {
+				display: block;
+				}
+
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			color: #fff;
+			font-size: $base-font-size; // 16px
+			display: block;
+			font-weight: 400;
+			margin: 0 rem(40px) 0 rem(15px);
+			padding: rem(15px) 0 rem(15px) rem(5px);
+			}
+
+		}
+
+	.navigation__list > li {
+		position: relative;
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			display: inline-block;
+			margin-left: -4px;
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+
+			&:before {
+				content: "";
+				display: block;
+				height: rem(1px);
+				background-color: map-get($colors, orange-dark);
+				top: 0;
+				left: rem(20px);
+				right: 0;
+				position: absolute;
+				z-index: 100;
+				}
+
+			}
+
+		}
+
+	.primary-button {
+		text-align: left;
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			font: {
+	          size: rem(13px);
+	          weight: 700;
+	        };
+			letter-spacing: 0.025em;
+			padding: rem(5px) rem(20px);
+			display: inline-block;
+			margin: 1px 0 0 rem(15px);
+			color: map-get($colors, orange);
+
+			&:hover {
+				color: map-get($colors, white);
+				}
+
+			}
+
+		// Mobile / device breakpoint styling // Installer network icon link treatment
+		@include media(max, map-get($breakpoints, laptop)) {
+			text-transform: none;
+			position: relative;
+			padding-left: rem(35px);
+
+			&:after {
+				font-size: rem(22px);
+				font-family: "icons";
+			    display: inline-block;
+			    vertical-align: middle;
+			    line-height: 1;
+			    font-weight: normal;
+			    font-style: normal;
+			    speak: none;
+			    text-decoration: inherit;
+			    text-transform: none;
+			    text-rendering: optimizeLegibility;
+			    -webkit-font-smoothing: antialiased;
+			    -moz-osx-font-smoothing: grayscale;
+				content: map-get($icons, installer-network);
+				top: 50%;
+				left: 5px;
+				position: absolute;
+				margin-top: -.55em;
+				}
+
+			}
+
+		}
+
+	.dropdown-toggle {
+		color: #fff;
+		}
+
+	}
+
+.navigation-container {
+
+	&[class*="container-"] {
+
+		@include media(max, map-get($breakpoints, laptop)) {
+			padding: 0;
+			}
+
+		}
+
+
+	}

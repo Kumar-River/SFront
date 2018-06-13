@@ -1,0 +1,32 @@
+// Maps to > content type > Story Section Introduction with Hero (Machine name: story_section_introduction)
+
+.\--story-intro {
+  padding: 0 0 rem(10px);
+
+  @include media(max, map-get($breakpoints, tablet)) {
+    padding-bottom: rem(30px);
+  }
+
+
+  img {
+    margin: 0 auto;
+  }
+
+  .masthead {
+    margin: 0;
+  }
+
+  .masthead__image-overlay {
+    text-align: center;
+
+    @include media(max, map-get($breakpoints, tablet)) {
+      text-align: left;
+      margin-bottom: rem(10px);
+      border-bottom: 1px solid map-get($colors, gray-lighter);
+    }
+  }
+
+  .supporting-media img {
+    margin-bottom: rem(50px);
+  }
+}

@@ -1,0 +1,154 @@
+
+// acoridian dialog handler
+
+
+.active-accordion {
+
+	// Active dropdown on Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		.accordion-dialog {
+			height: auto;
+			width: auto;
+			margin: 0 0 rem(20px);
+			position: static;
+			@include translateX-Y(0, 0);
+			}
+
+		}
+
+	.accordion-toggle {
+		top: rem(-5px);
+		@include translateX-Y(0, 0);
+
+		&:after {
+			transform: rotate(90deg) scaleX(-1);
+			}
+
+		}
+
+	}
+
+
+.accordion-item {
+	position: relative;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		a, .active {
+			color: map-get($colors, base-font-color);
+
+			&:hover {
+				color: map-get($colors, alt-font-color);
+				}
+
+			}
+
+		&:before {
+			content: "";
+			display: block;
+			height: rem(1px);
+			background-color: map-get($colors, border-grey-4);
+			bottom: 0;
+			left: 0;
+			right: 0;
+			position: absolute;
+			z-index: 100;
+			}
+
+		}
+
+	// Active dropdown on Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+
+		h4, .accordion-label {
+			font-size: $small-font-size;
+			display: block;
+			font-weight: 400;
+			margin: 0;
+			padding: rem(20px) 0 rem(20px) rem(5px);
+			}
+
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		position: relative;
+		}
+
+	}
+
+
+// Accordion dialog box
+.accordion-dialog {
+	clear: both;
+	@extend %accordion-animation;
+
+	// Mobile / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+		@include translateX-Y(rem(-100px), rem(-1px));
+
+		a {
+			display: block;
+			font-size: $small-font-size;
+			font-weight: 100;
+			padding: rem(8px) rem(20px);
+			}
+
+		}
+
+	}
+
+
+// Toggle accordion on mobile devices
+.accordion-toggle {
+	@extend %button-reset;
+	display: block;
+	right: 0;
+	top: 50%;
+	position: absolute;
+	@include translateX-Y(0, -50%);
+	font-weight: inherit;
+	color: map-get($colors, gray-light);
+	min-height: rem(70px);
+	width: rem(60px);
+	text-align: center;
+	outline-style: none;
+
+	&:after {
+		content: $arrow-value;
+		@extend %icon;
+		font-size: $small-font-size;
+		transform: rotate(90deg);
+		@include transitions-all;
+		}
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		display: none;
+		}
+
+	.toggle-label { display: none; }
+
+	}
+
+.accordion-wrapper {
+
+	@include media(max, map-get($breakpoints, laptop)) {
+		overflow: hidden;
+
+		.accordion-toggle {
+			width: rem(40px);
+			float: right;
+			}
+
+		}
+
+	}

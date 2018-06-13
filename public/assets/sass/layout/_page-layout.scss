@@ -1,0 +1,67 @@
+.page-layout {
+  position: relative;
+
+  @include media(min, map-get($breakpoints, tablet)) {
+    padding: rem(65px) rem(10px);
+  }
+
+
+  @include media(min, map-get($breakpoints, laptop)) {
+    padding: rem(80px) 0;
+  }
+
+
+  &__content {
+    padding: rem(35px) rem(20px);
+
+    .\--with-back-button & {
+      padding-top: 0;
+    }
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      padding: 0;
+
+      @include grid(1, 1);
+    }
+  }
+
+  &__back {
+    display: block;
+    padding: rem(10px) rem(20px);
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: rem(65px);
+      width: 100%;
+      padding: 0 rem(20px);
+    }
+
+
+    @include media(min, map-get($breakpoints, laptop)) {
+      height: rem(80px);
+    }
+  }
+
+  &__back-button {
+    width: 100%;
+    padding: {
+      top: rem(12px);
+      bottom: rem(12px);
+    };
+
+    @include media(min, map-get($breakpoints, tablet)) {
+      width: auto;
+      position: absolute;
+      top: 50%;
+      margin-top: rem(-25px);
+      left: map-get($grid, gutter) * 2;
+    }
+
+
+    @include media(min, map-get($breakpoints, laptop)) {
+      left: map-get($grid, gutter);
+    }
+  }
+}

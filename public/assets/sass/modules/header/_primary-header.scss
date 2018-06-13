@@ -1,0 +1,170 @@
+// Primary Enphase header
+
+.primary-header {
+	background-color: #fff;
+	position: relative;
+	border-style: none;
+	@include transitions-all;
+
+	@include media(min, map-get($breakpoints, laptop)) {
+		padding-top: rem(38px);
+		z-index: 200;
+		@include depth(base);
+		border-color: map-get($colors, border-grey-2);
+		border-style: solid;
+		border-width: 0 0 rem(1px);
+		}
+
+	a {
+		outline-style: none;
+		@include media(min, map-get($breakpoints, laptop)) {
+			text-decoration: none;
+			@include transitions-all;
+			}
+
+		}
+
+	h1 {
+		padding: rem(15px) rem(25px);
+		margin: 0;
+		font-size: rem(1px);
+
+		@include media(min, map-get($breakpoints, laptop)) {
+			float: left;
+			padding: 0;
+			margin: rem(39px) 0 rem(34px);
+			}
+
+		// Mobile / device breakpoint styling
+		@include media(max, map-get($breakpoints, laptop)) {
+			height: rem(49px);
+			padding: 0;
+
+			a {
+				display: block;
+				padding: rem(11px) rem(20px);
+				max-width: rem(180px);
+				}
+
+			}
+
+		img {
+			width: rem(140px);
+			margin: 0;
+			@include media(min, map-get($breakpoints, laptop)) { width: rem(190px); }
+			}
+
+		}
+
+	nav {
+		@include media(min, map-get($breakpoints, laptop)) { float: right; }
+		}
+
+	.toggle-label { display: none; }
+
+
+	.navigation-container {
+		@include media(min, map-get($breakpoints, laptop)) { min-height: 110px; }
+		}
+
+	}
+
+
+// Header that displays on mobile devices
+.device-header {
+	@include media(min, map-get($breakpoints, laptop)) { display: none; }
+	height: rem(49px);
+	position: relative;
+	border-bottom: rem(1px) solid map-get($colors, gray-lighter);
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 301;
+	transition: {
+		property: all;
+		duration: map-get($transition, duration);
+		};
+	@include box-shadow(1px, 2px, 2px, 0, rgba(0,0,0, .1));
+	@include translateX-Y(0, 0);
+
+	img {
+		width: rem(170px);
+		max-width: none;
+		margin: 7px 10px 0 15px;
+		}
+
+	.logo-link {
+		height: rem(49px);
+		width: rem(53px);
+		overflow: hidden;
+		display: block;
+		}
+
+	}
+
+
+// Navigation show hide on mobile
+.toggle-navigation {
+	right: 0;
+	top: 0;
+	position: absolute;
+	cursor: pointer;
+	width: rem(65px);
+	height: rem(49px);
+	padding: rem(10px 0);
+	display: block;
+	outline-style: none;
+
+	&:after, &:before {
+		content: "";
+		display: block;
+		right: 15px;
+		position: absolute;
+		height: rem(3px);
+		width: rem(30px);
+		@include border-radius(1px);
+		transition: {
+			property: all;
+			duration: 600ms;
+			};
+		background-color: map-get($colors, grey);
+
+		}
+
+	&:after { top: 31px; }
+
+	&:before { top: 13px; }
+
+	&.off {
+
+		&:after, &:before  {
+			top: rem(22px);
+			background-color: map-get($colors, orange);
+			}
+
+		&:after { @include transform-rotate(45deg); }
+
+		&:before { @include transform-rotate(-45deg); }
+
+		.meat { opacity: 0; }
+
+		}
+
+	.meat {
+		display: block;
+		height: rem(3px);
+		width: rem(30px);
+		top: 22px;
+		right: 15px;
+		position: absolute;
+		@include border-radius(2px);
+		transition: {
+			property: all;
+			duration: 100ms;
+			};
+		background-color: map-get($colors, grey);
+		}
+
+	}

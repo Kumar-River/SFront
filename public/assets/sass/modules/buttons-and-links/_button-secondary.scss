@@ -1,0 +1,300 @@
+// Primary Partial - Secondary Buttons //
+
+.secondary-button, .button-two, %secondary-button {
+	color: $alt-font-color;
+	background-color: transparent;
+	border: rem(2px) solid map-get($colors, border-grey-4);
+	font-size: $small-font-size;
+	line-height: rem(32px);
+	padding: rem(13px) rem(50px) rem(11px);
+	position: relative;
+	display: inline-block;
+	@include border-radius(5px);
+
+	&:after {
+		content: $arrow-value;
+		@extend %icon;
+		display: inline-block;
+		position: relative;
+		padding-left: rem(4px);
+		font-size: $small-font-size;
+		transform: translate(0, -6%);
+		color: map-get($colors, orange);
+		@include transitions-all;
+		}
+
+	&:hover, &:focus, &.ng-click-active {
+		color: $white;
+		background-color: map-get($colors, border-grey-5);
+		border-color: map-get($colors, border-grey-5);
+
+		&:after {
+			transform: translate(2px, -6%);
+			color: $white;
+			}
+
+		&.\--has-icon [class*="icon"] { border-color: map-get($colors, white); }
+
+        }
+
+    &:focus, &.ng-click-active { @include transitions-none; }
+
+
+// - - - Buttons with icon treatment - - - //
+
+	&.\--has-icon {
+		// mobile-small and up / device breakpoint styling
+		@include media(min, map-get($breakpoints, mobile-small)) {
+			padding-left: rem(90px);
+			padding-right: rem(40px);
+			}
+
+		&:after { display: none; }
+
+		// Treatment for icons with buttons
+		[class*="icon"] {
+			display: none;
+			top: rem(-2px);
+			bottom: rem(-2px);
+			left: 0;
+			position: absolute;
+			width: rem(65px);
+			border-right: rem(1.6px) solid map-get($colors, border-grey-4);
+			@include transitions-all($global-transition-speed, border-color, ease);
+
+
+			// mobile-small and up / device breakpoint styling
+			@include media(min, map-get($breakpoints, mobile-small)) {
+				display: block;
+				}
+
+			&:before {
+				font-size: rem(24px);
+				top: 52%;
+				left: 51%;
+				position: absolute;
+				@include translateX-Y;
+				}
+
+			}
+
+		}
+
+// - - - Sizing themes - - - //
+
+	&.\--tiny {
+		line-height: 1em;
+		padding: rem(10px) rem(25px) rem(9px);
+
+		&:after { display: none; }
+
+		&.\--has-icon {
+			padding-left: rem(60px);
+			padding-right: rem(20px);
+
+			[class*="icon"] {
+				width: rem(40px);
+				&:before {  font-size: rem(22px); }
+
+				}
+
+			}
+
+		}
+
+	&.\--small {
+		line-height: 1em;
+		padding: rem(14px) rem(25px) rem(13px);
+
+		&.\--has-icon {
+			padding-left: rem(65px);
+
+			[class*="icon"] {
+				width: rem(48px);
+
+				&:before { font-size: rem(22px); }
+
+				}
+
+			}
+
+		}
+
+	 &.\--large {
+		line-height: 1em;
+		text-transform: none;
+		padding: rem(30px) rem(50px) rem(28px);
+
+		&.\--has-icon {
+			padding-left: rem(90px);
+			padding-right: rem(40px);
+
+			[class*="icon"]:before { font-size: rem(30px); }
+
+			}
+
+	 	}
+
+// - - - Color button themes - - - //
+
+	// On Brand Blue theme
+	&.\--blue, &%secondary-button--blue {
+		color: $white;
+        border-color: map-get($colors, white);
+
+		&:after { color: $white; }
+
+		&:hover, &:focus, &.ng-click-active {
+			border-color: lighten(map-get($colors, aqua-darker), 5%);
+			background-color: map-get($colors, aqua-dark);
+
+			&:after { color: map-get($colors, white); }
+
+			&.\--has-icon [class*="icon"] {
+				border-color: lighten(map-get($colors, aqua-darker), 5%);
+				}
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $white; }
+
+		&.\--has-icon [class*="icon"] { border-color: map-get($colors, white); }
+
+		}
+
+	// On Gray theme
+	&.\--gray, &%secondary-button--gray {
+		color: $light-font-color;
+        border-color: map-get($colors, border-grey-6);
+
+		&:after { color: $light-font-color; }
+
+		&:hover, &:focus, &.ng-click-active {
+			border-color: map-get($colors, border-grey-8);
+			background-color: darken(map-get($colors, bg-grey-6), 5%);
+
+			&:after { color: map-get($colors, white); }
+
+			&.\--has-icon [class*="icon"] { border-color: map-get($colors, border-grey-8); }
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $light-font-color; }
+
+		&.\--has-icon [class*="icon"] { border-color: map-get($colors, border-grey-6); }
+
+		}
+
+
+	// On white theme
+	&.\--white, &%secondary-button--white {
+		color: $light-font-color;
+        border-color: map-get($colors, border-grey-7);
+
+		&:after { color: $light-font-color; }
+
+		&:hover, &:focus, &.ng-click-active {
+			border-color: darken(map-get($colors, border-grey-9), 10%);
+			background-color: darken(map-get($colors, bg-grey-8), 3%);
+
+			&:after { color: map-get($colors, white); }
+
+			&.\--has-icon [class*="icon"] {
+				border-color: darken(map-get($colors, border-grey-9), 10%);
+				}
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $light-font-color; }
+
+		&.\--has-icon [class*="icon"] { border-color: map-get($colors, border-grey-7); }
+
+		}
+
+
+	// On orange theme
+	&.\--orange, &%secondary-button--orange {
+		color: $white;
+        border-color: map-get($colors, white);
+
+		&:after { color: $white; }
+
+		&:hover, &:focus, &.ng-click-active {
+			border-color: map-get($colors, orange-darker);
+			background-color: map-get($colors, orange-dark);
+
+			&:after { color: map-get($colors, white); }
+
+			&.\--has-icon [class*="icon"] {
+				border-color: map-get($colors, orange-darker);
+				}
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $white; }
+
+		&.\--has-icon [class*="icon"] { border-color: $white; }
+
+		}
+
+
+	// On all-white theme
+	&.\--all-white, &%secondary-button--white-theme {
+		color: $white;
+        border-color: $white;
+
+		&:after { color: $white; }
+
+		&:hover, &:focus, &.ng-click-active {
+			color: map-get($colors, base-font-color);
+			border-color: $white;
+			background-color: $white;
+
+			&:after { color: $white; }
+
+			&.\--has-icon [class*="icon"] {
+				border-color: $white;
+				}
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $white; }
+
+		&.\--has-icon [class*="icon"] { border-color: $white; }
+
+		}
+
+	// On all-orange theme
+	&.\--all-orange, &%secondary-button--orange-theme {
+		color: $white;
+		background-color: map-get($colors, orange);
+        border-color: map-get($colors, orange);
+
+		&:after { color: $white; }
+
+		&:hover, &:focus, &.ng-click-active {
+			color: $white;
+			background-color: map-get($colors, orange-dark);
+	        border-color: map-get($colors, orange-dark);
+
+			&:after { color: $white; }
+
+			&.\--has-icon [class*="icon"] {
+				border-color: $white;
+				}
+
+			}
+
+		// Treatment for icons with buttons
+		&[class*="icon"]:before { color: $white; }
+
+		&.\--has-icon [class*="icon"] { border-color: map-get($colors, orange-dark); }
+
+		}
+
+    }
