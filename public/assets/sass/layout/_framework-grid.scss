@@ -35,23 +35,23 @@ $item-count: 16;
 // desktop 				1040px
 // desktop-small 		960px
 // tablet 				800px
-// tablet-small 		640px
+// tablet-small 		680px
 // small-device 		480px
 // smaller-device		320px
 
 
 // variables: MediaQueries
-$media-huge-desktop: 	2200px;
-$media-xxlarge-desktop: 1600px;
-$media-xlarge-desktop: 	1380px;
-$media-large-desktop: 	1280px;
-$media-largish-desktop: 1120px;
-$media-defaut-desktop: 	1040px;
-$media-small-desktop: 	960px;
-$media-tablet: 			800px;
-$media-tablet-small: 	640px;
-$media-small-device: 	480px;
-$media-smaller-device: 	320px;
+$media-huge-desktop: 	137.5rem;	// =   2200px
+$media-xxlarge-desktop: 100rem;		// =   1600px
+$media-xlarge-desktop: 	86.25rem;	// =   1380px
+$media-large-desktop: 	80rem;		// =   1280px
+$media-largish-desktop: 70rem;		// =   1120px
+$media-defaut-desktop: 	65rem;		// =   1040px
+$media-small-desktop: 	60rem;		// =   960px
+$media-tablet: 			50rem; 		// =   800px
+$media-tablet-small: 	40rem; 		// =   680px
+$media-small-device: 	30rem;		// =   480px
+$media-smaller-device: 	20rem; 		// =   320px
 
 /* ::::::: Core Grid SCSS ::::::: */
 
@@ -313,7 +313,7 @@ $media-smaller-device: 	320px;
   }
 }
 
-/* ----- tablet small and below (640px) ----- */
+/* ----- tablet small and below (680px) ----- */
 @media (max-width: #{$media-tablet-small}) {
   .#{$container-class-token} {
     @include grid-framework(tablet-small);

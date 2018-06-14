@@ -1,0 +1,216 @@
+/* LPUP application Partial - CONTENT SECTION */
+
+.upgrade-content-block {
+
+    // tablet and down / device breakpoint styling
+    @include media(max, map-get($breakpoints, tablet)) {
+
+        h4 i { display: block; }
+
+        }
+
+    a:not([class]) {
+    	color: map-get($colors, orange);
+
+    	&:hover { color: map-get($colors, orange-darker); }
+
+    	}
+
+    .accent-hedding {
+        margin-bottom: rem(30px);
+
+        // tablet and down / device breakpoint styling
+        @include media(max, map-get($breakpoints, tablet)) {
+            text-align: left;
+
+            &:before {
+                left: 0;
+                bottom: 0;
+                @include translateX-Y(0, 0);
+                }
+
+            }
+
+        }
+
+    .item-container {
+        margin: $section-padding-1 $section-padding-2 $section-padding-4;
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+            margin: $section-padding-1 0 $section-padding-3;
+            }
+
+        .\--no-bottom-margin { margin-bottom: 0; }
+
+        p  { margin: 0; }
+
+        }
+
+////// Cards //////
+    .content-card {
+        @include depth;
+        @include border-radius(3px);
+        padding: $section-padding-4 $section-padding-3;
+        margin: $section-padding-4 0;
+        background-color: $white;
+        border: rem(1px) solid map-get($colors, border-grey-2);
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+            margin: $section-padding-3 0;
+            padding: $section-padding-3 $section-padding-2;
+            }
+
+        p:last-child { margin-bottom: 0; }
+
+        ol:last-child, ul:last-child { margin-bottom: 0; }
+
+        }
+
+    &.upgrade-order-review {
+
+        tfoot td {
+            font-weight: $bold;
+            padding: rem(30px) rem(10px);
+            text-align: right;
+
+            &:last-child { text-align: left; }
+
+            }
+
+        }
+
+
+////// Status of order //////
+    .upgrade-status-container {
+        padding: 0 $section-padding-3;
+        margin: $section-padding-3 0;
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+            margin: 0;
+            padding: 0;
+            }
+
+        }
+
+////// Status tracking bar //////
+    .upgrade-status-tracking {
+        font-size: $tiny-font-size;
+        text-align: center;
+        position: relative;
+        margin-top: rem(60px);
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+            text-align: left;
+            }
+
+        &:before {
+            content: "";
+            display: block;
+            top: rem(24px);
+            left: rem(80px);
+            right: rem(80px);
+            position: absolute;
+            height:rem(3px);
+            background-color: map-get($colors, border-grey-2);
+
+            // tablet and down / device breakpoint styling
+        	@include media(max, map-get($breakpoints, tablet)) {
+                top: rem(20px);
+                bottom: rem(50px);
+                left: rem(24px);
+                right: auto;
+                position: absolute;
+                height: auto;
+                width: rem(3px);
+                background-color: map-get($colors, border-grey-2);
+                }
+
+            }
+
+        .active {
+
+            i { display: block; }
+
+            .step-icon {
+                color: $white;
+                background-color: map-get($colors, green);
+                border-color: map-get($colors, green);
+                }
+
+            }
+
+        i { display: none; }
+
+        .label {
+            display: block;
+            margin: rem(15px) auto rem(40px);
+
+            // tablet and down / device breakpoint styling
+        	@include media(max, map-get($breakpoints, tablet)) {
+                float: left;
+                margin: rem(12px) 0 0;
+                }
+
+            }
+
+        .step-icon {
+            background-color: map-get($colors, bg-grey-1);
+            border-color: map-get($colors, border-grey-3);
+
+
+            // tablet and down / device breakpoint styling
+        	@include media(max, map-get($breakpoints, tablet)) {
+                float: left;
+                margin: 0 rem(15px) rem(40px) 0;
+                }
+
+            }
+
+        }
+
+////// Form submit //////
+    .submit-container {
+        padding: 0 rem(20px);
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+
+            .primary-button.help-link { display: none; }
+
+            .primary-button {
+                display: block;
+                width: 100%;
+
+                i { display: none; }
+
+                }
+
+    		}
+
+        }
+
+    &.validation-intro {
+
+        // tablet and down / device breakpoint styling
+    	@include media(max, map-get($breakpoints, tablet)) {
+
+            input {
+                margin-bottom: rem(15px);
+                @include border-radius(3px);
+                }
+
+            .secondary-button {
+                display: block;
+                width: 100%;
+                @include border-radius(5px);
+                }
+
+    		}
+
+        }
+
+    }

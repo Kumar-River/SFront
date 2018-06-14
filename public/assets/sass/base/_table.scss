@@ -87,3 +87,14 @@ thead {
         }
 
     }
+
+.overflow-container {
+
+    // laptop and down / device breakpoint styling
+	@include media(max, map-get($breakpoints, laptop)) {
+		overflow-x: scroll;
+		overflow-y: visible;
+		-webkit-overflow-scrolling: touch; // smooth ios scrolling
+		}
+
+    }

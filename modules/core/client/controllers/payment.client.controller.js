@@ -1,11 +1,11 @@
-(function () {
-  'use strict';
+(function() {
+	'use strict';
 
-  angular
-    .module('core')
-    .controller('PaymentController', PaymentController);
+	angular
+		.module('core')
+		.controller('PaymentController', PaymentController);
 
-  function PaymentController() {
-    var vm = this;
-  }
+	function PaymentController() {
+		var vm = this;
+	}
 }());

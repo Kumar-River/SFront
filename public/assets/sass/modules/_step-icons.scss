@@ -11,7 +11,14 @@
 	height: rem(100px);
 	line-height: rem(100px);
 	font-size: rem(50px);
+	position: relative;
 	@include border-radius(100%);
+
+	// Handling of icon fonts in step icons
+	[class*="icon-"], [data-icon] {
+		@include centered-positioning;
+		font-size: .8em;
+		}
 
 	&.\--center-icon {
 		margin-left: auto;

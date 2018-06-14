@@ -9,6 +9,8 @@
     color: map-get($colors, gray-lighter);
     background-color: map-get($colors, gray-darker);
 	overflow: hidden;
+	@include depth;
+	@include border-radius(0);
 	@include transitions-all;
 
     &.\--orange {
@@ -23,12 +25,6 @@
 	&.\--error-message, &.\--success-message, &.\--status-message {
 		color: $white;
 		font-style: normal;
-		// top: 0;
-		// left: 0;
-		// right: 0;
-		// position: fixed;
-		// z-index: 500;
-		// @include translateX-Y(0, -110%);
 		font-size: $tiny-font-size;
 		padding: rem(11px) rem(40px) rem(12px);
 		@include border-radius(0);

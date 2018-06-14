@@ -5,7 +5,7 @@
 
 	// When form item is a grid framework item
 	&.item {
-		padding-bottom: rem(10px); 
+		padding-bottom: rem(10px);
 		}
 
 	}
@@ -61,7 +61,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="sea
 		border-color: map-get($colors, red);
 		}
 
-	// Sizing themes
+////////// Sizing themes //////////
 	&.\--small {
 		font-size: rem(12px);
 		padding: rem(10px);
@@ -87,7 +87,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="sea
 		font-size: rem(34px);
 		padding: rem(20px);
 		border-width: rem(4px);
-		border-radius: rem(8px);
+		@include border-radius(8px);
 
 		// tablet and down / device breakpoint styling
 		@include media(max, map-get($breakpoints, tablet)) {
@@ -97,7 +97,19 @@ input[type="email"], input[type="password"], input[type="text"], input[type="sea
 
 		}
 
-	// Color Themes
+////////// Styling options //////////
+
+	&.\--no-radius-left {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		}
+
+	&.\--no-radius-right {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		}
+
+////////// Color Themes //////////
 	&.\--white-theme, &%input--white-theme {
 		background-color: $white;
 		border-color: map-get($colors, border-grey-3);

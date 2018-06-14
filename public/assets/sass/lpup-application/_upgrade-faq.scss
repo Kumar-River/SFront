@@ -6,6 +6,8 @@
     margin: $section-padding-5 auto 0;
     border-top: rem(1px) solid map-get($colors, border-grey-4);
 
+    .accent-hedding { margin: 0; }
+
     .faq-information { padding-top: $section-padding-1; }
 
     .price { margin: 0; }

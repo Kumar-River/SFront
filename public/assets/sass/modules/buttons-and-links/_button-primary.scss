@@ -4,7 +4,7 @@
 	color: $white;
 	background-color: map-get($colors, orange);
 	font-size: $small-font-size;
-	padding: rem(11px) rem(30px) rem(10px);
+	padding: rem(15px) rem(30px);
 	border-radius: rem(60px/2);
 
 	&.\--large {
@@ -18,6 +18,17 @@
 
     &:focus, &.ng-click-active { @include transitions-none; }
 
+////////// Styling options //////////
+
+	&.\--no-radius-left {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		}
+
+	&.\--no-radius-right {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		}
 
 // - - - Arrow link button theme base - - - //
 
@@ -137,6 +148,8 @@
 	&.\--inverse, &%primary-button--inverse {
 		color: map-get($colors, orange);
 		background-color: transparent;
+		padding-top: rem(12px);
+		padding-bottom: rem(12px);
 		border: rem(2px) solid map-get($colors, orange);
 
 		&:hover, &:focus, &.ng-click-active {

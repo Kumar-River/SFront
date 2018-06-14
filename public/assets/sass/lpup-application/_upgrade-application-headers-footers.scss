@@ -18,6 +18,19 @@
 	li {
 		display: inline-block;
 		padding: rem(22px) rem(15px);
+
+		// tablet and down / device breakpoint styling
+		@include media(max, map-get($breakpoints, tablet)) {
+			display: block;
+			padding: 0;
+
+			a {
+					padding: rem(10px);
+				display: inline-block;
+				}
+
+			}
+
 		}
 
 	}
