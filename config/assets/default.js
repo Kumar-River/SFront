@@ -9,8 +9,8 @@ module.exports = {
         // bower:css
         // 'public/lib/bootstrap/dist/css/bootstrap.css',
         // 'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        // 'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-        // 'public/lib/angular-material/angular-material.css',
+        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        'public/lib/angular-material/angular-material.css',
         'public/assets/styles/application.css',
         'public/assets/styles-custom/custom.css'
         // endbower
@@ -22,6 +22,7 @@ module.exports = {
         'public/lib/angular-aria/angular-aria.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-material/angular-material.js',
+        'public/lib/angular-cookies/angular-cookies.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/ng-file-upload/ng-file-upload.js',
         'public/lib/angular-messages/angular-messages.js',

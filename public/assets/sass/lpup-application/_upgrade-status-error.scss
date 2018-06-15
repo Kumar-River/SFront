@@ -96,3 +96,69 @@
 		}
 
     }
+
+
+.inline-message-item {
+	font-size: $tiny-font-size;
+	display: block;
+	position: relative;
+	margin: rem(10px) rem(5px);
+
+	i {
+		font-size: rem(18px);
+		margin: 0 rem(10px);
+		}
+
+	.label {
+		display: inline-block;
+		padding: rem(5px) rem(15px);
+		border-left: rem(3px) solid map-get($colors, border-grey-4);
+		}
+
+	&.\--status-message  {
+		color: map-get($colors, aqua);
+
+		.label { border-color: map-get($colors, aqua); }
+
+		}
+
+	&.\--error-message  {
+		color: map-get($colors, red);
+
+		.label { border-color: map-get($colors, red); }
+
+		}
+
+	&.\--success-message {
+		color: map-get($colors, green);
+
+		.label { border-color: map-get($colors, green); }
+
+		}
+
+	}
+
+
+.form-item.inline-message {
+
+	input, select, textarea {
+		border-width: rem(3px);
+		}
+
+	&.\--status-message  {
+
+		input, select, textarea {  border-color: map-get($colors, aqua); }
+
+		}
+
+	&.\--error-message  {
+
+		input, select, textarea { border-color: map-get($colors, red); }
+
+		}
+
+	&.\--success-message {
+		input, select, textarea { border-color: map-get($colors, green); }
+		}
+
+	}

@@ -3834,7 +3834,8 @@ thead {
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-    font-size: .8em; }
+    font-size: .8em;
+    margin-top: -.05em; }
   .step-icon.\--center-icon {
     margin-left: auto;
     margin-right: auto;
@@ -13708,9 +13709,16 @@ Author: Mike Rusczyk / mike@ofad.org / http://hideawaylights.com/mike-rusczyk/
     -webkit-transition: 300ms all ease; }
 
 /* LPUP application Partial - CONTENT SECTION */
-@media screen and (max-width: 40rem) {
+.upgrade-content-block h4, .upgrade-content-block .landing-page-block-container .content-section-header h3, .landing-page-block-container .content-section-header .upgrade-content-block h3 {
+  position: relative; }
   .upgrade-content-block h4 i, .upgrade-content-block .landing-page-block-container .content-section-header h3 i, .landing-page-block-container .content-section-header .upgrade-content-block h3 i {
-    display: block; } }
+    top: -1.125rem;
+    left: -3.75rem;
+    position: absolute; }
+    @media screen and (max-width: 40rem) {
+      .upgrade-content-block h4 i, .upgrade-content-block .landing-page-block-container .content-section-header h3 i, .landing-page-block-container .content-section-header .upgrade-content-block h3 i {
+        position: static;
+        display: block; } }
 
 .upgrade-content-block a:not([class]) {
   color: #f37321; }
@@ -13749,7 +13757,7 @@ Author: Mike Rusczyk / mike@ofad.org / http://hideawaylights.com/mike-rusczyk/
   border: 0.0625rem solid #e5e5e5; }
   @media screen and (max-width: 40rem) {
     .upgrade-content-block .content-card {
-      margin: 2.5rem 0;
+      margin: 2.5rem -0.625rem;
       padding: 2.5rem 1.25rem; } }
   .upgrade-content-block .content-card p:last-child {
     margin-bottom: 0; }
@@ -13941,5 +13949,42 @@ Author: Mike Rusczyk / mike@ofad.org / http://hideawaylights.com/mike-rusczyk/
     margin: 0; }
   .message-container small {
     font-size: 0.75rem; }
+
+.inline-message-item {
+  font-size: 0.875rem;
+  display: block;
+  position: relative;
+  margin: 0.625rem 0.3125rem; }
+  .inline-message-item i {
+    font-size: 1.125rem;
+    margin: 0 0.625rem; }
+  .inline-message-item .label {
+    display: inline-block;
+    padding: 0.3125rem 0.9375rem;
+    border-left: 0.1875rem solid #d1d1d1; }
+  .inline-message-item.\--status-message {
+    color: #00b6de; }
+    .inline-message-item.\--status-message .label {
+      border-color: #00b6de; }
+  .inline-message-item.\--error-message {
+    color: #af0e12; }
+    .inline-message-item.\--error-message .label {
+      border-color: #af0e12; }
+  .inline-message-item.\--success-message {
+    color: #9db93b; }
+    .inline-message-item.\--success-message .label {
+      border-color: #9db93b; }
+
+.form-item.inline-message input, .form-item.inline-message select, .form-item.inline-message textarea {
+  border-width: 0.1875rem; }
+
+.form-item.inline-message.\--status-message input, .form-item.inline-message.\--status-message select, .form-item.inline-message.\--status-message textarea {
+  border-color: #00b6de; }
+
+.form-item.inline-message.\--error-message input, .form-item.inline-message.\--error-message select, .form-item.inline-message.\--error-message textarea {
+  border-color: #af0e12; }
+
+.form-item.inline-message.\--success-message input, .form-item.inline-message.\--success-message select, .form-item.inline-message.\--success-message textarea {
+  border-color: #9db93b; }
 
 /*# sourceMappingURL=application.css.map */

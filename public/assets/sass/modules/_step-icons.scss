@@ -18,6 +18,7 @@
 	[class*="icon-"], [data-icon] {
 		@include centered-positioning;
 		font-size: .8em;
+		margin-top: -.05em;
 		}
 
 	&.\--center-icon {

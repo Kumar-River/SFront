@@ -13,13 +13,14 @@
         <div class="content-card">
           <h5 class="accent-hedding">Address that is being upgraded</h5>
           <div class="item-container">
-            <p><strong>First Name, Last Name</strong></p>
-            <p>1600 Pennsylvania Ave NW</p>
-            <p>Washington, DC 20500</p>
+            <p><strong ng-if="model.customer.first_name != NULL">{{model.customer.first_name}}</strong><strong ng-if="model.customer.first_name != NULL && model.customer.last_name != NULL">, </strong><strong ng-if="model.customer.last_name != NULL">{{model.customer.last_name}}</strong></p>
+            <p>{{model.customer.address1}}</p>
+            <p>{{model.customer.address2}}</p>
+            <p>{{model.customer.city}}, {{model.customer.state}}, {{model.customer.country}} {{model.customer.zip}}</p>
           </div>
           <h5 class="accent-hedding">Number of panels</h5>
           <div class="item-container">
-            <p><strong>24</strong> panels to upgrade</p>
+            <p><strong>{{model.customer.pcu_channel_count}}</strong> panels to upgrade</p>
           </div>
           <hr class="spacer --size-6" />
           <h5 class="accent-hedding">Your order</h5>
@@ -37,28 +38,28 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="#product-list">Microinverters, Envoy, & Accessories</a></td>
-                    <td>$50.00</td>
-                    <td>24</td>
-                    <td>$1200.00</td>
+                    <td><a href="#product-list">{{ui.product.name}}}</a></td>
+                    <td>${{ui.product.price}}</td>
+                    <td>{{model.customer.pcu_channel_count}}</td>
+                    <td>${{orderdetails.totalProductPrice}}</td>
                   </tr>
                   <tr>
                     <td>Tax</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>$150.00</td>
+                    <td>${{orderdetails.totalTax}}</td>
                   </tr>
                   <tr>
                     <td>Shipping</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>$30.00</td>
+                    <td>${{orderdetails.totalShippingCharge}}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colspan="3" class="align-right">Total:</td>
-                    <td colspan="1" class="align-left">$1380.00</td>
+                    <td colspan="1" class="align-left">${{orderdetails.totalAmoutToPay}}</td>
                   </tr>
                 </tfoot>
               </table>

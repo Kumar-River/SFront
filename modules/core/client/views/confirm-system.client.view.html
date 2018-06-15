@@ -13,13 +13,14 @@
         <div class="content-card">
           <h5 class="accent-hedding">Address that is being upgraded</h5>
           <div class="item-container">
-            <p><strong>First Name, Last Name</strong></p>
-            <p>1600 Pennsylvania Ave NW</p>
-            <p>Washington, DC 20500</p>
+            <p><strong ng-if="model.customer.first_name != NULL">{{model.customer.first_name}}</strong><strong ng-if="model.customer.first_name != NULL && model.customer.last_name != NULL">, </strong><strong ng-if="model.customer.last_name != NULL">{{model.customer.last_name}}</strong></p>
+            <p>{{model.customer.address1}}</p>
+            <p>{{model.customer.address2}}</p>
+            <p>{{model.customer.city}}, {{model.customer.state}}, {{model.customer.country}} {{model.customer.zip}}</p>
           </div>
           <h5 class="accent-hedding">Number of panels</h5>
           <div class="item-container">
-            <p><strong>24</strong> panels to upgrade</p>
+            <p><strong>{{model.customer.pcu_channel_count}}</strong> panels to upgrade</p>
             <p class="col-5"><small>* Simple disclaimer statement: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</small></p>
           </div>
           <hr class="spacer --size-6" />
@@ -31,7 +32,7 @@
                 </button>
               </div>
               <div class="form-item item default-8 tablet-small-16 anchord-right align-right">
-                <button class="primary-button --arrow-link" name="submit" type="button">
+                <button class="primary-button --arrow-link" name="submit" type="button" ng-click="onCorrectButtonClicked()">
                   This is Correct
                 </button>
               </div>

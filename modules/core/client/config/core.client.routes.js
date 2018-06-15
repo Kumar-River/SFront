@@ -44,6 +44,26 @@
           }
         }
       })
+      .state('confirmsystem', {
+        templateUrl: '/modules/core/client/views/confirm-system.client.view.html',
+        controller: 'ConfirmSystemController',
+        params: {
+          customer: null
+        },
+        controllerAs: 'vm'
+      })
+      .state('orderdetails', {
+        url: '/orderdetails',
+        templateUrl: '/modules/core/client/views/order-details.client.view.html',
+        controller: 'OrderDetailsController',
+        controllerAs: 'vm'
+      })      
+      .state('help', {
+        url: '/help',
+        templateUrl: '/modules/core/client/views/help.client.view.html',
+        controller: 'HelpController',
+        controllerAs: 'vm'
+      })
       .state('administrator', {
         url: '/admin',
         templateUrl: '/modules/core/client/views/admin_login.client.view.html',

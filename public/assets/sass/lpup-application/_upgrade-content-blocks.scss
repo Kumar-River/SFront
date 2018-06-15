@@ -2,10 +2,21 @@
 
 .upgrade-content-block {
 
-    // tablet and down / device breakpoint styling
-    @include media(max, map-get($breakpoints, tablet)) {
+    h4 {
+        position: relative;
 
-        h4 i { display: block; }
+         i {
+             top: rem(-18px);
+             left: rem(-60px);
+             position: absolute;
+
+            // tablet and down / device breakpoint styling
+            @include media(max, map-get($breakpoints, tablet)) {
+                position: static;
+                display: block;
+                }
+
+            }
 
         }
 
@@ -58,7 +69,7 @@
 
         // tablet and down / device breakpoint styling
     	@include media(max, map-get($breakpoints, tablet)) {
-            margin: $section-padding-3 0;
+            margin: $section-padding-3 rem(-10px);
             padding: $section-padding-3 $section-padding-2;
             }
 

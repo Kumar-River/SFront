@@ -4,14 +4,20 @@
 	angular
 		.module('core')
 		.controller('WelcomeController', WelcomeController);
-	
-	WelcomeController.$inject = ['$scope', 'customerId', 'CustomersService'];
 
-	function WelcomeController($scope, customerId, CustomersService) {
-		var vm = this;
+	WelcomeController.$inject = ['$scope', '$state', '$window', 'customerId', 'CustomersService', 'MESSAGES', 'Notification', 'AuthenticationService'];
+
+	function WelcomeController($scope, $state, $window, customerId, CustomersService, MESSAGES, Notification, AuthenticationService) {
+
+		//AuthenticationService.clearCustomerCredentials();
+		//console.log(JSON.stringify(AuthenticationService.getCustomerCredentials()));
 
 		$scope.model = {
-			customer:null
+			customer: null
+		};
+
+		$scope.ui = {
+			postalCode: null
 		};
 
 		CustomersService.requestCustomer({
@@ -21,15 +27,35 @@
 
 			if (response.length > 0) {
 				$scope.model.customer = response[0];
-			}
-			else {
+			} else {
 				console.log("Customer not found.");
 			}
 
 		});
 
-		console.log("WelcomeController " + customerId);
+		$scope.validatePostalCode = function() {
 
+			if (!$scope.ui.postalCode)
+				return;
+
+			if ($scope.ui.postalCode == $scope.model.customer.zip) {
+
+				$state.go('confirmsystem', {
+					customer: $scope.model.customer
+				});
+				$window.scrollTo(0, 400);
+
+				Notification.success({
+					message: MESSAGES.SUCCESS_MSG_ZIP_CODE,
+					title: '<i class="glyphicon glyphicon-remove"></i> Success'
+				});
+			} else {
+				Notification.error({
+					message: MESSAGES.ERR_MSG_ZIP_CODE,
+					title: '<i class="glyphicon glyphicon-remove"></i> Error'
+				});
+			}
+		};
 
 	}
 }());

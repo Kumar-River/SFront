@@ -4,12 +4,15 @@
   <div class="content-section --section-padding-4">
     <!-- CONTENT block - Validation intro -->
     <section class="validation-intro upgrade-content-block">
-      <div class="col-6 --center-container">
+      <div class="col-6 --center-container" ng-if="!model.customer">
+        <h4>Customer Not Found</h4>
+      </div>
+      <div class="col-6 --center-container" ng-if="model.customer">
         <h4>Welcome</h4>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
       </div>
       <!-- Interaction CARD -->
-      <div class="container-medium --center-container">
+      <div class="container-medium --center-container" ng-if="model.customer">
         <div class="content-card">
           <h5 class="accent-hedding">System verification</h5>
           <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.</p>
@@ -17,10 +20,10 @@
             <div class="column-container collapse">
               <div class="form-item item default-8 tablet-16">
                 <label class="sr-only">Email </label>
-                <input class="--no-radius-right" type="text" placeholder="Postal code" />
+                <input class="--no-radius-right" type="text" ng-model="ui.postalCode" placeholder="Postal code" />
               </div>
               <div class="form-item item default-8 tablet-16">
-                <button class="secondary-button --all-orange --no-radius-left" name="submit" type="button">
+                <button class="secondary-button --all-orange --no-radius-left" name="submit" type="button" ng-click="validatePostalCode()">
                   Look up my system
                 </button>
               </div>
@@ -29,7 +32,7 @@
         </div>
       </div>
       <!-- /end Interaction CARD -->
-      <div class="col-6 --center-container">
+      <div class="col-6 --center-container" ng-if="model.customer">
         <p>If you have any questions regarding your upgrade status or program details, you can find help at our <a href="/">Upgrade Program Support</a> page.</p>
       </div>
     </section>
