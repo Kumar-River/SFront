@@ -27,15 +27,15 @@
     });
 
     $stateProvider
-      .state('home', {
+      .state('adminLogin', {
         url: '/',
-        templateUrl: '/modules/core/client/views/home.client.view.html',
-        controller: 'HomeController',
+        templateUrl: '/modules/core/client/views/admin/admin-login.client.view.html',
+        controller: 'AdminLoginController',
         controllerAs: 'vm'
       })
       .state('welcome', {
         url: '/customer/:customerId',
-        templateUrl: '/modules/core/client/views/welcome.client.view.html',
+        templateUrl: '/modules/core/client/views/customer/welcome.client.view.html',
         controller: 'WelcomeController',
         controllerAs: 'vm',
         resolve: {
@@ -45,7 +45,7 @@
         }
       })
       .state('confirmsystem', {
-        templateUrl: '/modules/core/client/views/confirm-system.client.view.html',
+        templateUrl: '/modules/core/client/views/customer/confirm-system.client.view.html',
         controller: 'ConfirmSystemController',
         params: {
           customer: null
@@ -54,20 +54,20 @@
       })
       .state('orderdetails', {
         url: '/orderdetails',
-        templateUrl: '/modules/core/client/views/order-details.client.view.html',
+        templateUrl: '/modules/core/client/views/customer/order-details.client.view.html',
         controller: 'OrderDetailsController',
+        controllerAs: 'vm'
+      })      
+      .state('payment', {
+        url: '/payment',
+        templateUrl: '/modules/core/client/views/customer/payment.client.view.html',
+        controller: 'PaymentController',
         controllerAs: 'vm'
       })      
       .state('help', {
         url: '/help',
-        templateUrl: '/modules/core/client/views/help.client.view.html',
+        templateUrl: '/modules/core/client/views/customer/help.client.view.html',
         controller: 'HelpController',
-        controllerAs: 'vm'
-      })
-      .state('administrator', {
-        url: '/admin',
-        templateUrl: '/modules/core/client/views/admin_login.client.view.html',
-        controller: 'AdminLoginController',
         controllerAs: 'vm'
       })
       .state('not-found', {

@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="#product-list">{{ui.product.name}}}</a></td>
+                    <td><a href="#product-list">{{ui.product.name}}</a></td>
                     <td>${{ui.product.price}}</td>
                     <td>{{model.customer.pcu_channel_count}}</td>
                     <td>${{orderdetails.totalProductPrice}}</td>
@@ -74,7 +74,7 @@
                 </button>
               </div>
               <div class="form-item item default-8 tablet-small-16 anchord-right align-right">
-                <button class="primary-button --arrow-link" name="submit" type="button">
+                <button class="primary-button --arrow-link" name="submit" type="button" ng-click="onPaymentOptionsClicked()">
                   Next Payment Options
                 </button>
               </div>

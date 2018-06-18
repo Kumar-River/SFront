@@ -8,10 +8,16 @@
 	OrderDetailsController.$inject = ['$scope', '$state', '$window', 'MESSAGES', 'Notification', 'AuthenticationService', 'PRODUCTS'];
 
 	function OrderDetailsController($scope, $state, $window, MESSAGES, Notification, AuthenticationService, PRODUCTS) {
-		var vm = this;
+		
+		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
+
+		if (!customerObjFromCookies) {
+			$state.go('forbidden');
+			return;
+		}
 
 		$scope.model = {
-			customer: AuthenticationService.getCustomerCredentials()
+			customer: customerObjFromCookies
 		};
 
 		$scope.ui = {
@@ -32,7 +38,7 @@
 
 
 		$scope.onPaymentOptionsClicked = function() {
-
+			$state.go('payment');
 		};
 	}
 }());

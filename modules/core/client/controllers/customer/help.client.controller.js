@@ -5,7 +5,9 @@
 		.module('core')
 		.controller('HelpController', HelpController);
 
-	function HelpController() {
+	HelpController.$inject = ['$scope'];
+
+	function HelpController($scope) {
 		var vm = this;
 	}
 }());
