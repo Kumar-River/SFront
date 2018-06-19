@@ -39,6 +39,7 @@
 
 		$scope.onPaymentOptionsClicked = function() {
 			$state.go('payment');
+			$window.scrollTo(0, 400);
 		};
 	}
 }());

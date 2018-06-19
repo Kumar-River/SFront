@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   'use strict';
 
   var applicationModuleName = 'mean';
@@ -6,7 +6,7 @@
   var service = {
     applicationEnvironment: window.env,
     applicationModuleName: applicationModuleName,
-    applicationModuleVendorDependencies: ['ngResource', 'ngAnimate', 'ngMessages', 'ngMaterial', 'ngCookies', 'ui.router', 'ui.bootstrap', 'ngFileUpload', 'ui-notification'],
+    applicationModuleVendorDependencies: ['ngResource', 'ngAnimate', 'ngMessages', 'ngMaterial', 'ngCookies', 'ui.router', 'ui.bootstrap', 'ngFileUpload', 'ui-notification', 'angular-stripe', 'credit-cards'],
     registerModule: registerModule
   };
 
@@ -22,7 +22,7 @@
   }
 
   // Angular-ui-notification configuration
-  angular.module('ui-notification').config(function (NotificationProvider) {
+  angular.module('ui-notification').config(function(NotificationProvider) {
     NotificationProvider.setOptions({
       delay: 2000,
       startTop: 20,
@@ -33,4 +33,8 @@
       positionY: 'bottom'
     });
   });
+
+  /*angular.module('angular-stripe').config(function(stripeProvider) {
+    stripeProvider.setPublishableKey('pk_test_6vQYkVyIW2IzRywcnLh5KMlI');
+  });*/
 }(window));

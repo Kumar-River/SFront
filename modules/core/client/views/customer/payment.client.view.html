@@ -16,22 +16,36 @@
             <div class="column-container fixed-margins">
               <div class="form-item item default-8 tablet-16">
                 <label>Name on card <sup>*</sup></label>
-                <input type="text" required />
+                <input type="text" required ng-model="payment.card.name"/>
               </div>
               <div class="form-item item default-8 tablet-16">
                 <label>Email </label>
-                <input type="email" />
+                <input type="email" ng-model="payment.email"/>
               </div>
               <div class="form-item item default-16">
                 <label>Card number <sup>*</sup></label>
-                <input type="number" value="card-number" required />
+                <input type="number" value="card-number" required ng-model="payment.card.number" />
               </div>
+              <!-- <div class="form-item item default-16">
+                <label>Card number <sup>*</sup></label>
+                <input type="text" ng-model="payment.card.number" name="cardNumber" cc-number cc-eager-type />
+              </div>
+              <p ng-show="paymentForm.cardNumber.$invalid && paymentForm.cardNumber.$ccEagerType">
+                Looks like you're typing a {{paymentForm.cardNumber.$ccEagerType}} number!
+              </p>
+              <p ng-show="paymentForm.cardNumber.$valid">
+                Yes, that looks like a valid {{paymentForm.cardNumber.$ccType}} number!
+              </p>
+              <p ng-show="paymentForm.cardNumber.$error.required">
+                You must enter a credit card number!
+              </p> -->
+
               <div class="form-item item default-12 tablet-16">
                 <label>Expiration Date <sup>*</sup></label>
                 <div class="column-container fixed-margins">
                   <div class="form-item item  default-8">
                     <label class="sr-only" for="card-year">Month </label>
-                    <select id="card-month" name="month">
+                    <select id="card-month" name="month" ng-model="payment.card.exp_month">
                       <option value="" selected="selected">Month</option>
                       <option value="1">01 - January</option>
                       <option value="2">02 - February</option>
@@ -49,25 +63,25 @@
                   </div>
                   <div class="form-item item default-8">
                     <label class="sr-only" for="card-year">Year </label>
-                    <select id="card-year" name="year">
+                    <select id="card-year" name="year" ng-model="payment.card.exp_year">
                       <option value="" selected="selected">Year</option>
-                      <option value="1">2018</option>
-                      <option value="2">2019</option>
-                      <option value="3">2020</option>
-                      <option value="4">2021</option>
-                      <option value="5">2022</option>
-                      <option value="6">2023</option>
-                      <option value="7">2024</option>
-                      <option value="8">2025</option>
-                      <option value="9">2026</option>
-                      <option value="10">2027</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div class="form-item item default-4 tablet-16">
                 <label>Security code <sup>*</sup></label>
-                <input type="number" value="security-code" required />
+                <input type="number" value="security-code" required ng-model="payment.card.cvc"/>
               </div>
             </div>
             <div class="column-container collapse submit-container">
@@ -77,7 +91,7 @@
                 </button>
               </div>
               <div class="form-item item default-8 tablet-small-16 anchord-right align-right">
-                <button class="primary-button --has-icon" name="submit" type="button">
+                <button class="primary-button --has-icon" name="submit" type="button" ng-click="onSubmitClicked()">
                   <i class="icon-lock"></i> Submit
                 </button>
               </div>
