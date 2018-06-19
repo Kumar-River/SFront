@@ -7,18 +7,37 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Order = mongoose.model('Order'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('lodash'),
+  async = require('async'),
+  stripe = require("stripe")("sk_test_OGHUomNfEgmXrbZJd8FduVWP"); //Development
 
 /**
  * Create a Order
  */
-exports.create = function(req, res) {
+exports.create = async function(req, res) {
   var order = new Order(req.body);
   order.user = req.user;
 
-  console.log('order '+JSON.stringify(order));
-  
+  console.log('order ' + JSON.stringify(order));
 
+  const customer = await createCustomer(order);
+  console.log('customer ' + JSON.stringify(customer));
+  if (!customer) {
+    return res.status(400).send({
+      message: 'Unable to create the customer in stripe'
+    });
+  }
+
+  /*const charge = await chargeTheCustomer(customer, 1000);
+  console.log('charge1 ' + JSON.stringify(charge));
+  if (!charge) {
+    return res.status(400).send({
+      message: 'Unable to charge the customer'
+    });
+  }*/
+
+
+  //Save the order
   order.save(function(err) {
     if (err) {
       return res.status(400).send({
@@ -28,7 +47,40 @@ exports.create = function(req, res) {
       res.jsonp(order);
     }
   });
+
 };
+
+
+
+/**
+ * Create a Customer
+ */
+async function createCustomer(order) {
+
+  const customer = await stripe.customers.create({
+    source: order.token,
+    email: order.email
+  });
+
+  return customer;
+}
+
+/**
+ * Charge the Customer instead of the card:
+ */
+async function chargeTheCustomer(customer, amount) {
+
+  const charge = await stripe.charges.create({
+    amount: amount,
+    currency: 'usd',
+    customer: customer.id,
+  });
+
+  return charge;
+}
+
+
+
 
 /**
  * Show the current Order
@@ -106,7 +158,7 @@ exports.orderByID = function(req, res, next, id) {
     });
   }
 
-  Order.findById(id).populate('user', 'displayName').exec(function (err, order) {
+  Order.findById(id).populate('user', 'displayName').exec(function(err, order) {
     if (err) {
       return next(err);
     } else if (!order) {

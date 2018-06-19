@@ -5,7 +5,8 @@
 		.constant('PublishableKey', 'pk_test_6vQYkVyIW2IzRywcnLh5KMlI')//Development
 		.constant('MESSAGES', {
 			'SUCCESS_MSG_ZIP_CODE': 'Postal code verified.',
-			'ERR_MSG_ZIP_CODE': 'Postal code is not correct.',
+			'SUCCESS_MSG_ORDER_PLACED': 'Order place successfully.',
+			'ERR_MSG_ZIP_CODE': 'Postal code is not correct.'
 		})
 		.constant('PRODUCTS', {
 			"items": [{

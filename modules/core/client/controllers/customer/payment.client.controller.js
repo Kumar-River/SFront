@@ -18,76 +18,93 @@
 
 		stripe.setPublishableKey(PublishableKey);
 
+		var first_name = (customerObjFromCookies.first_name != null) ? customerObjFromCookies.first_name : '';
+		var last_name = (customerObjFromCookies.last_name != null) ? customerObjFromCookies.last_name : '';
+		var customerFullname = first_name + last_name;
+
+		$scope.ui = {
+			hasPaymentProcessing : false
+		};
+
 		$scope.payment = {
 			'card': {
 				'number': 4242424242424242,
 				'cvc': 123,
 				'exp_month': 12,
 				'exp_year': 2018,
-				'name': ''
+				'name': customerFullname
 			},
-			'email': ''
+			'email': customerObjFromCookies.email
 		};
 
-		/*var testCard = {
-			'number': '4242424242424242',
-			'cvc': '123',
-			'exp_month': 12,
-			'exp_year': 2018
-		};*/
-
-
-		
-
+		$scope.model = {
+			'order': {
+				'userID': customerObjFromCookies.id,
+				'fullName': customerFullname,
+				'token': '',
+				'email': customerObjFromCookies.email,
+				'siteID': customerObjFromCookies.site_id,
+				'noOfInverters': customerObjFromCookies.pcu_channel_count,
+				'orderStatus': 0, //Todo
+			}
+		};
 
 		$scope.onSubmitClicked = function() {
 
-			//console.log('card '+JSON.stringify(stripe.card.validateCardNumber('4242-1111-1111-1111')));
+			$scope.ui.hasPaymentProcessing = true;
 
-			//console.log('onSubmitClicked ' + JSON.stringify($scope.payment));
+			stripe.card.createToken($scope.payment.card)
+				.then(function(response) {
+					$scope.model.order.token = response.id;
 
-			/*var token = stripe.card.createToken($scope.payment.card)
-			.then(function(response) {
-				console.log('token created for card ending in ', response.card.last4)
-				var payment = angular.copy($scope.payment.card)
-				payment.card = undefined
-				payment.token = response.id
+					OrdersService.save($scope.model.order, successCallback, errorCallback);
 
-				console.log('token ' + JSON.stringify(payment));
+					function successCallback(res) {
 
-				//return $http.post('https://yourserver.com/payments', payment)
-			})
-			.then(function(payment) {
-				console.log('successfully submitted payment for ')
-			})
-			.catch(function(err) {
-				if (err.type && /^Stripe/.test(err.type)) {
-					console.log('Stripe error: ', err.message)
-				} else {
-					console.log('Other error occurred, possibly with your API', err.message)
-				}
-			});
+						$scope.ui.hasPaymentProcessing = false;
+
+						Notification.success({
+							message: MESSAGES.SUCCESS_MSG_ORDER_PLACED,
+							title: '<i class="glyphicon glyphicon-remove"></i> Success'
+						});
+					}
+
+					function errorCallback(res) {
+
+						$scope.ui.hasPaymentProcessing = false;
+
+						Notification.error({
+							message: res.data.message,
+							title: '<i class="glyphicon glyphicon-remove"></i> Error'
+						});
+					}
+
+				})
+				.then(function(payment) {
+					console.log('successfully submitted payment for ')					
+				})
+				.catch(function(err) {
+
+					$scope.ui.hasPaymentProcessing = false;
+
+					if (err.type && /^Stripe/.test(err.type)) {
+						console.log('Stripe error: ', err.message)
+
+						Notification.error({
+							message: err.message,
+							title: '<i class="glyphicon glyphicon-remove"></i> Error'
+						});
+					} else {
+						console.log('Other error occurred, possibly with your API', err.message)
+
+						Notification.error({
+							message: err.message,
+							title: '<i class="glyphicon glyphicon-remove"></i> Error'
+						});
+					}
+				});
 
 
-
-			$scope.model = {
-				'order':{
-					'name': 'kumar',
-					'token': token
-				}
-			};
-
-			OrdersService.save($scope.model.order, successCallback, errorCallback);
-
-			function successCallback(res) {
-				
-				console.log('order success '+res);
-			}
-
-			function errorCallback(res) {
-				//vm.error = res.data.message;
-				console.log('order error '+res.data.message);
-			}*/
 
 		};
 

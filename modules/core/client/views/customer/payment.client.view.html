@@ -91,8 +91,8 @@
                 </button>
               </div>
               <div class="form-item item default-8 tablet-small-16 anchord-right align-right">
-                <button class="primary-button --has-icon" name="submit" type="button" ng-click="onSubmitClicked()">
-                  <i class="icon-lock"></i> Submit
+                <button class="primary-button --has-icon" name="submit" type="button" ng-click="onSubmitClicked()" ng-disabled="ui.hasPaymentProcessing">
+                  <i class="icon-lock"></i> {{ui.hasPaymentProcessing ? "Processing" : "Submit"}}
                 </button>
               </div>
             </div>
