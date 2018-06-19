@@ -1,0 +1,61 @@
+<!-- MAIN CONTENT AREA -->
+<div class="primary-content">
+  <!-- content-section -->
+  <div class="content-section --section-padding-4">
+    <!-- CONTENT block - order-review intro -->
+    <section class="upgrade-order-review upgrade-content-block">      
+      <!-- Interaction CARD -->
+      <div class="col-12 --center-container">
+        <div class="content-card">
+          <div class="item-container"> 
+          <h5 class="accent-hedding" style="position: absolute;">Order List</h5>
+          <form>
+            <div class="col-6 column-container collapse" style="float: right;">
+              <div class="form-item item default-8 tablet-16">
+                <input class="--no-radius-right" type="text" ng-model="searchparams.keyword" placeholder="Search" />
+              </div>
+              <div class="form-item item default-8 tablet-16">
+                <button class="secondary-button --all-orange --no-radius-left" name="submit" type="button">
+                  <i class="icon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="item-container">
+            <div class="overflow-container">
+              <!-- allows for scrolling of tables on mobile devices -->
+              <table class="no-stripeing top-borders">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Customer Name</th>
+                    <th>Site Address</th>
+                    <th>Installer Name</th>
+                    <th>Order Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="order in vm.orderLists | filter: searchparams.keyword" ng-click="vm.orderview(order)" style="cursor: pointer;">
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.orderDate | date: 'short'}}</td>
+                    <td>{{order.customerName}}</td>
+                    <td>{{order.siteAddress}}</td>
+                    <td>{{order.installerName}}</td>
+                    <td>{{order.orderStatus}}</td>
+                  </tr>                  
+                </tbody>                
+              </table>
+            </div>           
+          </div>
+          <div class="form-item item default-4 tablet-small-16">
+            <button class="primary-button --dark" name="submit" type="button" ng-click="vm.hasUploadInstallerList = true" ng-hide="vm.hasUploadInstallerList">
+              Upload Installer List
+            </button>
+            <input type="text" placeholder="Upload Installer List" ng-show="vm.hasUploadInstallerList"/>
+          </div>          
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

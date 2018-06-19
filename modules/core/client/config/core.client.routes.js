@@ -63,7 +63,19 @@
         templateUrl: '/modules/core/client/views/customer/payment.client.view.html',
         controller: 'PaymentController',
         controllerAs: 'vm'
-      })      
+      })
+      .state('admin.orders', {
+        url: '/orders',
+        templateUrl: '/modules/core/client/views/admin/order-list.client.view.html',
+        controller: 'AdminOrderListController',
+        controllerAs: 'vm'
+      })
+      .state('admin.orderview', {
+        url: '/order/:orderId',
+        templateUrl: '/modules/core/client/views/admin/order-view.client.view.html',
+        controller: 'AdminOrderViewController',
+        controllerAs: 'vm'
+      })       
       .state('help', {
         url: '/help',
         templateUrl: '/modules/core/client/views/customer/help.client.view.html',
