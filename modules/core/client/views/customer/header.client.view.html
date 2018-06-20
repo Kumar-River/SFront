@@ -3,7 +3,7 @@
   <header class="application-header">
     <h1>
       <a href="/">
-        <img src="../assets/images/svgs/dist/enphase-logo.svg" alt="Enphase Energy" />
+        <img src="/assets/images/svgs/dist/enphase-logo.svg" alt="Enphase Energy" />
       </a>
     </h1>
     <aside class="application-sub-header column-container collapse">
@@ -14,9 +14,28 @@
         <a class="option-link --foward" ng-click="onNeedHelpClicked()">Need Help?</a>
       </div>
       <div class="item anchord-right" ng-show="authentication.user">
-        <a class="option-link">Welcome, {{authentication.user.displayName}}</a>
-      </div>
+        
       
+      <div class="sub-navigation">
+        <ul class="navigation__list">
+          <li class="dropdown-item active-item">
+            <div class="dropdown-wrapper">
+              <!-- <button type="button" class="dropdown-toggle"><span class="toggle-label">Toggle dropdowns on mobile</span></button> -->
+              <a class="option-link">Welcome, {{authentication.user.displayName}}</a>
+              <div class="dropdown-dialog --scale-open">
+                <div class="dropdown-container dropdown-navigation">
+                  <ul class="dropdown-navigation__list">
+                    <li class="dropdown-navigation__item">
+                      <a href="#" ng-click="logout()" class="first leaf">Logout</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>        
+        </ul>
+      </div>
+      </div>
     </aside>
   </header>
   <!-- /end Basic Application Header -->

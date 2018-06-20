@@ -15,5 +15,10 @@
       $state.go('help');
     };
 
+    $scope.logout = function() {
+      localStorage.removeItem('log_in_time');
+      window.location.href = '/api/auth/signout';
+    };
+
   }
 }());

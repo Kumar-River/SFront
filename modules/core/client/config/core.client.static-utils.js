@@ -20,6 +20,8 @@
 				"shippingcharge": 10
 			}]
 		})
+		.constant('OMIT_KEYS', ['$$hashKey', 'note', 'notedOn'])
+		.constant('KEYS', ['orderStatus'])
 		.constant('ORDER_STATUS', [{
             id: 0,
             name: "Order Placed"

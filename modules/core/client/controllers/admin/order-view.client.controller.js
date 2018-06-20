@@ -5,16 +5,15 @@
     .module('core')
     .controller('AdminOrderViewController', AdminOrderViewController);
 
-  AdminOrderViewController.$inject = ['Authentication', '$scope', '$state', 'orderResolve', 'OrdersService', 'ORDER_STATUS', 'Notification', 'MESSAGES'];
+  AdminOrderViewController.$inject = ['Authentication', '$scope', '$state', 'orderResolve', 'OrdersService', 'ORDER_STATUS', 'Notification', 'MESSAGES', 'OMIT_KEYS', 'KEYS'];
 
-  function AdminOrderViewController(Authentication, $scope, $state, orderResolve, OrdersService, ORDER_STATUS, Notification, MESSAGES) {
+  function AdminOrderViewController(Authentication, $scope, $state, orderResolve, OrdersService, ORDER_STATUS, Notification, MESSAGES, OMIT_KEYS, KEYS) {
     var vm = this;
 
     vm.order = new OrdersService(orderResolve);
-
     vm.order_statuses = ORDER_STATUS;
-
     vm.form = {};
+    vm.originalOrder = angular.copy(orderResolve);
 
     if (!Authentication.user) {
       $state.go('adminLogin');
@@ -38,9 +37,24 @@
       if (vm.note) {
         vm.order.notes.push({
           notedOn: new Date(),
-          note: vm.note
+          note: Authentication.user.displayName + ' has added the notes: ' + vm.note
         });
       }
+
+      _.mergeWith(vm.originalOrder, vm.order, function(objectValue, sourceValue, key, object, source) {
+        if (!(_.isEqual(objectValue, sourceValue)) && (Object(objectValue) !== objectValue) && !_.includes(OMIT_KEYS, key) && objectValue !== undefined) {
+          var originalOrder = objectValue === '' ? 'null' : objectValue;
+          var updatedOrder = sourceValue;
+          if (key === KEYS[0]) {
+            originalOrder = $scope.getOrderStatus(objectValue);
+            updatedOrder = $scope.getOrderStatus(sourceValue);
+          }
+          vm.order.notes.push({
+            notedOn: new Date(),
+            note: Authentication.user.displayName + ' has updated the ' + key + ' from ' + originalOrder + ' to ' + updatedOrder
+          });
+        }
+      });
 
       if (vm.order._id) {
         vm.order.$update(successCallback, errorCallback);
