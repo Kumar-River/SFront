@@ -5,16 +5,18 @@
     .module('core')
     .controller('AdminOrderListController', AdminOrderListController);
 
-  AdminOrderListController.$inject = ['$scope', '$state', 'ordersResolve', 'ORDER_STATUS'];  
+  AdminOrderListController.$inject = ['Authentication', '$scope', '$state', 'ordersResolve', 'ORDER_STATUS'];  
 
-  function AdminOrderListController($scope, $state, ordersResolve, ORDER_STATUS) {
+  function AdminOrderListController(Authentication, $scope, $state, ordersResolve, ORDER_STATUS) {
     var vm = this;
 
     vm.orderview = orderview;
-
     vm.hasUploadInstallerList = false;
-
     vm.orders = ordersResolve;
+
+    if(!Authentication.user) {
+      $state.go('adminLogin');
+    }
 
     $scope.searchparams = {
       keyword: undefined

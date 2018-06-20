@@ -5,9 +5,11 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state'];
+  HeaderController.$inject = ['Authentication', '$scope', '$state'];
 
-  function HeaderController($scope, $state) {
+  function HeaderController(Authentication, $scope, $state) {
+
+    $scope.authentication = Authentication
 
     $scope.onNeedHelpClicked = function() {
       $state.go('help');

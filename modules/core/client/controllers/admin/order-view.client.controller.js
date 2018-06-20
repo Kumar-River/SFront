@@ -5,9 +5,9 @@
     .module('core')
     .controller('AdminOrderViewController', AdminOrderViewController);
 
-  AdminOrderViewController.$inject = ['$scope', '$state', 'orderResolve', 'OrdersService', 'ORDER_STATUS', 'Notification', 'MESSAGES'];
+  AdminOrderViewController.$inject = ['Authentication', '$scope', '$state', 'orderResolve', 'OrdersService', 'ORDER_STATUS', 'Notification', 'MESSAGES'];
 
-  function AdminOrderViewController($scope, $state, orderResolve, OrdersService, ORDER_STATUS, Notification, MESSAGES) {
+  function AdminOrderViewController(Authentication, $scope, $state, orderResolve, OrdersService, ORDER_STATUS, Notification, MESSAGES) {
     var vm = this;
 
     vm.order = new OrdersService(orderResolve);
@@ -15,6 +15,10 @@
     vm.order_statuses = ORDER_STATUS;
 
     vm.form = {};
+
+    if (!Authentication.user) {
+      $state.go('adminLogin');
+    }
 
     $scope.getOrderStatus = function(status) {
       return _.find(ORDER_STATUS, ['id', status]).name;

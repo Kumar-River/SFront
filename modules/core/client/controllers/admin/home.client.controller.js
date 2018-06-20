@@ -13,6 +13,10 @@
     vm.signin = signin;
     vm.authentication = Authentication;
 
+    if (Authentication.user) {
+      $state.go('admin.orders');
+    }
+
     function signin(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.userForm');
@@ -29,6 +33,7 @@
       // If successful we assign the response to the global user model
       vm.authentication.user = response;
       Notification.info({ message: 'Welcome ' + response.firstName });
+      $state.go('admin.orders');
       localStorage.setItem('log_in_time', new Date().getTime());
     }
 
