@@ -5,10 +5,10 @@
 		.module('core')
 		.controller('OrderDetailsController', OrderDetailsController);
 
-	OrderDetailsController.$inject = ['$scope', '$state', '$window', 'MESSAGES', 'Notification', 'AuthenticationService', 'PRODUCTS'];
+	OrderDetailsController.$inject = ['$scope', '$state', '$window', 'Currency', 'MESSAGES', 'Notification', 'AuthenticationService', 'PRODUCTS'];
 
-	function OrderDetailsController($scope, $state, $window, MESSAGES, Notification, AuthenticationService, PRODUCTS) {
-		
+	function OrderDetailsController($scope, $state, $window, Currency, MESSAGES, Notification, AuthenticationService, PRODUCTS) {
+
 		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
 
 		if (!customerObjFromCookies) {
@@ -28,17 +28,18 @@
 		var totalTax = $scope.ui.product.tax * $scope.model.customer.pcu_channel_count;
 		var totalShippingCharge = $scope.ui.product.shippingcharge * $scope.model.customer.pcu_channel_count;
 
-		$scope.orderdetails = {
+		$scope.orderAmountdetails = {
+			currency: Currency,
 			totalProductPrice: totalProductPrice,
 			totalTax: totalTax,
 			totalShippingCharge: totalShippingCharge,
-			totalAmoutToPay: totalProductPrice + totalTax + totalShippingCharge
+			totalAmountToPay: totalProductPrice + totalTax + totalShippingCharge
 		};
 
-
-
 		$scope.onPaymentOptionsClicked = function() {
-			$state.go('payment');
+			$state.go('payment', {
+				orderAmountdetails: $scope.orderAmountdetails
+			});
 			$window.scrollTo(0, 400);
 		};
 	}

@@ -1,11 +1,15 @@
-(function () {
-  'use strict';
+(function() {
+	'use strict';
 
-  angular
-    .module('core')
-    .controller('OrderStatusController', OrderStatusController);
+	angular
+		.module('core')
+		.controller('OrderStatusController', OrderStatusController);
 
-  function OrderStatusController() {
-    var vm = this;
-  }
+	OrderStatusController.$inject = ['$scope', '$state'];
+
+	function OrderStatusController() {
+		var vm = this;
+
+		
+	}
 }());

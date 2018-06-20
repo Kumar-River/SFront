@@ -3,6 +3,7 @@
 	angular
 		.module('core', [])
 		.constant('PublishableKey', 'pk_test_6vQYkVyIW2IzRywcnLh5KMlI')//Development
+		.constant('Currency', 'usd')
 		.constant('MESSAGES', {
 			'SUCCESS_MSG_ZIP_CODE': 'Postal code verified.',
 			'SUCCESS_MSG_ORDER_PLACED': 'Order place successfully.',

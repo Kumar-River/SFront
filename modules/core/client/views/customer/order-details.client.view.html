@@ -41,25 +41,25 @@
                     <td><a href="#product-list">{{ui.product.name}}</a></td>
                     <td>${{ui.product.price}}</td>
                     <td>{{model.customer.pcu_channel_count}}</td>
-                    <td>${{orderdetails.totalProductPrice}}</td>
+                    <td>${{orderAmountdetails.totalProductPrice}}</td>
                   </tr>
                   <tr>
                     <td>Tax</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>${{orderdetails.totalTax}}</td>
+                    <td>${{orderAmountdetails.totalTax}}</td>
                   </tr>
                   <tr>
                     <td>Shipping</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>${{orderdetails.totalShippingCharge}}</td>
+                    <td>${{orderAmountdetails.totalShippingCharge}}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colspan="3" class="align-right">Total:</td>
-                    <td colspan="1" class="align-left">${{orderdetails.totalAmoutToPay}}</td>
+                    <td colspan="1" class="align-left">${{orderAmountdetails.totalAmountToPay}}</td>
                   </tr>
                 </tfoot>
               </table>
