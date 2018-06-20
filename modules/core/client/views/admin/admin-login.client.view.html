@@ -3,19 +3,40 @@
   <!-- content-section -->
   <div class="content-section --section-padding-4">
     <!-- CONTENT block - order-review intro -->
-    <section class="upgrade-order-review upgrade-content-block">      
+    <section class="upgrade-order-review upgrade-content-block">
       <!-- Interaction CARD -->
       <div class="col-6 --center-container">
         <div class="content-card">
-          <div class="item-container"> 
-          <h5 class="accent-hedding"><i class="icon-lock"></i> &nbsp; Login</h5>         
-          <div class="form-item item default-6 tablet-small-16">
-            <button class="primary-button" name="submit" type="button" >
-              <i class="icon-square-mail"></i> 
-            </button>
-          </div>          
+          <form name="vm.userForm" autocomplete="off" novalidate="" class="form-signin" role="form">
+            <div class="item-container">
+              <h5 class="accent-hedding"><i class="icon-lock"></i> &nbsp; Login</h5>
+              <div class="form-item item default-6 tablet-small-16">
+                <div class="form-item item default-8 tablet-16">
+                  <label>Username</label>
+                  <input type="email" id="usernameOrEmail" name="usernameOrEmail" required ng-model="vm.credentials.usernameOrEmail" placeholder="Email" required/>
+                  <div ng-messages="vm.userForm.usernameOrEmail.$error" role="alert">
+                    <p class="help-block error-msg" ng-message="required">Email address is required.</p>
+                    <p class="help-block error-msg" ng-message="email">Email address is invalid.</p>
+                  </div>
+                </div>
+                <div class="form-item item default-8 tablet-16">
+                  <label>Password </label>
+                  <input type="password" id="password" name="password" ng-model="vm.credentials.password" placeholder="Password" required/>
+                  <div ng-messages="vm.userForm.password.$error" role="alert">
+                    <p class="help-block error-msg" ng-message="required">Password is required.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="column-container collapse submit-container">
+                <div class="form-item item default-8 tablet-small-16">
+                  <button class="primary-button --has-icon" name="submit" ng-click="vm.signin(vm.userForm.$valid)" type="button">
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
     </section>
+    </div>
   </div>
-</div>
