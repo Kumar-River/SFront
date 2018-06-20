@@ -62,6 +62,15 @@
         url: '/payment',
         templateUrl: '/modules/core/client/views/customer/payment.client.view.html',
         controller: 'PaymentController',
+        params: {
+          orderAmountdetails: null
+        },
+        controllerAs: 'vm'
+      })      
+      .state('orderstatus', {
+        url: '/orderstatus',
+        templateUrl: '/modules/core/client/views/customer/order-status.client.view.html',
+        controller: 'OrderStatusController',
         controllerAs: 'vm'
       })
       .state('admin.orders', {

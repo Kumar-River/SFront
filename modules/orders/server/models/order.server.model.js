@@ -9,19 +9,17 @@ var mongoose = require('mongoose'),
 /**
  * Order Schema
  */
-var OrderSchema = new Schema({
+var OrderSchema = new Schema({  
   userID: {
     type: String,
-    required: 'Customer user id is missing',
+    required: 'User id is missing',
     trim: true
   },
-  fullName: {
-    type: String,
-    default: '',
-    required: 'name is missing',
-    trim: true
+  customer:{
+    type: Object,
+    required: 'Customer object is missing'
   },
-  token: {
+  stripeToken: {
     type: String,
     required: 'token is missing',
     trim: true
@@ -41,6 +39,13 @@ var OrderSchema = new Schema({
     required: 'Number of inverters is missing',
     trim: true
   },
+  orderId: {
+    type: Number
+  },
+  orderAmountdetails: {
+    type: Object,
+    required: 'Order total is missing'
+  },
   orderStatus: {
     type: Number,
     required: 'Order status is missing',
@@ -50,6 +55,9 @@ var OrderSchema = new Schema({
     type: Date,
     default: '',
     trim: true
+  },
+  stripeCustomer:{
+    type: Object
   },
   oracleOrderId:{
     type: String,

@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Order = mongoose.model('Order'),
+  Counter = mongoose.model('Counter'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash'),
   async = require('async'),
@@ -16,26 +17,22 @@ var path = require('path'),
  */
 exports.create = async function(req, res) {
   var order = new Order(req.body);
-  order.user = req.user;
 
-  console.log('order ' + JSON.stringify(order));
+  var orderIdCounter = await getOrderIdCounter();
+  if (!orderIdCounter) {
+    return res.status(500).send({
+      message: 'Unable to create order Id'
+    });
+  }
+  order.orderId = orderIdCounter.seq;
 
-  const customer = await createCustomer(order);
-  console.log('customer ' + JSON.stringify(customer));
+  const customer = await createCustomerInStripe(order);
   if (!customer) {
-    return res.status(400).send({
+    return res.status(500).send({
       message: 'Unable to create the customer in stripe'
     });
   }
-
-  /*const charge = await chargeTheCustomer(customer, 1000);
-  console.log('charge1 ' + JSON.stringify(charge));
-  if (!charge) {
-    return res.status(400).send({
-      message: 'Unable to charge the customer'
-    });
-  }*/
-
+  order.stripeCustomer = customer;
 
   //Save the order
   order.save(function(err) {
@@ -51,11 +48,39 @@ exports.create = async function(req, res) {
 };
 
 
+/**
+ * Create Order Id
+ */
+async function getOrderIdCounter() {
+  const counterNameKey = 'orderid';
+  //If order id is already there then increment by 1.
+  var counter = await Counter.findOneAndUpdate({
+    counterName: counterNameKey
+  }, {
+    $inc: {
+      seq: 1
+    }
+  });
+
+  if (counter == null) {
+    const startingOrderId = 1;
+
+    var counterObj = new Counter({
+          counterName: counterNameKey,
+          seq: startingOrderId + 1 //save with default value plus 1 for next order Id.
+        });
+
+    counter = await counterObj.save();//create order id with default value.
+    counter.seq = startingOrderId;
+  }
+  return counter;
+}
+
 
 /**
- * Create a Customer
+ * Create a Customer in Stripe
  */
-async function createCustomer(order) {
+async function createCustomerInStripe(order) {
 
   const customer = await stripe.customers.create({
     source: order.token,
@@ -78,9 +103,6 @@ async function chargeTheCustomer(customer, amount) {
 
   return charge;
 }
-
-
-
 
 /**
  * Show the current Order

@@ -34,7 +34,7 @@
                 <label>Site Address: </label>
               </div>
               <div class="form-item item default-5 tablet-16">
-                <b>{{order.customer.address1}}, {{order.customer.city}}, {{order.customer.state}}</b>
+                <b>{{vm.order.customer.address1}}, {{vm.order.customer.city}}, {{vm.order.customer.state}}</b>
               </div>
             </div>
             <div class="column-container">
@@ -48,7 +48,7 @@
                 <label>Payment Amount: </label>
               </div>
               <div class="form-item item default-5 tablet-16">
-                <b>${{vm.order.orderAmount}} </b>
+                <b>${{vm.order.orderAmountdetails.totalAmountToPay}} </b>
               </div>
             </div>
             <div class="column-container">

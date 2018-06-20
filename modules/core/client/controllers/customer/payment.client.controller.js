@@ -11,7 +11,7 @@
 
 		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
 
-		if (!customerObjFromCookies) {
+		if (!customerObjFromCookies || !$state.params.orderAmountdetails) {
 			$state.go('forbidden');
 			return;
 		}
@@ -23,45 +23,50 @@
 		var customerFullname = first_name + last_name;
 
 		$scope.ui = {
-			hasPaymentProcessing : false
+			hasPaymentProcessing: false
 		};
 
 		$scope.payment = {
 			'card': {
 				'number': 4242424242424242,
-				'cvc': 123,
-				'exp_month': 12,
-				'exp_year': 2018,
+				'cvc': null,
+				'exp_month': null,
+				'exp_year': null,
 				'name': customerFullname
-			},
-			'email': customerObjFromCookies.email
+			}
 		};
 
 		$scope.model = {
 			'order': {
 				'userID': customerObjFromCookies.id,
-				'fullName': customerFullname,
-				'token': '',
+				'customer': customerObjFromCookies,
+				'stripeToken': '',
 				'email': customerObjFromCookies.email,
 				'siteID': customerObjFromCookies.site_id,
 				'noOfInverters': customerObjFromCookies.pcu_channel_count,
+				'orderAmountdetails': $state.params.orderAmountdetails,
 				'orderStatus': 0, //Todo
 			}
 		};
 
-		$scope.onSubmitClicked = function() {
+		$scope.onSubmitClicked = function(form) {
+
+			if (form.$invalid)
+				return;
 
 			$scope.ui.hasPaymentProcessing = true;
 
 			stripe.card.createToken($scope.payment.card)
 				.then(function(response) {
-					$scope.model.order.token = response.id;
+					$scope.model.order.stripeToken = response.id;
 
 					OrdersService.save($scope.model.order, successCallback, errorCallback);
 
 					function successCallback(res) {
 
 						$scope.ui.hasPaymentProcessing = false;
+
+						$state.go('orderstatus');
 
 						Notification.success({
 							message: MESSAGES.SUCCESS_MSG_ORDER_PLACED,
@@ -80,9 +85,6 @@
 					}
 
 				})
-				.then(function(payment) {
-					console.log('successfully submitted payment for ')					
-				})
 				.catch(function(err) {
 
 					$scope.ui.hasPaymentProcessing = false;
@@ -95,8 +97,6 @@
 							title: '<i class="glyphicon glyphicon-remove"></i> Error'
 						});
 					} else {
-						console.log('Other error occurred, possibly with your API', err.message)
-
 						Notification.error({
 							message: err.message,
 							title: '<i class="glyphicon glyphicon-remove"></i> Error'
