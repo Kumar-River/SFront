@@ -68,13 +68,21 @@
         url: '/orders',
         templateUrl: '/modules/core/client/views/admin/order-list.client.view.html',
         controller: 'AdminOrderListController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          ordersResolve: ['$injector', '$q', function($injector, $q) {
+            return $injector.invoke(orderData).$promise;   // cached, otherwise we would have called IncidentNoteTitle.query().
+          }]
+        },
       })
       .state('admin.orderview', {
         url: '/order/:orderId',
         templateUrl: '/modules/core/client/views/admin/order-view.client.view.html',
         controller: 'AdminOrderViewController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          orderResolve: getOrder,
+        },
       })       
       .state('help', {
         url: '/help',
@@ -118,4 +126,19 @@
         }
       });
   }
+
+  getOrder.$inject = ['$stateParams', 'OrdersService'];
+
+  function getOrder($stateParams, OrdersService) {
+    return OrdersService.get({
+      orderId: $stateParams.orderId
+    }).$promise;
+  }
+
+  orderData.$inject = ['OrdersService'];
+
+  function orderData(OrdersService) {
+    return OrdersService.query();
+  }
+
 }());

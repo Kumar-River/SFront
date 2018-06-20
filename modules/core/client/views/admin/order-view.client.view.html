@@ -4,158 +4,155 @@
   <div class="content-section --section-padding-4">
     <!-- CONTENT block - order-review intro -->
     <section class="upgrade-order-review upgrade-content-block">
-      <!-- Interaction CARD -->
-      <div class="col-12 --center-container">
-        <div class="content-card">
-          <h5 class="accent-hedding">Order</h5>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Customer ID: </label>
+      <form name="vm.form.orderForm" class="form-horizontal" novalidate>
+        <!-- Interaction CARD -->
+        <div class="col-12 --center-container">
+          <div class="content-card">
+            <h5 class="accent-hedding">Order</h5>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Customer ID: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>{{vm.order.customer.id}} </b>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Site ID: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>{{vm.order.customer.site_id}} </b>
+              </div>
             </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>45001 </b>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Customer Name: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>{{vm.order.customer.first_name}} {{vm.order.customer.last_name}} </b>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Site Address: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>{{order.customer.address1}}, {{order.customer.city}}, {{order.customer.state}}</b>
+              </div>
             </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Site ID: </label>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Customer Contacts: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>{{vm.order.email}}</b>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Payment Amount: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <b>${{vm.order.orderAmount}} </b>
+              </div>
             </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>356 </b>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>No of Inverters: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <input type="number" placeholder="No of Inverters " ng-model="vm.order.noOfInverters" />
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Payment Ref: </label>
+              </div>
+              <div class="form-item item default-2 tablet-16">
+                <b>{{getOrderStatus(vm.order.orderStatus)}} </b>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <button class="primary-button --has-icon" name="submit" type="button">
+                  Proceed
+                </button>
+              </div>
             </div>
           </div>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Customer Name: </label>
+          <div class="content-card">
+            <h5 class="accent-hedding">Order Attributes</h5>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Installer Name: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <select id="card-year" name="year">
+                  <option value="" selected="selected">Installer Name</option>
+                  <option value="Solar Inc">Solar Inc</option>
+                  <option value="Franklin Solar Inc">Franklin Solar Inc</option>
+                </select>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Oracle Order ID: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <input type="text" placeholder="Oracle Order ID" ng-model="vm.order.oracleOrderId" />
+              </div>
             </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>John Doe </b>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Installer Contacts: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <input type="text" placeholder="Address Line 1" />
+                <br />
+                <input type="text" placeholder="Address Line 2" />
+                <br />
+                <input type="email" placeholder="Mail Id" />
+                <br />
+                <div class="form-item item default-4 tablet-16">
+                  <input type="text" placeholder="(+1)" />
+                </div>
+                <div class="form-item item default-12 tablet-16">
+                  <input type="text" placeholder="Mobile No" />
+                </div>
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Salesforce Case ID: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <input type="text" placeholder="Salesforce Case ID" ng-model="vm.order.salesForceCaseId" />
+              </div>
             </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Site Address: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>626 1st Ave New York </b>
+            <div class="column-container">
+              <div class="form-item item default-3 tablet-16">
+                <label>Installation Date: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <input type="text" placeholder="Installation Date" ng-model="vm.order.installationDate" />
+              </div>
+              <div class="form-item item default-3 tablet-16">
+                <label>Order Status: </label>
+              </div>
+              <div class="form-item item default-5 tablet-16">
+                <select id="orderStatus" name="orderStatus" ng-model="vm.order.orderStatus" ng-options="order_status.id as order_status.name for order_status in vm.order_statuses" required></select>
+              </div>
             </div>
           </div>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Customer Contacts: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>john@gmail.com </b>
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Payment Amount: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <b>$459 </b>
+          <div class="content-card">
+            <h5 class="accent-hedding">Notes</h5>
+            <div class="item-container">
+              <p ng-repeat="note in vm.order.notes"> {{note.notedOn | date: 'short'}}: {{note.note}} </p>
+              <br />
+              <input type="text" placeholder="Type notes here" ng-model="vm.note" />
             </div>
           </div>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>No of Inverters: </label>
+          <div class="column-container collapse submit-container" style="margin-left: 30%">
+            <div class="form-item item default-4 tablet-small-16">
+              <button class="primary-button --dark" ng-click="back()" name="submit" type="button">
+                Back
+              </button>
             </div>
-            <div class="form-item item default-5 tablet-16">
-              <input type="number" placeholder="No of Inverters " />
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Payment Ref: </label>
-            </div>
-            <div class="form-item item default-2 tablet-16">
-              <b>Pending </b>
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <button class="primary-button --has-icon" name="submit" type="button">
-                Proceed
+            <div class="form-item item default-4 tablet-small-16">
+              <button class="primary-button" ng-click="save(vm.form.orderForm.$valid)" name="submit" type="button">
+                Update
               </button>
             </div>
           </div>
         </div>
-        <div class="content-card">
-          <h5 class="accent-hedding">Order Attributes</h5>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Installer Name: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <select id="card-year" name="year">
-                <option value="" selected="selected">Installer Name</option>
-                <option value="Solar Inc">Solar Inc</option>
-                <option value="Franklin Solar Inc">Franklin Solar Inc</option>
-              </select>
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Oracle Order ID: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <input type="text" placeholder="Oracle Order ID" />
-            </div>
-          </div>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Installer Contacts: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <input type="text" placeholder="Address Line 1" />
-              <br />
-              <input type="text" placeholder="Address Line 2" />
-              <br />
-              <input type="email" placeholder="Mail Id" />
-              <br />
-              <div class="form-item item default-4 tablet-16">
-                <input type="text" placeholder="(+1)" />
-              </div>
-              <div class="form-item item default-12 tablet-16">
-                <input type="text" placeholder="Mobile No" />
-              </div>
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Salesforce Case ID: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <input type="text" placeholder="Salesforce Case ID" />
-            </div>
-          </div>
-          <div class="column-container">
-            <div class="form-item item default-3 tablet-16">
-              <label>Installation Date: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <input type="text" placeholder="Installation Date" />
-            </div>
-            <div class="form-item item default-3 tablet-16">
-              <label>Order Status: </label>
-            </div>
-            <div class="form-item item default-5 tablet-16">
-              <select id="card-year" name="year">
-                <option value="" selected="selected">Order Status</option>
-                <option value="Order Placed">Order Placed</option>
-                <option value="Installer Confirmed">Installer Confirmed</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="content-card">
-          <h5 class="accent-hedding">Notes</h5>
-          <div class="item-container">
-            <p> 09:56: Admin 1 has changed the installation date from 07/18/18 to 07/20/18 </p>
-            <p> 09:58: Admin 1 has added installer will go to site on 07/20/18 </p>
-            <br />
-            <input type="text" placeholder="Type notes here" />
-          </div>
-        </div>
-        <div class="column-container collapse submit-container" style="margin-left: 30%">
-          <div class="form-item item default-4 tablet-small-16">
-            <button class="primary-button --dark" name="submit" type="button">
-              Back
-            </button>
-          </div>
-          <div class="form-item item default-4 tablet-small-16">
-            <button class="primary-button" name="submit" type="button">
-              Update
-            </button>
-          </div>
-        </div>
-      </div>
+      </form>
     </section>
     <!-- /end CONTENT block -  order-review intro -->
   </div>

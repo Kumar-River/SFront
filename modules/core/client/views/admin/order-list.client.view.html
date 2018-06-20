@@ -36,13 +36,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="order in vm.orderLists | filter: searchparams.keyword" ng-click="vm.orderview(order)" style="cursor: pointer;">
+                  <tr ng-repeat="order in vm.orders | filter: searchparams.keyword" ng-click="vm.orderview(order)" style="cursor: pointer;">
                     <td>{{order.orderId}}</td>
-                    <td>{{order.orderDate | date: 'short'}}</td>
-                    <td>{{order.customerName}}</td>
-                    <td>{{order.siteAddress}}</td>
-                    <td>{{order.installerName}}</td>
-                    <td>{{order.orderStatus}}</td>
+                    <td>{{order.createdAt | date: 'short'}}</td>
+                    <td>{{order.customer.first_name}} {{order.customer.last_name}}</td>
+                    <td>{{order.customer.address1}}, {{order.customer.city}}, {{order.customer.state}}</td>
+                    <td>{{order.installerName ? order.installerName : 'Awaiting'}}</td>
+                    <td>{{getOrderStatus(order.orderStatus)}}</td>
                   </tr>                  
                 </tbody>                
               </table>
