@@ -14,19 +14,19 @@
           <hr class="spacer --size-7" />
           <h5 class="accent-hedding --centerd">Order status</h5>
           <ul class="upgrade-status-tracking column-container collapse">
-            <li ng-class="getStausClass(0)">
+            <li class="item default-4  tablet-small-16" ng-class="{'active': 0 <= orderDetails.orderStatus, 'inactive': ! 0 <= orderDetails.orderStatus}">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
               <span class="label">{{getOrderStatus(0)}}</span>
             </li>
-            <li ng-class="getStausClass(1)">
+            <li class="item default-4  tablet-small-16" ng-class="{'active': 1 <= orderDetails.orderStatus, 'inactive': ! 1 <= orderDetails.orderStatus}">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
               <span class="label">{{getOrderStatus(1)}}</span>
             </li>
-            <li ng-class="getStausClass(2)">
+            <li class="item default-4  tablet-small-16" ng-class="{'active': 2 <= orderDetails.orderStatus, 'inactive': ! 2 <= orderDetails.orderStatus}">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
               <span class="label">{{getOrderStatus(2)}}</span>
             </li>
-            <li ng-class="getStausClass(3)">
+            <li class="item default-4  tablet-small-16" ng-class="{'active': 3 <= orderDetails.orderStatus, 'inactive': ! 3 <= orderDetails.orderStatus}">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
               <span class="label">{{getOrderStatus(3)}}</span>
             </li>
@@ -40,8 +40,8 @@
           <h5 class="accent-hedding">Address of upgraded</h5>
           <div class="item-container">
             <p><strong ng-if="model.customer.first_name != NULL">{{model.customer.first_name}}</strong><strong ng-if="model.customer.last_name != NULL"> {{model.customer.last_name}}</strong></p>
-            <p>{{model.customer.address1}}</p>
-            <p>{{model.customer.address2}}</p>
+            <p ng-hide="model.customer.address1 === 'NULL'">{{model.customer.address1}}</p>
+            <p ng-hide="model.customer.address2 === 'NULL'">{{model.customer.address2}}</p>
             <p>{{model.customer.city}}, {{model.customer.state}}, {{model.customer.country}} {{model.customer.zip}}</p>
           </div>
           <h5 class="accent-hedding">Number of panels</h5>

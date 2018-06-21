@@ -12,6 +12,8 @@
 		console.log('customerResolve ' + JSON.stringify(customerResolve));
 		console.log('orderResolve ' + JSON.stringify(orderResolve));
 
+		$scope.isHided = false;
+
 		if (!customerResolve || customerResolve.length == 0 || !orderResolve) {
 			$state.go('not-found');
 			return;
@@ -39,14 +41,5 @@
 			return _.find(ORDER_STATUS, ['id', status]).name;
 		};
 
-		$scope.getStausClass = function(status) {
-
-			if (status <= $scope.orderDetails.orderStatus) {
-				return 'item default-4  tablet-small-16 active';
-			} else {
-				return 'item default-4  tablet-small-16';
-			}
-
-		}
 	}
 }());
