@@ -67,7 +67,8 @@
 						$scope.ui.hasPaymentProcessing = false;
 
 						$state.go('orderstatus', {
-							orderDetails: res
+							customerId: customerObjFromCookies.id,
+							orderId: res._id
 						});
 
 						Notification.success({

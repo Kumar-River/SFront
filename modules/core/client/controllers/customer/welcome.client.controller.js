@@ -5,9 +5,9 @@
 		.module('core')
 		.controller('WelcomeController', WelcomeController);
 
-	WelcomeController.$inject = ['$scope', '$state', '$window', 'customerId', 'CustomersService', 'MESSAGES', 'Notification', 'AuthenticationService', 'OrdersService'];
+	WelcomeController.$inject = ['$scope', '$state', '$window', 'MESSAGES', 'Notification', 'AuthenticationService', 'customerResolve', 'ordersResolve'];
 
-	function WelcomeController($scope, $state, $window, customerId, CustomersService, MESSAGES, Notification, AuthenticationService, OrdersService) {
+	function WelcomeController($scope, $state, $window, MESSAGES, Notification, AuthenticationService, customerResolve, ordersResolve) {
 
 		$scope.model = {
 			customer: null
@@ -17,18 +17,25 @@
 			postalCode: null
 		};
 
-		CustomersService.requestCustomer({
-			"id": customerId
-		}).then(function(response) {
-			console.log("response " + JSON.stringify(response));
+		if (!customerResolve || customerResolve.length == 0) {
+			//AuthenticationService.clearCustomerCredentials();
+			return;
+		}
+		$scope.model.customer = customerResolve[0];
 
-			if (response.length > 0) {
-				$scope.model.customer = response[0];
-			} else {
-				console.log("Customer not found.");
-			}
+		if (ordersResolve && ordersResolve.length > 0) {
 
-		});
+			AuthenticationService.setCustomerCredentials($scope.model.customer);
+
+			$state.go('orderstatus', {
+				customerId: $scope.model.customer.id,
+				orderId: ordersResolve[0]._id
+			});
+
+			return;
+		}
+
+		console.log('customerzip '+$scope.model.customer.zip);
 
 		$scope.validatePostalCode = function() {
 

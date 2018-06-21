@@ -39,9 +39,8 @@
         controller: 'WelcomeController',
         controllerAs: 'vm',
         resolve: {
-          customerId: function($stateParams) {
-            return $stateParams.customerId;
-          }
+          customerResolve: getCustomer,
+          ordersResolve: getOrdersByCustomerId
         }
       })
       .state('confirmsystem', {
@@ -53,10 +52,14 @@
         controllerAs: 'vm'
       })
       .state('orderdetails', {
-        url: '/orderdetails',
+        url: '/customer/:customerId/orderdetails',
         templateUrl: '/modules/core/client/views/customer/order-details.client.view.html',
         controller: 'OrderDetailsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          customerResolve: getCustomer,
+          ordersResolve: getOrdersByCustomerId
+        }
       })
       .state('payment', {
         url: '/payment',
@@ -69,14 +72,12 @@
         controllerAs: 'vm'
       })
       .state('orderstatus', {
-        url: '/orderstatus',
+        url: '/customer/:customerId/:orderId',
         templateUrl: '/modules/core/client/views/customer/order-status.client.view.html',
         controller: 'OrderStatusController',
-        params: {
-          orderDetails: null
-        },
         resolve: {
-          ordersResolve: getOrderByCustomerId
+          customerResolve: getCustomer,
+          orderResolve: getOrder
         }
       })
       .state('admin.orders', {
@@ -156,27 +157,20 @@
     return OrdersService.query();
   }
 
-  getOrderByCustomerId.$inject = ['$stateParams', 'AuthenticationService', 'OrdersService'];
+  getOrdersByCustomerId.$inject = ['$stateParams', 'OrdersService'];
 
-  function getOrderByCustomerId($stateParams, AuthenticationService, OrdersService) {
-    if ($stateParams.orderDetails) {
-      var orders = [];
-      orders.push($stateParams.orderDetails);
-      return orders;
-    } else {
-      var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
+  function getOrdersByCustomerId($stateParams, OrdersService) {
+    return OrdersService.requestOrderByCustomerId({
+      "id": $stateParams.customerId
+    }).$promise;
+  }
 
-      if (customerObjFromCookies.id) {
-        const response = OrdersService.requestOrderByCustomerId({
-          "id": customerObjFromCookies.id
-        })
+  getCustomer.$inject = ['$stateParams', 'CustomersService'];
 
-        console.log('response '+JSON.stringify(response));
-
-        return response;
-      } else
-        return null;
-    }
+  function getCustomer($stateParams, CustomersService) {
+    return CustomersService.requestCustomer({
+      "id": $stateParams.customerId
+    }).$promise;
   }
 
 }());

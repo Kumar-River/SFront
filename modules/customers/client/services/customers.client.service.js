@@ -24,7 +24,7 @@
 
     angular.extend(customerService, {
       requestCustomer: function(id) {
-        return this.getByid(id).$promise;
+        return this.getByid(id);
       }
     });
 

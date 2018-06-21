@@ -5,22 +5,28 @@
 		.module('core')
 		.controller('OrderStatusController', OrderStatusController);
 
-	OrderStatusController.$inject = ['$scope', '$state', 'AuthenticationService', 'ORDER_STATUS', 'OrdersService', 'ordersResolve'];
+	OrderStatusController.$inject = ['$scope', '$state', 'AuthenticationService', 'ORDER_STATUS', 'customerResolve', 'orderResolve'];
 
-	function OrderStatusController($scope, $state, AuthenticationService, ORDER_STATUS, OrdersService, ordersResolve) {
-		
-		console.log('ordersResolve ' + JSON.stringify(ordersResolve));
+	function OrderStatusController($scope, $state, AuthenticationService, ORDER_STATUS, customerResolve, orderResolve) {
 
-		if (!ordersResolve || ordersResolve.length == 0) {
-			$state.go('forbidden');
+		console.log('customerResolve ' + JSON.stringify(customerResolve));
+		console.log('orderResolve ' + JSON.stringify(orderResolve));
+
+		if (!customerResolve || customerResolve.length == 0 || !orderResolve) {
+			$state.go('not-found');
 			return;
 		}
 
-		$scope.orderDetails = ordersResolve[0];
-
 		$scope.model = {
-			customer: $scope.orderDetails.customer
+			customer: customerResolve[0]
 		};
+		$scope.orderDetails = orderResolve;
+
+		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
+		if (!customerObjFromCookies || customerObjFromCookies.id != $scope.model.customer.id) {
+			$state.go('forbidden');
+			return;
+		}
 
 		$scope.ui = {
 			product: $scope.orderDetails.products.items[0]

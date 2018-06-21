@@ -5,20 +5,39 @@
 		.module('core')
 		.controller('OrderDetailsController', OrderDetailsController);
 
-	OrderDetailsController.$inject = ['$scope', '$state', '$window', 'Currency', 'MESSAGES', 'Notification', 'AuthenticationService', 'PRODUCTS'];
+	OrderDetailsController.$inject = ['$scope', '$state', '$window', 'Currency', 'MESSAGES', 'Notification', 'AuthenticationService', 'PRODUCTS', 'customerResolve', 'ordersResolve'];
 
-	function OrderDetailsController($scope, $state, $window, Currency, MESSAGES, Notification, AuthenticationService, PRODUCTS) {
+	function OrderDetailsController($scope, $state, $window, Currency, MESSAGES, Notification, AuthenticationService, PRODUCTS, customerResolve, ordersResolve) {
+
+		if (!customerResolve || customerResolve.length == 0) {
+			$state.go('not-found');
+			return;
+		}
 
 		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
-
 		if (!customerObjFromCookies) {
 			$state.go('forbidden');
 			return;
 		}
 
+		if (customerResolve[0].id != customerObjFromCookies.id) {
+			$state.go('forbidden');
+			return;
+		}
+
 		$scope.model = {
-			customer: customerObjFromCookies
+			customer: customerResolve[0]
 		};
+
+		if (ordersResolve && ordersResolve.length > 0) {
+
+			$state.go('orderstatus', {
+				customerId: $scope.model.customer.id,
+				orderId: ordersResolve[0]._id
+			});
+
+			return;
+		}
 
 		$scope.ui = {
 			product: PRODUCTS.items[0]

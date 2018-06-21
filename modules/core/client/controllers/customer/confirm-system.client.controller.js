@@ -16,7 +16,9 @@
 
 		$scope.onCorrectButtonClicked = function() {
 			AuthenticationService.setCustomerCredentials($scope.model.customer);
-			$state.go('orderdetails');
+			$state.go('orderdetails', {
+				customerId: $scope.model.customer.id
+			});
 			$window.scrollTo(0, 400);
 		};
 	}
