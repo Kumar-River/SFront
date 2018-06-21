@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -8,7 +8,7 @@
   routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function routeConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.rule(function ($injector, $location) {
+    $urlRouterProvider.rule(function($injector, $location) {
       var path = $location.path();
       var hasTrailingSlash = path.length > 1 && path[path.length - 1] === '/';
 
@@ -20,7 +20,7 @@
     });
 
     // Redirect to 404 when route not found
-    $urlRouterProvider.otherwise(function ($injector, $location) {
+    $urlRouterProvider.otherwise(function($injector, $location) {
       $injector.get('$state').transitionTo('not-found', null, {
         location: false
       });
@@ -57,21 +57,27 @@
         templateUrl: '/modules/core/client/views/customer/order-details.client.view.html',
         controller: 'OrderDetailsController',
         controllerAs: 'vm'
-      })      
+      })
       .state('payment', {
         url: '/payment',
         templateUrl: '/modules/core/client/views/customer/payment.client.view.html',
         controller: 'PaymentController',
         params: {
+          products: null,
           orderAmountdetails: null
         },
         controllerAs: 'vm'
-      })      
+      })
       .state('orderstatus', {
         url: '/orderstatus',
         templateUrl: '/modules/core/client/views/customer/order-status.client.view.html',
         controller: 'OrderStatusController',
-        controllerAs: 'vm'
+        params: {
+          orderDetails: null
+        },
+        resolve: {
+          ordersResolve: getOrderByCustomerId
+        }
       })
       .state('admin.orders', {
         url: '/orders',
@@ -80,7 +86,7 @@
         controllerAs: 'vm',
         resolve: {
           ordersResolve: ['$injector', '$q', function($injector, $q) {
-            return $injector.invoke(orderData).$promise;   // cached, otherwise we would have called IncidentNoteTitle.query().
+            return $injector.invoke(orderData).$promise; // cached, otherwise we would have called IncidentNoteTitle.query().
           }]
         },
       })
@@ -92,7 +98,7 @@
         resolve: {
           orderResolve: getOrder,
         },
-      })       
+      })
       .state('help', {
         url: '/help',
         templateUrl: '/modules/core/client/views/customer/help.client.view.html',
@@ -105,7 +111,7 @@
         controller: 'ErrorController',
         controllerAs: 'vm',
         params: {
-          message: function ($stateParams) {
+          message: function($stateParams) {
             return $stateParams.message;
           }
         },
@@ -119,7 +125,7 @@
         controller: 'ErrorController',
         controllerAs: 'vm',
         params: {
-          message: function ($stateParams) {
+          message: function($stateParams) {
             return $stateParams.message;
           }
         },
@@ -148,6 +154,29 @@
 
   function orderData(OrdersService) {
     return OrdersService.query();
+  }
+
+  getOrderByCustomerId.$inject = ['$stateParams', 'AuthenticationService', 'OrdersService'];
+
+  function getOrderByCustomerId($stateParams, AuthenticationService, OrdersService) {
+    if ($stateParams.orderDetails) {
+      var orders = [];
+      orders.push($stateParams.orderDetails);
+      return orders;
+    } else {
+      var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
+
+      if (customerObjFromCookies.id) {
+        const response = OrdersService.requestOrderByCustomerId({
+          "id": customerObjFromCookies.id
+        })
+
+        console.log('response '+JSON.stringify(response));
+
+        return response;
+      } else
+        return null;
+    }
   }
 
 }());

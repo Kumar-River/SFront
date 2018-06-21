@@ -5,12 +5,9 @@
 		.module('core')
 		.controller('WelcomeController', WelcomeController);
 
-	WelcomeController.$inject = ['$scope', '$state', '$window', 'customerId', 'CustomersService', 'MESSAGES', 'Notification', 'AuthenticationService'];
+	WelcomeController.$inject = ['$scope', '$state', '$window', 'customerId', 'CustomersService', 'MESSAGES', 'Notification', 'AuthenticationService', 'OrdersService'];
 
-	function WelcomeController($scope, $state, $window, customerId, CustomersService, MESSAGES, Notification, AuthenticationService) {
-
-		//AuthenticationService.clearCustomerCredentials();
-		//console.log(JSON.stringify(AuthenticationService.getCustomerCredentials()));
+	function WelcomeController($scope, $state, $window, customerId, CustomersService, MESSAGES, Notification, AuthenticationService, OrdersService) {
 
 		$scope.model = {
 			customer: null

@@ -38,6 +38,7 @@
 
 		$scope.onPaymentOptionsClicked = function() {
 			$state.go('payment', {
+				products: PRODUCTS,
 				orderAmountdetails: $scope.orderAmountdetails
 			});
 			$window.scrollTo(0, 400);

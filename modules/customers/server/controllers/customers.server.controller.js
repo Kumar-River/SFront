@@ -130,7 +130,6 @@ exports.getCustomerBasedOnId = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      console.log("results " + results);
       res.jsonp(results);
     }
 

@@ -39,6 +39,10 @@ var OrderSchema = new Schema({
     required: 'Number of inverters is missing',
     trim: true
   },
+  products:{
+    type: Object,
+    required: 'products is missing'
+  },
   orderId: {
     type: Number
   },

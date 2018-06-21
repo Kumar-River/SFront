@@ -192,3 +192,24 @@ exports.orderByID = function(req, res, next, id) {
     next();
   });
 };
+
+/**
+ * Get Order based on customer id
+ */
+exports.getOrderBasedOnCustomerId = function(req, res) {
+  var cusId = parseInt(req.body.id);
+
+  Order.find({
+    userID: cusId
+  }, function(err, results) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(results);
+    }
+
+  });
+
+};

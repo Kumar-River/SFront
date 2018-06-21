@@ -1,5 +1,5 @@
 // Customers service used to communicate Customers REST endpoints
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -14,7 +14,7 @@
     }, {
       update: {
         method: 'PUT'
-      },      
+      },
       getByid: {
         method: 'POST',
         isArray: true,
@@ -23,7 +23,7 @@
     });
 
     angular.extend(customerService, {
-      requestCustomer: function (id) {
+      requestCustomer: function(id) {
         return this.getByid(id).$promise;
       }
     });

@@ -14,21 +14,21 @@
           <hr class="spacer --size-7" />
           <h5 class="accent-hedding --centerd">Order status</h5>
           <ul class="upgrade-status-tracking column-container collapse">
-            <li class="item default-4 tablet-small-16 active">
+            <li ng-class="getStausClass(0)">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
-              <span class="label">Order placed</span>
+              <span class="label">{{getOrderStatus(0)}}</span>
             </li>
-            <li class="item default-4  tablet-small-16 active">
+            <li ng-class="getStausClass(1)">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
-              <span class="label">Status Two</span>
+              <span class="label">{{getOrderStatus(1)}}</span>
             </li>
-            <li class="item default-4 tablet-small-16">
+            <li ng-class="getStausClass(2)">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
-              <span class="label">Status Three</span>
+              <span class="label">{{getOrderStatus(2)}}</span>
             </li>
-            <li class="item default-4 tablet-small-16">
+            <li ng-class="getStausClass(3)">
               <span class="step-icon --center-icon --small"><i class="icon-check"></i></span>
-              <span class="label">Installed</span>
+              <span class="label">{{getOrderStatus(3)}}</span>
             </li>
           </ul>
         </div>
@@ -39,13 +39,14 @@
         <div class="content-card">
           <h5 class="accent-hedding">Address of upgraded</h5>
           <div class="item-container">
-            <p><strong>First Name, Last Name</strong></p>
-            <p>1600 Pennsylvania Ave NW</p>
-            <p>Washington, DC 20500</p>
+            <p><strong ng-if="model.customer.first_name != NULL">{{model.customer.first_name}}</strong><strong ng-if="model.customer.last_name != NULL">{{model.customer.last_name}}</strong></p>
+            <p>{{model.customer.address1}}</p>
+            <p>{{model.customer.address2}}</p>
+            <p>{{model.customer.city}}, {{model.customer.state}}, {{model.customer.country}} {{model.customer.zip}}</p>
           </div>
           <h5 class="accent-hedding">Number of panels</h5>
           <div class="item-container">
-            <p><strong>24</strong> panels to upgrade</p>
+            <p><strong>{{orderDetails.noOfInverters}}</strong> panels to upgrade</p>
           </div>
           <hr class="spacer --size-6" />
           <h5 class="accent-hedding">Order details</h5>
@@ -63,28 +64,28 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Microinverters, Envoy, & Accessories</td>
-                    <td>$50.00</td>
-                    <td>24</td>
-                    <td>$1200.00</td>
+                    <td>{{ui.product.name}}</td>
+                    <td>${{ui.product.price}}</td>
+                    <td>{{orderDetails.noOfInverters}}</td>
+                    <td>${{orderAmountdetails.totalProductPrice}}</td>
                   </tr>
                   <tr>
                     <td>Tax</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>$150.00</td>
+                    <td>${{orderAmountdetails.totalTax}}</td>
                   </tr>
                   <tr>
                     <td>Shipping</td>
                     <td>&mdash;</td>
                     <td>&mdash;</td>
-                    <td>$30.00</td>
+                    <td>${{orderAmountdetails.totalShippingCharge}}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colspan="3" class="align-right">Total:</td>
-                    <td colspan="1" class="align-left">$1380.00</td>
+                    <td colspan="1" class="align-left">${{orderAmountdetails.totalAmountToPay}}</td>
                   </tr>
                 </tfoot>
               </table>

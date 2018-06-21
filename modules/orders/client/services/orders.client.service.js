@@ -1,5 +1,5 @@
 // Orders service used to communicate Orders REST endpoints
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -9,12 +9,25 @@
   OrdersService.$inject = ['$resource'];
 
   function OrdersService($resource) {
-    return $resource('/api/orders/:orderId', {
+    var orderService =  $resource('/api/orders/:orderId', {
       orderId: '@_id'
     }, {
       update: {
         method: 'PUT'
+      },
+      getOrderByCustomerId: {
+        method: 'POST',
+        isArray: true,
+        url: '/api/orders/getbycustomerid/'
+      },
+    });
+
+    angular.extend(orderService, {
+      requestOrderByCustomerId: function(id) {
+        return this.getOrderByCustomerId(id).$promise;
       }
     });
+
+    return orderService;
   }
 }());

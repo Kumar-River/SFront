@@ -11,7 +11,7 @@
 
 		var customerObjFromCookies = AuthenticationService.getCustomerCredentials();
 
-		if (!customerObjFromCookies || !$state.params.orderAmountdetails) {
+		if (!customerObjFromCookies || !$state.params.orderAmountdetails || !$state.params.products) {
 			$state.go('forbidden');
 			return;
 		}
@@ -44,6 +44,7 @@
 				'email': customerObjFromCookies.email,
 				'siteID': customerObjFromCookies.site_id,
 				'noOfInverters': customerObjFromCookies.pcu_channel_count,
+				'products': $state.params.products,
 				'orderAmountdetails': $state.params.orderAmountdetails,
 				'orderStatus': 0, //Todo
 			}
@@ -63,10 +64,11 @@
 					OrdersService.save($scope.model.order, successCallback, errorCallback);
 
 					function successCallback(res) {
-
 						$scope.ui.hasPaymentProcessing = false;
 
-						$state.go('orderstatus');
+						$state.go('orderstatus', {
+							orderDetails: res
+						});
 
 						Notification.success({
 							message: MESSAGES.SUCCESS_MSG_ORDER_PLACED,
